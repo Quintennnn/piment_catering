@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway # Uses Netlify Identity to manage users without needing a GitHub account directly
+  branch: main # Branch to update (optional; defaults to master)
+
+# Enable media library for image uploads
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "src/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "menu"
+    label: "Menu Categories"
+    folder: "src/_data/menu"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - {label: "Category Name", name: "category", widget: "string"}
+      - label: "Items"
+        name: "items"
+        widget: "list"
+        fields:
+          - {label: "Name", name: "name", widget: "string"}
+          - {label: "Description", name: "description", widget: "text", required: false}
+          - {label: "Price", name: "price", widget: "string"}
