@@ -69,6 +69,8 @@ collections:
   # ----------------------------------------------------------------------
   - name: "pages"
     label: "Pagina's"
+    format: "frontmatter"
+    extension: "njk"
     files:
 
       - label: "Home"
@@ -79,60 +81,47 @@ collections:
           - { label: "Browser-titel", name: "title", widget: "string" }
           - { label: "Meta description", name: "description", widget: "text" }
 
-          - label: "Hero (bovenaan)"
-            name: "hero"
-            widget: "object"
-            collapsed: false
-            fields:
-              - { label: "Klein label", name: "hero_label", widget: "string" }
-              - { label: "Titel", name: "hero_title", widget: "string" }
-              - { label: "Tekst", name: "hero_text", widget: "text" }
-              - { label: "Hoofdfoto (groot)", name: "hero_image_main", widget: "image" }
-              - { label: "Overlap-foto (klein, links onderin)", name: "hero_image_overlap", widget: "image", required: false }
-              - { label: "Hoofdknop tekst", name: "hero_cta_label", widget: "string" }
-              - { label: "Hoofdknop URL", name: "hero_cta_url", widget: "string" }
-              - { label: "Secundaire link tekst", name: "hero_secondary_label", widget: "string", required: false }
-              - { label: "Secundaire link URL", name: "hero_secondary_url", widget: "string", required: false }
+          # --- Hero ---
+          - { label: "Hero — klein label", name: "hero_label", widget: "string" }
+          - { label: "Hero — titel", name: "hero_title", widget: "string" }
+          - { label: "Hero — tekst", name: "hero_text", widget: "text" }
+          - { label: "Hero — hoofdfoto", name: "hero_image_main", widget: "image" }
+          - { label: "Hero — overlap-foto (klein, links-onder)", name: "hero_image_overlap", widget: "image", required: false }
+          - { label: "Hero — hoofdknop tekst", name: "hero_cta_label", widget: "string" }
+          - { label: "Hero — hoofdknop URL", name: "hero_cta_url", widget: "string" }
+          - { label: "Hero — secundaire link tekst", name: "hero_secondary_label", widget: "string", required: false }
+          - { label: "Hero — secundaire link URL", name: "hero_secondary_url", widget: "string", required: false }
 
-          - label: "Lunchcafé-blok"
-            name: "lunchcafe"
-            widget: "object"
-            fields:
-              - { label: "Klein label", name: "lunchcafe_label", widget: "string" }
-              - { label: "Titel", name: "lunchcafe_title", widget: "string" }
-              - { label: "Tekst", name: "lunchcafe_text", widget: "text" }
-              - { label: "Chip / badge tekst", name: "lunchcafe_chip", widget: "string" }
-              - label: "Polaroid-rij (3 foto's)"
-                name: "lunchcafe_polaroids"
-                widget: "list"
-                hint: "Voeg 3 foto's toe — ze worden naast elkaar getoond"
-                field: { label: "Foto", name: "image", widget: "image" }
-              - { label: "Knop tekst", name: "lunchcafe_cta_label", widget: "string" }
-              - { label: "Knop URL", name: "lunchcafe_cta_url", widget: "string" }
+          # --- Lunchcafé-blok ---
+          - { label: "Lunchcafé — klein label", name: "lunchcafe_label", widget: "string" }
+          - { label: "Lunchcafé — titel", name: "lunchcafe_title", widget: "string" }
+          - { label: "Lunchcafé — tekst", name: "lunchcafe_text", widget: "text" }
+          - { label: "Lunchcafé — chip / badge tekst", name: "lunchcafe_chip", widget: "string" }
+          - label: "Lunchcafé — polaroid-rij (3 foto's)"
+            name: "lunchcafe_polaroids"
+            widget: "list"
+            hint: "Voeg 3 foto's toe — ze worden naast elkaar getoond"
+            field: { label: "Foto", name: "image", widget: "image" }
+          - { label: "Lunchcafé — knop tekst", name: "lunchcafe_cta_label", widget: "string" }
+          - { label: "Lunchcafé — knop URL", name: "lunchcafe_cta_url", widget: "string" }
 
-          - label: "Catering-blok"
-            name: "catering"
-            widget: "object"
-            fields:
-              - { label: "Klein label", name: "catering_label", widget: "string" }
-              - { label: "Titel", name: "catering_title", widget: "string" }
-              - { label: "Tekst", name: "catering_text", widget: "text" }
-              - { label: "Foto", name: "catering_image", widget: "image" }
-              - { label: "Knop tekst", name: "catering_cta_label", widget: "string" }
-              - { label: "Knop URL", name: "catering_cta_url", widget: "string" }
+          # --- Catering-blok ---
+          - { label: "Catering — klein label", name: "catering_label", widget: "string" }
+          - { label: "Catering — titel", name: "catering_title", widget: "string" }
+          - { label: "Catering — tekst", name: "catering_text", widget: "text" }
+          - { label: "Catering — foto", name: "catering_image", widget: "image" }
+          - { label: "Catering — knop tekst", name: "catering_cta_label", widget: "string" }
+          - { label: "Catering — knop URL", name: "catering_cta_url", widget: "string" }
 
-          - label: "Afsluitende uitnodiging (onderaan)"
-            name: "closing"
-            widget: "object"
-            fields:
-              - { label: "Klein label", name: "closing_label", widget: "string" }
-              - { label: "Titel", name: "closing_title", widget: "string" }
-              - { label: "Tekst", name: "closing_text", widget: "text" }
-              - { label: "Foto", name: "closing_image", widget: "image" }
-              - { label: "Hoofdknop tekst", name: "closing_primary_label", widget: "string" }
-              - { label: "Hoofdknop URL", name: "closing_primary_url", widget: "string" }
-              - { label: "Tweede knop tekst", name: "closing_secondary_label", widget: "string" }
-              - { label: "Tweede knop URL", name: "closing_secondary_url", widget: "string" }
+          # --- Afsluitende uitnodiging ---
+          - { label: "Afsluiting — klein label", name: "closing_label", widget: "string" }
+          - { label: "Afsluiting — titel", name: "closing_title", widget: "string" }
+          - { label: "Afsluiting — tekst", name: "closing_text", widget: "text" }
+          - { label: "Afsluiting — foto", name: "closing_image", widget: "image" }
+          - { label: "Afsluiting — hoofdknop tekst", name: "closing_primary_label", widget: "string" }
+          - { label: "Afsluiting — hoofdknop URL", name: "closing_primary_url", widget: "string" }
+          - { label: "Afsluiting — tweede knop tekst", name: "closing_secondary_label", widget: "string" }
+          - { label: "Afsluiting — tweede knop URL", name: "closing_secondary_url", widget: "string" }
         editor:
           preview: false
 
