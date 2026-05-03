@@ -1,0 +1,69 @@
+---
+layout: base.njk
+title: Piment Catering - Lunchcafé en menu
+---
+
+<section class="section container" style="padding-top: var(--spacing-12);">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <span class="label-md" style="color: var(--secondary);">Natuurlandgoed Zonnestraal</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">Genieten in het groen</h1>
+    
+    <div style="position: relative; margin: var(--spacing-12) 0;">
+      <img src="/assets/images/cafe-interior.jpg" alt="Lunchcafé exterior" style="width: 100%; height: 60vh; object-fit: cover; border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
+    </div>
+
+    <p class="body-lg" style="margin-bottom: var(--spacing-6);">
+      Ons lunchcafé ligt midden in het groen, met een heerlijke tuin waar je bij mooi weer diverse fijne plekjes vindt om rustig te zitten. Ook op minder zonnige dagen is het in de serre en het café gezellig en warm.
+    </p>
+    <p class="body-lg" style="margin-bottom: var(--spacing-6);">
+      Combineer je bezoek ook eens met een wandeling op het prachtige Natuurlandgoed Zonnestraal. Bij lunchcafé Piment gebruiken we zoveel mogelijk groenten en kruiden direct uit de biologische zelfoogsttuin Bodemvrucht.
+    </p>
+    <p class="label-md" style="color: var(--primary); margin-top: var(--spacing-8);">We kijken ernaar uit je te ontvangen op onze bijzondere locatie!</p>
+  </div>
+</section>
+
+<!-- The Menu (Text based, No Lines) -->
+<section class="section-bg-shift">
+  <div class="container" style="max-width: 900px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: var(--spacing-16);">
+      <h2 class="display-lg">Ons Menu</h2>
+      <span class="label-md" style="color: var(--tertiary);">Lunch van 11:00 tot 16:00</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-20);">
+      {% for key, menuData in menu %}
+        <div>
+          <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: var(--spacing-8); text-align: center;">
+            {{ menuData.category }}
+          </h3>
+          
+          <ul style="list-style: none;">
+            {% for item in menuData.items %}
+              <li style="margin-bottom: var(--spacing-8);">
+                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                  <strong class="display" style="font-size: 1.5rem; color: var(--on-surface); margin-bottom: 0;">{{ item.name }}</strong>
+                  <div style="font-family: var(--font-display); font-size: 1.5rem; color: var(--tertiary); margin-left: var(--spacing-4);">
+                    {{ item.price }}
+                  </div>
+                </div>
+                {% if item.description %}
+                  <p class="body-lg" style="color: var(--on-surface); opacity: 0.8; margin-top: var(--spacing-2); margin-bottom: 0; max-width: 80%;">
+                    {{ item.description }}
+                  </p>
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div style="text-align: center; margin-top: var(--spacing-20);">
+      <span class="chip" style="margin-bottom: var(--spacing-2);">V: Vegan</span>
+      <span class="chip" style="margin-bottom: var(--spacing-2);">V*: Vegan mogelijk</span>
+      <span class="chip" style="margin-bottom: var(--spacing-2);">GV: Glutenvrij</span>
+      <span class="chip" style="margin-bottom: var(--spacing-2);">GV*: Glutenvrij mogelijk</span>
+      <p class="label-md" style="color: var(--tertiary); margin-top: var(--spacing-6);">Allergie of speciaal dieet? Laat het ons weten!</p>
+    </div>
+  </div>
+</section>

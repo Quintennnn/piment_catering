@@ -1,0 +1,57 @@
+---
+layout: base.njk
+title: Piment Catering - Vegetarische Catering
+---
+
+<section class="section container" style="padding-top: var(--spacing-12);">
+  <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-16); align-items: start;">
+    
+    <div style="max-width: 600px;">
+      <span class="label-md" style="color: var(--secondary);">Voor elke gelegenheid</span>
+      <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">Catering op Maat</h1>
+      <p class="body-lg">
+        Van uitgebreid buffet tot luxe hapjes, van zakelijke lunch tot bruiloftsdiner. Wij denken graag met je mee over de culinaire invulling van jouw evenement.
+      </p>
+      <p class="body-lg">
+        Al onze gerechten zijn 100% vegetarisch en met liefde bereid. Waar mogelijk gebruiken we biologische streekproducten.
+      </p>
+      
+      <div style="margin-top: var(--spacing-8); display: flex; flex-wrap: wrap; gap: var(--spacing-4);">
+        <span class="chip">Zakelijke lunches</span>
+        <span class="chip">Buffetten voor groepen</span>
+        <span class="chip">Luxe hapjes en amuses</span>
+        <span class="chip">Walking dinners</span>
+      </div>
+    </div>
+
+    <!-- The Artisanal Input Form -->
+    <div class="card" style="padding: var(--spacing-12);">
+      <h3 style="margin-bottom: var(--spacing-8);">Vraag een offerte aan</h3>
+      <form name="catering-aanvraag" method="POST" data-netlify="true" action="/contact?success=true">
+        
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">Naam</label>
+          <input type="text" name="name" class="input-field" required>
+        </div>
+        
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">E-mailadres</label>
+          <input type="email" name="email" class="input-field" required>
+        </div>
+        
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">Datum evenement</label>
+          <input type="date" name="date" class="input-field">
+        </div>
+        
+        <div style="margin-bottom: var(--spacing-8);">
+          <label class="input-label">Jouw wensen / omschrijving</label>
+          <textarea name="message" class="input-field" rows="5" required style="resize: vertical;"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">Verstuur Aanvraag</button>
+      </form>
+    </div>
+
+  </div>
+</section>

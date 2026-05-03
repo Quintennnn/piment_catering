@@ -1,34 +1,69 @@
 backend:
-  name: git-gateway # Uses Netlify Identity to manage users without needing a GitHub account directly
-  branch: main # Branch to update (optional; defaults to master)
+  name: git-gateway
+  branch: main
 
-# Enable media library for image uploads
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
 collections:
   - name: "pages"
     label: "Pages"
-    folder: "src/pages"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Body", name: "body", widget: "markdown"}
+    files:
+      - label: "Homepage"
+        name: "home"
+        file: "src/index.njk"
+        fields:
+          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - {label: "Hero Text", name: "hero_text", widget: "string"}
+          - {label: "Intro Title", name: "intro_title", widget: "string"}
+          - {label: "Intro Text", name: "intro_text", widget: "text"}
+          - {label: "Catering Title", name: "catering_title", widget: "string"}
+          - {label: "Catering Text", name: "catering_text", widget: "text"}
+      - label: "Lunchcafé Page"
+        name: "lunchcafe"
+        file: "src/lunchcafe.njk"
+        fields:
+          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Intro Text", name: "intro", widget: "markdown"}
+      - label: "Catering Page"
+        name: "catering"
+        file: "src/catering.njk"
+        fields:
+          - {label: "Hero Image", name: "hero_image", widget: "image"}
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
+      - label: "Over Piment"
+        name: "about"
+        file: "src/over-piment.njk"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Content", name: "body", widget: "markdown"}
 
   - name: "menu"
-    label: "Menu Categories"
+    label: "Lunchcafé Menu Items"
     folder: "src/_data/menu"
     create: true
     slug: "{{slug}}"
     extension: "json"
     format: "json"
     fields:
-      - {label: "Category Name", name: "category", widget: "string"}
+      - {label: "Category Name (e.g. Soep, Tosti)", name: "category", widget: "string"}
       - label: "Items"
         name: "items"
         widget: "list"
         fields:
           - {label: "Name", name: "name", widget: "string"}
-          - {label: "Description", name: "description", widget: "text", required: false}
+          - {label: "Description (Optional)", name: "description", widget: "text", required: false}
           - {label: "Price", name: "price", widget: "string"}
+
+  - name: "vacatures"
+    label: "Vacatures (Jobs)"
+    folder: "src/_data/vacatures"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - {label: "Job Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "markdown"}

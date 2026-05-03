@@ -1,0 +1,67 @@
+---
+layout: base.njk
+title: Piment Catering - Contact
+---
+
+<section class="section container" style="max-width: 1000px; padding-top: var(--spacing-12);">
+  <div style="text-align: center; margin-bottom: var(--spacing-16);">
+    <span class="label-md" style="color: var(--secondary);">We horen graag van je</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4);">Neem Contact Op</h1>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--spacing-16); align-items: start;">
+    
+    <!-- Contact Info (No Card, just spacing and typography) -->
+    <div>
+      <h3 style="margin-bottom: var(--spacing-8);">Gegevens</h3>
+      
+      <div style="margin-bottom: var(--spacing-8);">
+        <span class="label-md" style="color: var(--tertiary);">Lunchcafé Piment</span>
+        <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">Landgoed de Rading</p>
+        <p class="body-lg" style="margin-bottom: 0;">Rading 1b Hilversum</p>
+        <p class="body-lg" style="color: var(--secondary); margin-top: var(--spacing-2);">Open van maandag t/m zaterdag 10:00 - 17:00</p>
+      </div>
+
+      <div style="margin-bottom: var(--spacing-8);">
+        <span class="label-md" style="color: var(--tertiary);">Direct Contact</span>
+        <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">
+          <a href="mailto:pimentcatering@gmail.com" style="color: var(--on-surface); text-decoration: underline;">pimentcatering@gmail.com</a>
+        </p>
+        <p class="body-lg" style="margin-bottom: 0;">
+          <a href="tel:0618520544" style="color: var(--on-surface);">06 1852 0544</a>
+        </p>
+      </div>
+
+      <div>
+        <span class="label-md" style="color: var(--tertiary);">Postadres</span>
+        <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">Ampèrestraat 66</p>
+        <p class="body-lg" style="margin-bottom: 0;">1221 GK Hilversum</p>
+      </div>
+    </div>
+
+    <!-- Contact Form (Level 2 Card) -->
+    <div class="card" style="padding: var(--spacing-12);">
+      <h3 style="margin-bottom: var(--spacing-8);">Stuur een bericht</h3>
+      <form name="contact" method="POST" data-netlify="true">
+        
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">Naam</label>
+          <input type="text" name="name" class="input-field" required>
+        </div>
+        
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">E-mail</label>
+          <input type="email" name="email" class="input-field" required>
+        </div>
+        
+        <div style="margin-bottom: var(--spacing-8);">
+          <label class="input-label">Bericht</label>
+          <textarea name="message" class="input-field" rows="5" required style="resize: vertical;"></textarea>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">Verstuur</button>
+      </form>
+    </div>
+
+  </div>
+</section>
