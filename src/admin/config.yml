@@ -71,7 +71,6 @@ collections:
           - label: "Navigatiemenu"
             name: "nav"
             widget: "list"
-            i18n: duplicate
             summary: "{{fields.key}} → {{fields.url}}"
             hint: "De zichtbare tekst van de menu-items beheer je in de UI-vertalingen (vraag de developer)."
             fields:
@@ -116,7 +115,6 @@ collections:
           - label: "Lunchcafé — polaroid-rij (3 foto's)"
             name: "lunchcafe_polaroids"
             widget: "list"
-            i18n: duplicate
             field: { label: "Foto", name: "image", widget: "image" }
           - { label: "Lunchcafé — knop tekst", name: "lunchcafe_cta_label", widget: "string", i18n: true }
           - { label: "Lunchcafé — knop URL", name: "lunchcafe_cta_url", widget: "string", i18n: duplicate }
@@ -186,7 +184,6 @@ collections:
           - label: "Galerij (sfeerimpressies)"
             name: "gallery"
             widget: "list"
-            i18n: duplicate
             field: { label: "Foto", name: "image", widget: "image" }
           - { label: "Galerij-titel", name: "gallery_title", widget: "string", i18n: true }
           - { label: "Formuliertitel", name: "form_title", widget: "string", i18n: true }
