@@ -1,42 +1,46 @@
 ---
 layout: base.njk
-title: Piment Catering - Vacatures
+permalink: /vacatures/
+title: Vacatures — Werken bij Piment
+description: Werken bij Piment? Bekijk onze openstaande vacatures voor het lunchcafé en de catering.
+
+hero_label: Kom bij ons werken
+hero_title: Werken bij Piment
+hero_text: Ben jij gepassioneerd over vegetarisch eten, duurzaamheid en gastvrijheid? Bekijk hieronder onze openstaande vacatures en kom ons team versterken.
+empty_text: Op dit moment hebben we geen openstaande vacatures. Toch enthousiast? Stuur een open sollicitatie naar pimentcatering@gmail.com — we lezen ze allemaal.
 ---
 
 <section class="section container" style="max-width: 900px; padding-top: var(--spacing-12);">
   <div style="text-align: center; margin-bottom: var(--spacing-16);">
-    <span class="label-md" style="color: var(--secondary);">Kom bij ons werken</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">Werken bij Piment</h1>
-    <p class="body-lg" style="max-width: 600px; margin: 0 auto;">
-      Ben jij gepassioneerd over vegetarisch eten, duurzaamheid en gastvrijheid? Bekijk dan hieronder onze openstaande vacatures en kom ons team versterken!
-    </p>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
+    <p class="body-lg" style="max-width: 600px; margin: 0 auto;">{{ hero_text }}</p>
   </div>
 
   <div style="display: flex; flex-direction: column; gap: var(--spacing-12);">
-    
-    <!-- Job Card (Level 2) -->
-    <div class="card" style="padding: var(--spacing-12);">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--spacing-6);">
-        <h3 style="color: var(--primary); margin-bottom: 0;">Hulpkok (Parttime)</h3>
-        <span class="chip">Keuken</span>
-      </div>
-      <p class="body-lg" style="margin-bottom: var(--spacing-8);">
-        We zijn op zoek naar een enthousiaste hulpkok voor ons lunchcafé op donderdag en vrijdag. Je helpt met de voorbereidingen en het bereiden van verse soepen, salades en broodjes.
-      </p>
-      <a href="/contact" class="btn btn-secondary" style="align-self: flex-start;">Solliciteer Nu</a>
-    </div>
+    {% for key, job in vacatures %}
+      <div class="card" style="padding: var(--spacing-12);">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-6);">
+          <h3 style="color: var(--primary); margin-bottom: 0;">{{ job.title }}</h3>
+          {% if job.category %}<span class="chip">{{ job.category }}</span>{% endif %}
+        </div>
 
-    <!-- Job Card (Level 2) -->
-    <div class="card" style="padding: var(--spacing-12);">
-      <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--spacing-6);">
-        <h3 style="color: var(--primary); margin-bottom: 0;">Gastheer/Gastvrouw (Zaterdag)</h3>
-        <span class="chip">Bediening</span>
-      </div>
-      <p class="body-lg" style="margin-bottom: var(--spacing-8);">
-        Ben jij een ster in gastvrijheid en houd je van aanpakken? Voor de zaterdagen zoeken wij een vlotte collega voor de bediening in ons café en op het terras.
-      </p>
-      <a href="/contact" class="btn btn-secondary" style="align-self: flex-start;">Solliciteer Nu</a>
-    </div>
+        {% if job.summary %}
+          <p class="body-lg" style="margin-bottom: var(--spacing-6); color: var(--secondary);">{{ job.summary }}</p>
+        {% endif %}
 
+        <div class="prose" style="margin-bottom: var(--spacing-8);">{{ job.description | markdown | safe }}</div>
+
+        {% if job.contact_text %}
+          <p class="body-lg" style="margin-bottom: var(--spacing-6);"><strong>{{ job.contact_text }}</strong></p>
+        {% endif %}
+
+        <a href="mailto:{{ site.contact.email }}?subject={{ job.title | urlencode }}" class="btn btn-primary" style="align-self: flex-start;">Solliciteer per mail</a>
+      </div>
+    {% else %}
+      <div class="card" style="padding: var(--spacing-12); text-align: center;">
+        <p class="body-lg" style="margin-bottom: 0;">{{ empty_text }}</p>
+      </div>
+    {% endfor %}
   </div>
 </section>

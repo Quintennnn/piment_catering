@@ -1,0 +1,76 @@
+---
+layout: base.njk
+permalink: /privacyverklaring/
+title: Privacyverklaring — Piment Catering
+description: Privacyverklaring van Piment Catering — hoe wij omgaan met je persoonsgegevens.
+
+hero_label: Privacy
+hero_title: Privacyverklaring
+last_updated: 27 november 2025
+
+body: |
+  Deze privacyverklaring hoort bij Piment Catering ([https://www.pimentcatering.nl](https://www.pimentcatering.nl)). Wij kunnen je persoonsgegevens verwerken doordat je gebruikmaakt van de diensten van Piment Catering en/of omdat je deze zelf aan ons verstrekt via een contact- of bestelformulier op onze website.
+
+  ## Persoonsgegevens die worden verwerkt
+
+  Piment Catering kan de volgende persoonsgegevens verwerken:
+
+  - Je voor- en achternaam
+  - Je adresgegevens
+  - Je telefoonnummer
+  - Je e-mailadres
+  - Je IP-adres
+  - Eventuele aanvullende gegevens die je zelf verstrekt bij een offerteaanvraag, bestelling of voor levering
+
+  ## Waarom Piment Catering gegevens nodig heeft
+
+  Piment Catering verwerkt je persoonsgegevens om telefonisch of per e-mail contact met je te kunnen opnemen naar aanleiding van een aanvraag, bestelling of vraag. Daarnaast gebruiken wij de gegevens om een offerte op te maken, bestellingen uit te voeren, catering te leveren en voor administratieve afhandeling zoals facturatie.
+
+  ## Hoe lang Piment Catering gegevens bewaart
+
+  Piment Catering bewaart je persoonsgegevens niet langer dan strikt nodig is om de doelen te realiseren waarvoor ze zijn verzameld.
+
+  - Komt er geen opdracht tot stand? Dan bewaren wij je gegevens maximaal één jaar.
+  - Nadat een bestelling of samenwerking is afgerond bewaren wij administratieve gegevens (zoals offertes, facturen en e-mails met betrekking tot de opdracht) zeven jaar, conform de wettelijke bewaartermijn van de Belastingdienst.
+  - Documenten en notities bewaren wij maximaal twee jaar na afronding van de samenwerking, tenzij wettelijke verplichtingen anders bepalen.
+
+  ## Delen met anderen
+
+  Piment Catering verstrekt je persoonsgegevens uitsluitend aan derden wanneer dit nodig is voor de uitvoering van onze dienstverlening of wanneer dit wettelijk verplicht is. Het gaat bijvoorbeeld om bezorgdiensten, een boekhouder of een betalingsprovider. Wij verkopen je gegevens nooit aan derden.
+
+  ## In kaart brengen websitebezoek
+
+  Op de website van Piment Catering worden algemene bezoekgegevens bijgehouden, waaronder het IP-adres van je computer, het tijdstip van bezoek en gegevens die je browser meestuurt. Deze gegevens worden uitsluitend gebruikt om het bezoek- en klikgedrag op de website te analyseren en zo de functionaliteit te verbeteren. Deze gegevens zijn waar mogelijk geanonimiseerd en worden niet met derden gedeeld.
+
+  ## Google Analytics
+
+  Piment Catering maakt gebruik van Google Analytics om te analyseren hoe bezoekers de website gebruiken. De informatie die Google verzamelt, inclusief je IP-adres, wordt opgeslagen op servers in de Verenigde Staten.
+
+  Google kan deze gegevens aan derden verstrekken als zij daartoe wettelijk verplicht zijn, of wanneer deze derden de gegevens namens Google verwerken. Piment Catering heeft geen invloed op deze verwerking en heeft Google geen toestemming gegeven om via verkregen Analytics-informatie andere Google-diensten te voeden.
+
+  ## Gegevens inzien, aanpassen of verwijderen
+
+  Je hebt het recht om je persoonsgegevens in te zien, te corrigeren of te verwijderen. Je kunt een verzoek sturen naar [pimentcatering@gmail.com](mailto:pimentcatering@gmail.com). Piment Catering reageert zo snel mogelijk, maar uiterlijk binnen vier weken. Ter verificatie kunnen wij je vragen je identiteit te bevestigen.
+
+  ## Inhoud van de website
+
+  De inhoud van de website van Piment Catering is met grote zorg samengesteld. Aan de informatie op de website kunnen geen rechten worden ontleend. E-mailberichten verstuurd via de website mogen door ons worden gebruikt ter afhandeling van aanvragen of communicatie over onze diensten. Piment Catering verkoopt nooit informatie aan derden.
+
+  ## Cookies
+
+  Als je een reactie achterlaat op onze website, kun je ervoor kiezen om je naam, e-mailadres en eventuele website op te slaan in cookies. Dit is voor jouw gemak, zodat je deze gegevens bij een volgend bezoek niet opnieuw hoeft in te vullen. Deze cookies blijven één jaar geldig.
+
+  Heb je vragen over deze privacyverklaring? Neem dan contact met ons op via [pimentcatering@gmail.com](mailto:pimentcatering@gmail.com).
+---
+
+<section class="section container" style="max-width: 760px; padding-top: var(--spacing-12);">
+  <div style="margin-bottom: var(--spacing-12);">
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-4);">{{ hero_title }}</h1>
+    {% if last_updated %}
+      <p class="label-md" style="color: var(--tertiary);">Laatst bijgewerkt: {{ last_updated }}</p>
+    {% endif %}
+  </div>
+
+  <div class="prose">{{ body | markdown | safe }}</div>
+</section>

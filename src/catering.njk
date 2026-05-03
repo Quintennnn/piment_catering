@@ -1,57 +1,105 @@
 ---
 layout: base.njk
-title: Piment Catering - Vegetarische Catering
+permalink: /catering/
+title: Vegetarische catering op maat — Piment Catering
+description: Vegetarische catering voor zakelijke lunches, feesten en evenementen. Wereldse smaken met lokale, biologische ingrediënten.
+
+hero_label: Voor elke gelegenheid
+hero_title: Jouw event slaagt met Piment
+hero_intro: |
+  Bij Piment stellen we ieder vegetarisch menu volledig samen in overleg met jou als opdrachtgever. Hieronder vind je enkele sfeerimpressies van wat er mogelijk is.
+
+  Ook voor de catering van feesten en events ben je bij Piment Catering aan het juiste adres. Wij werken met duurzame, biologische en lokaal geproduceerde ingrediënten, bereid met kwaliteit, wereldse smaken en liefde uit de buurt.
+
+  We bespreken samen jouw wensen en de menukeuze. We komen graag koken in jouw (eigen) keuken. Het is ook mogelijk om de gerechten bij ons op te halen. Dieetwensen en allergieën zijn geen enkel probleem.
+
+chips:
+  - Zakelijke lunches
+  - Buffetten voor groepen
+  - Luxe hapjes en amuses
+  - Walking dinners
+  - Feesten en evenementen
+
+gallery:
+  - /assets/images/catering-1.jpg
+  - /assets/images/catering-2.jpg
+  - /assets/images/catering-3.jpg
+  - /assets/images/catering-4.jpg
+  - /assets/images/catering-5.jpg
+
+form_title: Vraag een offerte aan
+form_intro: Vertel ons over je event en we nemen zo snel mogelijk contact met je op.
 ---
 
 <section class="section container" style="padding-top: var(--spacing-12);">
-  <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-16); align-items: start;">
-    
-    <div style="max-width: 600px;">
-      <span class="label-md" style="color: var(--secondary);">Voor elke gelegenheid</span>
-      <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">Catering op Maat</h1>
-      <p class="body-lg">
-        Van uitgebreid buffet tot luxe hapjes, van zakelijke lunch tot bruiloftsdiner. Wij denken graag met je mee over de culinaire invulling van jouw evenement.
-      </p>
-      <p class="body-lg">
-        Al onze gerechten zijn 100% vegetarisch en met liefde bereid. Waar mogelijk gebruiken we biologische streekproducten.
-      </p>
-      
-      <div style="margin-top: var(--spacing-8); display: flex; flex-wrap: wrap; gap: var(--spacing-4);">
-        <span class="chip">Zakelijke lunches</span>
-        <span class="chip">Buffetten voor groepen</span>
-        <span class="chip">Luxe hapjes en amuses</span>
-        <span class="chip">Walking dinners</span>
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
+    <div class="prose" style="text-align: left;">{{ hero_intro | markdown | safe }}</div>
+
+    {% if chips and chips.length %}
+      <div style="margin-top: var(--spacing-8); display: flex; flex-wrap: wrap; gap: var(--spacing-4); justify-content: center;">
+        {% for chip in chips %}
+          <span class="chip">{{ chip }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% if gallery and gallery.length %}
+  <section class="section-bg-shift">
+    <div class="container">
+      <h2 style="text-align: center; margin-bottom: var(--spacing-12);">Sfeerimpressies</h2>
+      <div class="catering-gallery">
+        {% for img in gallery %}
+          <img src="{{ img }}" alt="Sfeerimpressie catering {{ loop.index }}" loading="lazy">
+        {% endfor %}
       </div>
     </div>
+  </section>
+{% endif %}
 
-    <!-- The Artisanal Input Form -->
+<section class="section container">
+  <div style="max-width: 720px; margin: 0 auto;">
     <div class="card" style="padding: var(--spacing-12);">
-      <h3 style="margin-bottom: var(--spacing-8);">Vraag een offerte aan</h3>
-      <form name="catering-aanvraag" method="POST" data-netlify="true" action="/contact?success=true">
-        
+      <h2 style="margin-bottom: var(--spacing-4);">{{ form_title }}</h2>
+      <p class="body-lg" style="margin-bottom: var(--spacing-8);">{{ form_intro }}</p>
+      <form name="catering-aanvraag" method="POST" data-netlify="true" action="/contact/?success=true">
+        <input type="hidden" name="form-name" value="catering-aanvraag">
+
         <div style="margin-bottom: var(--spacing-6);">
           <label class="input-label">Naam</label>
           <input type="text" name="name" class="input-field" required>
         </div>
-        
+
         <div style="margin-bottom: var(--spacing-6);">
           <label class="input-label">E-mailadres</label>
           <input type="email" name="email" class="input-field" required>
         </div>
-        
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">Telefoonnummer</label>
+          <input type="tel" name="phone" class="input-field">
+        </div>
+
         <div style="margin-bottom: var(--spacing-6);">
           <label class="input-label">Datum evenement</label>
           <input type="date" name="date" class="input-field">
         </div>
-        
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label">Aantal personen</label>
+          <input type="number" name="guests" class="input-field" min="1">
+        </div>
+
         <div style="margin-bottom: var(--spacing-8);">
           <label class="input-label">Jouw wensen / omschrijving</label>
           <textarea name="message" class="input-field" rows="5" required style="resize: vertical;"></textarea>
         </div>
-        
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">Verstuur Aanvraag</button>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">Verstuur aanvraag</button>
       </form>
     </div>
-
   </div>
 </section>

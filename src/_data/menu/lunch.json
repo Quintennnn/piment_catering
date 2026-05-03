@@ -1,0 +1,40 @@
+{
+  "category": "Lunchkaart",
+  "items": [
+    {
+      "name": "Soep (V/GV)",
+      "description": "Huisgemaakte wisselende soep — geserveerd met brood en verse chimichurri.",
+      "price": "€ 6,50"
+    },
+    {
+      "name": "Tosti",
+      "description": "Met uiencompote en een wisselende saus — inclusief side salad.",
+      "price": "€ 9,50"
+    },
+    {
+      "name": "Quiche (V*)",
+      "description": "Quiche met seizoensgroenten — inclusief side salad.",
+      "price": "€ 10,50"
+    },
+    {
+      "name": "Specials van de week (V*/GV*)",
+      "description": "Zie ons krijtbord bij de bar.",
+      "price": "€ 12,50"
+    },
+    {
+      "name": "Uitsmijter",
+      "description": "Met kaas, op brood van onze biologische bakker — inclusief side salad.",
+      "price": "€ 9,50"
+    },
+    {
+      "name": "Broodje van de week",
+      "description": "Zie ons krijtbord bij de bar.",
+      "price": "€ 9,50"
+    },
+    {
+      "name": "Combinatiegerecht (V*/GV*)",
+      "description": "Combinatie van onze soep, broodje en salade.",
+      "price": "€ 13,50"
+    }
+  ]
+}

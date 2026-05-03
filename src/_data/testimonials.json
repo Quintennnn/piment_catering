@@ -1,0 +1,20 @@
+{
+  "title": "Wat zeggen onze gasten?",
+  "items": [
+    {
+      "name": "Anna",
+      "rating": 5,
+      "quote": "Fantastisch dat wij nu in Hilversum heerlijke maaltijden, vers, gezond en vegetarisch thuis kunnen laten bezorgen! Piment kookt met veel groenten, heerlijk en verantwoord, super bedankt!"
+    },
+    {
+      "name": "Gert",
+      "rating": 5,
+      "quote": "Erg lekkere maaltijd, op tijd bezorgd en makkelijk op te warmen. Een gezond alternatief voor een afhaalmaaltijd. Zeker een aanrader!"
+    },
+    {
+      "name": "Miranda",
+      "rating": 5,
+      "quote": "Super lekker gegeten, gaan we absoluut vaker doen. Ideaal als je weet dat je geen tijd hebt om te koken maar wel gezond en vers wil eten."
+    }
+  ]
+}

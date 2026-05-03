@@ -1,86 +1,89 @@
 ---
 layout: base.njk
-title: Piment Catering - Home
+title: Piment Catering — Wereldse smaken, liefde uit de buurt
+description: Vegetarisch lunchcafé en catering op Landgoed de Rading in Hilversum. Wereldse smaken, lokale biologische ingrediënten.
+
+hero_label: Wereldse smaken, liefde uit de buurt
+hero_title: Lekker vegetarisch eten in het groen
+hero_text: Vegetarisch lunchcafé Piment ligt midden in het groen op Landgoed de Rading. We werken met biologische groenten en kruiden uit zelfoogsttuin Bodemvrucht en serveren wereldse smaken met liefde uit de buurt.
+hero_cta_label: Bekijk het lunchcafé
+hero_cta_url: /lunchcafe/
+
+lunchcafe_label: Het lunchcafé
+lunchcafe_title: Genieten in het groen
+lunchcafe_text: Bij vegetarisch lunchcafé Piment op Landgoed de Rading serveren wij heerlijke biologische koffie, thee en frisdrank met taart en cake. Van maandag tot en met zaterdag ben je welkom om te komen lunchen of iets lekkers af te halen.
+lunchcafe_chip: Open ma-za 10:00 – 17:00
+lunchcafe_image_1: /assets/images/lunchcafe-1.jpg
+lunchcafe_image_2: /assets/images/lunchcafe-2.jpg
+lunchcafe_cta_label: Bekijk menu en openingstijden
+lunchcafe_cta_url: /lunchcafe/
+
+catering_label: Catering op maat
+catering_title: Jouw event slaagt met Piment
+catering_text: >-
+  Bij Piment kun je terecht voor vegetarische catering op maat. Of het nu gaat om een zakelijke lunch, feest of evenement — wij verzorgen alle gerechten met zorg, creativiteit en aandacht. We gebruiken lokale, duurzame en biologische ingrediënten.
+catering_image: /assets/images/catering-1.jpg
+catering_cta_label: Stuur ons je wensen
+catering_cta_url: /catering/
 ---
 
-<!-- High-End Editorial Hero -->
 <section class="section container" style="padding-top: var(--spacing-12);">
   <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-    <span class="label-md" style="color: var(--secondary);">The Curated Earth</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">Wereldse smaken,<br>liefde uit de buurt.</h1>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
     <p class="body-lg" style="max-width: 600px; margin: 0 auto var(--spacing-8) auto;">
-      Geniet van heerlijk vegetarisch eten, bereid met zorg, creativiteit en lokale biologische ingrediënten. Een uitnodiging in onze zongedroogde tuin.
+      {{ hero_text }}
     </p>
-    <a href="/lunchcafe" class="btn btn-primary">Ontdek ons menu</a>
+    <a href="{{ hero_cta_url }}" class="btn btn-primary">{{ hero_cta_label }}</a>
   </div>
 </section>
 
-<!-- Artisanal Gallery / Lunchcafe -->
 <section class="section-bg-shift">
   <div class="container">
-    <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-16); align-items: center;">
-      <div class="artisanal-gallery">
-        <img src="/assets/images/hero-home.jpg" alt="Piment food presentation" class="artisanal-img artisanal-img-1">
-        <img src="/assets/images/cafe-interior.jpg" alt="Lunchcafé interior" class="artisanal-img artisanal-img-2">
-      </div>
-      
-      <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-        <h2>Vegetarisch lunchcafé Piment</h2>
-        <p class="body-lg">
-          Op Landgoed de Rading serveren wij heerlijke biologische koffie, thee en frisdrank met taart en cake. Ook ben je van maandag - zaterdag welkom om te komen lunchen.
-        </p>
-        <span class="chip" style="margin-bottom: var(--spacing-8);">Keuken open tot 16:00</span>
-        <br>
-        <a href="/contact" class="btn btn-secondary">Neem contact met ons op</a>
-      </div>
+    <div class="artisanal-gallery">
+      <img src="{{ lunchcafe_image_1 }}" alt="Lunchcafé Piment" class="artisanal-img artisanal-img-1">
+      <img src="{{ lunchcafe_image_2 }}" alt="Sfeerimpressie lunchcafé" class="artisanal-img artisanal-img-2">
+    </div>
+
+    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+      <span class="label-md" style="color: var(--secondary);">{{ lunchcafe_label }}</span>
+      <h2 style="margin-top: var(--spacing-4);">{{ lunchcafe_title }}</h2>
+      <p class="body-lg">{{ lunchcafe_text }}</p>
+      <span class="chip" style="margin-bottom: var(--spacing-8);">{{ lunchcafe_chip }}</span>
+      <br>
+      <a href="{{ lunchcafe_cta_url }}" class="btn btn-secondary">{{ lunchcafe_cta_label }}</a>
     </div>
   </div>
 </section>
 
-<!-- Catering Block -->
 <section class="section container">
-  <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-12); align-items: center;">
-    
-    <div style="text-align: left; max-width: 500px; margin-left: auto;">
-      <h2>Vegetarische catering op maat</h2>
-      <p class="body-lg">
-        Bij Piment kun je terecht voor vegetarische catering op maat. Of het nu gaat om een zakelijke lunch, feest of evenement: wij verzorgen alle gerechten met zorg, creativiteit en aandacht. We gebruiken lokale, duurzame en biologische ingrediënten.
-      </p>
-      <a href="/catering" class="btn btn-primary">Stuur ons je wensen</a>
+  <div class="split-grid">
+    <div class="split-text">
+      <span class="label-md" style="color: var(--secondary);">{{ catering_label }}</span>
+      <h2 style="margin-top: var(--spacing-4);">{{ catering_title }}</h2>
+      <p class="body-lg">{{ catering_text }}</p>
+      <a href="{{ catering_cta_url }}" class="btn btn-primary">{{ catering_cta_label }}</a>
     </div>
-
-    <div>
-      <img src="/assets/images/chef-catering.jpg" alt="Chef preparing catering" style="width: 100%; border-radius: var(--radius-xl) var(--radius-lg) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
+    <div class="split-image">
+      <img src="{{ catering_image }}" alt="Catering door Piment" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl) var(--radius-lg) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
     </div>
-
   </div>
 </section>
 
-<!-- Testimonials (Tonal Layering Cards) -->
 <section class="section-bg-shift">
   <div class="container">
-    <h2 style="text-align: center; margin-bottom: var(--spacing-16);">Wat zeggen onze gasten?</h2>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-8);">
-      
-      <div class="card">
-        <span class="label-md" style="color: var(--tertiary); margin-bottom: var(--spacing-4);">★★★★★</span>
-        <p class="body-lg" style="margin-bottom: var(--spacing-6);">"Fantastisch dat wij nu in Hilversum heerlijke maaltijden, vers, gezond en vegetarisch thuis kunnen laten bezorgen! Piment kookt met veel groenten, heerlijk en verantwoord, super bedankt!"</p>
-        <span class="label-md" style="color: var(--secondary); margin-top: auto;">— Anna</span>
-      </div>
+    <h2 style="text-align: center; margin-bottom: var(--spacing-16);">{{ testimonials.title }}</h2>
 
-      <div class="card">
-        <span class="label-md" style="color: var(--tertiary); margin-bottom: var(--spacing-4);">★★★★★</span>
-        <p class="body-lg" style="margin-bottom: var(--spacing-6);">"Erg lekkere maaltijd, op tijd bezorgd en makkelijk op te warmen. Een gezond alternatief voor een afhaalmaaltijd. Zeker een aanrader!"</p>
-        <span class="label-md" style="color: var(--secondary); margin-top: auto;">— Gert</span>
-      </div>
-
-      <div class="card">
-        <span class="label-md" style="color: var(--tertiary); margin-bottom: var(--spacing-4);">★★★★★</span>
-        <p class="body-lg" style="margin-bottom: var(--spacing-6);">"Super lekker gegeten, gaan we absoluut vaker doen. Ideaal als je weet dat je geen tijd hebt om te koken maar wel gezond en vers wil eten."</p>
-        <span class="label-md" style="color: var(--secondary); margin-top: auto;">— Miranda</span>
-      </div>
-
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-8);">
+      {% for t in testimonials.items %}
+        <div class="card">
+          <span class="label-md" style="color: var(--tertiary); margin-bottom: var(--spacing-4);">
+            {%- for i in range(0, t.rating) -%}★{%- endfor -%}
+          </span>
+          <p class="body-lg" style="margin-bottom: var(--spacing-6);">"{{ t.quote }}"</p>
+          <span class="label-md" style="color: var(--secondary); margin-top: auto;">— {{ t.name }}</span>
+        </div>
+      {% endfor %}
     </div>
   </div>
 </section>
