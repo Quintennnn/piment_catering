@@ -3,21 +3,30 @@ layout: base.njk
 title: Piment Catering — Wereldse smaken, liefde uit de buurt
 description: Vegetarisch lunchcafé en catering op Landgoed de Rading in Hilversum. Wereldse smaken, lokale biologische ingrediënten.
 
+# Hero
 hero_label: Wereldse smaken, liefde uit de buurt
 hero_title: Lekker vegetarisch eten in het groen
 hero_text: Vegetarisch lunchcafé Piment ligt midden in het groen op Landgoed de Rading. We werken met biologische groenten en kruiden uit zelfoogsttuin Bodemvrucht en serveren wereldse smaken met liefde uit de buurt.
 hero_cta_label: Bekijk het lunchcafé
 hero_cta_url: /lunchcafe/
+hero_secondary_label: Of vraag catering aan
+hero_secondary_url: /catering/
+hero_image_main: /assets/images/lunchcafe-1.jpg
+hero_image_overlap: /assets/images/catering-3.jpg
 
+# Lunchcafé block
 lunchcafe_label: Het lunchcafé
 lunchcafe_title: Genieten in het groen
 lunchcafe_text: Bij vegetarisch lunchcafé Piment op Landgoed de Rading serveren wij heerlijke biologische koffie, thee en frisdrank met taart en cake. Van maandag tot en met zaterdag ben je welkom om te komen lunchen of iets lekkers af te halen.
 lunchcafe_chip: Open ma-za 10:00 – 17:00
-lunchcafe_image_1: /assets/images/lunchcafe-1.jpg
-lunchcafe_image_2: /assets/images/lunchcafe-2.jpg
 lunchcafe_cta_label: Bekijk menu en openingstijden
 lunchcafe_cta_url: /lunchcafe/
+lunchcafe_polaroids:
+  - /assets/images/lunchcafe-2.jpg
+  - /assets/images/lunchcafe-3.jpg
+  - /assets/images/chef-jimy.jpg
 
+# Catering block
 catering_label: Catering op maat
 catering_title: Jouw event slaagt met Piment
 catering_text: >-
@@ -25,65 +34,130 @@ catering_text: >-
 catering_image: /assets/images/catering-1.jpg
 catering_cta_label: Stuur ons je wensen
 catering_cta_url: /catering/
+
+# Closing CTA
+closing_label: Welkom in onze tuin
+closing_title: Kom langs, of laat ons komen koken
+closing_text: >-
+  Of je nu een rustige lunch wilt op het landgoed of een feest wilt laten cateren — bij Piment denken we graag mee. We horen graag van je.
+closing_image: /assets/images/catering-4.jpg
+closing_primary_label: Plan een bezoek
+closing_primary_url: /lunchcafe/
+closing_secondary_label: Vraag catering aan
+closing_secondary_url: /catering/
 ---
 
-<section class="section container" style="padding-top: var(--spacing-12);">
-  <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
-    <p class="body-lg" style="max-width: 600px; margin: 0 auto var(--spacing-8) auto;">
-      {{ hero_text }}
-    </p>
-    <a href="{{ hero_cta_url }}" class="btn btn-primary">{{ hero_cta_label }}</a>
+<!-- ===================== HERO ===================== -->
+<section class="hero-section">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
+      <h1 class="display-lg">{{ hero_title }}</h1>
+      <p class="body-lg" style="max-width: 50ch;">{{ hero_text }}</p>
+      <div class="hero-actions">
+        <a href="{{ hero_cta_url }}" class="btn btn-primary">{{ hero_cta_label }}</a>
+        {% if hero_secondary_label %}
+          <a href="{{ hero_secondary_url }}" class="link-arrow">{{ hero_secondary_label }} →</a>
+        {% endif %}
+      </div>
+      <p class="hero-meta">
+        <span class="dot"></span>
+        {{ site.lunchcafe_address.hours }}
+      </p>
+    </div>
+    <div class="hero-images">
+      <img src="{{ hero_image_main }}" alt="Lunchcafé Piment" class="hero-image-main">
+      {% if hero_image_overlap %}
+        <img src="{{ hero_image_overlap }}" alt="" class="hero-image-overlap">
+      {% endif %}
+    </div>
   </div>
 </section>
 
+<!-- ===================== LUNCHCAFÉ ===================== -->
 <section class="section-bg-shift">
   <div class="container">
-    <div class="artisanal-gallery">
-      <img src="{{ lunchcafe_image_1 }}" alt="Lunchcafé Piment" class="artisanal-img artisanal-img-1">
-      <img src="{{ lunchcafe_image_2 }}" alt="Sfeerimpressie lunchcafé" class="artisanal-img artisanal-img-2">
-    </div>
-
-    <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-      <span class="label-md" style="color: var(--secondary);">{{ lunchcafe_label }}</span>
-      <h2 style="margin-top: var(--spacing-4);">{{ lunchcafe_title }}</h2>
-      <p class="body-lg">{{ lunchcafe_text }}</p>
-      <span class="chip" style="margin-bottom: var(--spacing-8);">{{ lunchcafe_chip }}</span>
-      <br>
-      <a href="{{ lunchcafe_cta_url }}" class="btn btn-secondary">{{ lunchcafe_cta_label }}</a>
+    <div class="split-grid">
+      <div class="split-text">
+        <span class="label-md" style="color: var(--secondary);">{{ lunchcafe_label }}</span>
+        <h2 style="margin-top: var(--spacing-4);">{{ lunchcafe_title }}</h2>
+        <p class="body-lg">{{ lunchcafe_text }}</p>
+        <span class="chip" style="margin-bottom: var(--spacing-8);">{{ lunchcafe_chip }}</span>
+        <div style="margin-top: var(--spacing-6);">
+          <a href="{{ lunchcafe_cta_url }}" class="btn btn-secondary">{{ lunchcafe_cta_label }}</a>
+        </div>
+      </div>
+      <div class="polaroid-row">
+        {% for img in lunchcafe_polaroids %}
+          <img src="{{ img }}" alt="Sfeerimpressie lunchcafé" loading="lazy">
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ===================== CATERING ===================== -->
 <section class="section container">
-  <div class="split-grid">
+  <div class="split-grid split-grid-reverse">
+    <div class="split-image">
+      <img src="{{ catering_image }}" alt="Catering door Piment" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md) var(--radius-xl) var(--radius-xl) var(--radius-md); box-shadow: var(--ambient-shadow);">
+    </div>
     <div class="split-text">
       <span class="label-md" style="color: var(--secondary);">{{ catering_label }}</span>
       <h2 style="margin-top: var(--spacing-4);">{{ catering_title }}</h2>
       <p class="body-lg">{{ catering_text }}</p>
       <a href="{{ catering_cta_url }}" class="btn btn-primary">{{ catering_cta_label }}</a>
     </div>
-    <div class="split-image">
-      <img src="{{ catering_image }}" alt="Catering door Piment" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl) var(--radius-lg) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
-    </div>
   </div>
 </section>
 
+<!-- ===================== PULL-QUOTE TESTIMONIAL ===================== -->
 <section class="section-bg-shift">
-  <div class="container">
-    <h2 style="text-align: center; margin-bottom: var(--spacing-16);">{{ testimonials.title }}</h2>
+  <div class="container" style="max-width: 900px;">
+    {% if testimonials.items[0] %}
+      <figure class="pullquote">
+        <span class="label-md pullquote-stars">
+          {%- for i in range(0, testimonials.items[0].rating) -%}★{%- endfor -%}
+        </span>
+        <blockquote>"{{ testimonials.items[0].quote }}"</blockquote>
+        <figcaption>— {{ testimonials.items[0].name }}</figcaption>
+      </figure>
+    {% endif %}
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-8);">
-      {% for t in testimonials.items %}
-        <div class="card">
-          <span class="label-md" style="color: var(--tertiary); margin-bottom: var(--spacing-4);">
-            {%- for i in range(0, t.rating) -%}★{%- endfor -%}
-          </span>
-          <p class="body-lg" style="margin-bottom: var(--spacing-6);">"{{ t.quote }}"</p>
-          <span class="label-md" style="color: var(--secondary); margin-top: auto;">— {{ t.name }}</span>
+    {% if testimonials.items.length > 1 %}
+      <div class="testimonials-secondary">
+        {% for t in testimonials.items %}
+          {% if loop.index > 1 %}
+            <div class="testimonial-mini">
+              <span class="label-md" style="color: var(--tertiary);">
+                {%- for i in range(0, t.rating) -%}★{%- endfor -%}
+              </span>
+              <p>"{{ t.quote }}"</p>
+              <span class="testimonial-mini-name">— {{ t.name }}</span>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="closing-cta">
+  <div class="container">
+    <div class="closing-cta-card">
+      <div class="closing-cta-image">
+        <img src="{{ closing_image }}" alt="" loading="lazy">
+      </div>
+      <div class="closing-cta-text">
+        <span class="label-md" style="color: var(--secondary);">{{ closing_label }}</span>
+        <h2 style="margin-top: var(--spacing-4);">{{ closing_title }}</h2>
+        <p class="body-lg">{{ closing_text }}</p>
+        <div class="hero-actions">
+          <a href="{{ closing_primary_url }}" class="btn btn-primary">{{ closing_primary_label }}</a>
+          <a href="{{ closing_secondary_url }}" class="btn btn-secondary">{{ closing_secondary_label }}</a>
         </div>
-      {% endfor %}
+      </div>
     </div>
   </div>
 </section>

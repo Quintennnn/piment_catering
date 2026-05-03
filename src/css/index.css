@@ -472,3 +472,270 @@ a:hover { color: var(--primary-container); }
 }
 
 .footer-bottom p { margin-bottom: 0; }
+
+/* ==========================================================================
+   Homepage — Hero (asymmetric, magazine-style)
+   ========================================================================== */
+
+.hero-section {
+  padding-top: var(--spacing-12);
+  padding-bottom: var(--spacing-20);
+  overflow-x: clip;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-12);
+  align-items: center;
+}
+
+.hero-text .label-md {
+  display: block;
+  color: var(--secondary);
+  margin-bottom: var(--spacing-4);
+}
+
+.hero-text h1 {
+  margin-bottom: var(--spacing-6);
+}
+
+.hero-text p {
+  margin-bottom: var(--spacing-8);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--spacing-6);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.link-arrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--on-surface);
+  text-decoration: none;
+  border-bottom: 2px solid var(--tertiary);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.link-arrow:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  margin-top: var(--spacing-8);
+  margin-bottom: 0;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.hero-meta .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--secondary);
+  display: inline-block;
+}
+
+.hero-images {
+  position: relative;
+  min-height: 380px;
+}
+
+.hero-image-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-xl);
+  box-shadow: var(--ambient-shadow);
+  position: absolute;
+  inset: 0;
+}
+
+.hero-image-overlap {
+  position: absolute;
+  bottom: -1.5rem;
+  left: -1.5rem;
+  width: 45%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius-md) var(--radius-xl) var(--radius-md) var(--radius-xl);
+  box-shadow: var(--ambient-shadow);
+  border: 6px solid var(--surface);
+  z-index: 2;
+}
+
+@media (min-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 5fr 6fr;
+    gap: var(--spacing-16);
+  }
+
+  .hero-images {
+    min-height: 580px;
+    margin-right: calc(-1 * var(--spacing-12));
+  }
+
+  .hero-image-overlap {
+    bottom: -2rem;
+    left: -3rem;
+    width: 40%;
+  }
+}
+
+/* ==========================================================================
+   Homepage — Polaroid row
+   ========================================================================== */
+
+.polaroid-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-4);
+  padding: var(--spacing-6) 0;
+}
+
+.polaroid-row img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  box-shadow: var(--ambient-shadow);
+  background-color: var(--surface-container-lowest);
+  padding: 6px 6px 1.4rem 6px;
+}
+
+.polaroid-row img:nth-child(1) {
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-md) var(--radius-md);
+  transform: rotate(-1.5deg);
+}
+
+.polaroid-row img:nth-child(2) {
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) var(--radius-md);
+  margin-top: var(--spacing-4);
+  transform: rotate(0.5deg);
+}
+
+.polaroid-row img:nth-child(3) {
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-xl) var(--radius-md);
+  transform: rotate(1.8deg);
+}
+
+/* ==========================================================================
+   Homepage — Pull-quote testimonial
+   ========================================================================== */
+
+.pullquote {
+  text-align: center;
+  margin: 0 auto var(--spacing-16);
+  max-width: 800px;
+}
+
+.pullquote-stars {
+  display: block;
+  color: var(--tertiary);
+  margin-bottom: var(--spacing-6);
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+}
+
+.pullquote blockquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  line-height: 1.3;
+  color: var(--on-surface);
+  margin: 0 0 var(--spacing-6);
+  padding: 0;
+}
+
+.pullquote figcaption {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.testimonials-secondary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-12);
+  margin-top: var(--spacing-12);
+  padding-top: var(--spacing-12);
+}
+
+.testimonial-mini p {
+  font-size: 1rem;
+  margin-top: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+  color: var(--on-surface);
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.testimonial-mini-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--secondary);
+  font-weight: 600;
+  display: block;
+}
+
+/* ==========================================================================
+   Homepage — Closing CTA
+   ========================================================================== */
+
+.closing-cta {
+  padding: var(--spacing-20) 0;
+}
+
+.closing-cta-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-8);
+  align-items: center;
+  background-color: var(--surface-container-lowest);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--ambient-shadow);
+}
+
+.closing-cta-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-md) var(--radius-md) var(--radius-lg);
+}
+
+.closing-cta-text {
+  padding: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .closing-cta-card {
+    grid-template-columns: 5fr 6fr;
+    gap: var(--spacing-12);
+    padding: var(--spacing-8);
+  }
+
+  .closing-cta-image img {
+    aspect-ratio: 4 / 5;
+    border-radius: var(--radius-xl) var(--radius-md) var(--radius-md) var(--radius-xl);
+  }
+
+  .closing-cta-text {
+    padding: var(--spacing-8) var(--spacing-12) var(--spacing-8) 0;
+  }
+}
