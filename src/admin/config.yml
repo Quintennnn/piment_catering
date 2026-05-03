@@ -5,6 +5,12 @@ backend:
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
+# Site-wide i18n: side-by-side NL/EN editor with single-file storage
+i18n:
+  structure: single_file
+  locales: [nl, en]
+  default_locale: nl
+
 collections:
 
   # ----------------------------------------------------------------------
@@ -12,56 +18,64 @@ collections:
   # ----------------------------------------------------------------------
   - name: "settings"
     label: "Site-instellingen"
+    i18n: true
     files:
       - label: "Algemeen"
         name: "site"
         file: "src/_data/site.json"
+        i18n: true
         fields:
-          - { label: "Sitenaam", name: "name", widget: "string" }
-          - { label: "Tagline (kort)", name: "tagline", widget: "string" }
-          - { label: "Footer tekst", name: "footer_text", widget: "text" }
+          - { label: "Sitenaam", name: "name", widget: "string", i18n: duplicate }
+          - { label: "Tagline (kort)", name: "tagline", widget: "string", i18n: true }
+          - { label: "Footer tekst", name: "footer_text", widget: "text", i18n: true }
 
           - label: "Contact"
             name: "contact"
             widget: "object"
+            i18n: true
             fields:
-              - { label: "Telefoonnummer (zichtbaar)", name: "phone", widget: "string", hint: "bv. 06 1852 0544" }
-              - { label: "Telefoonnummer (zonder spaties, voor links)", name: "phone_link", widget: "string", hint: "bv. 0618520544" }
-              - { label: "E-mailadres", name: "email", widget: "string" }
+              - { label: "Telefoonnummer (zichtbaar)", name: "phone", widget: "string", i18n: duplicate, hint: "bv. 06 1852 0544" }
+              - { label: "Telefoonnummer (zonder spaties)", name: "phone_link", widget: "string", i18n: duplicate, hint: "bv. 0618520544" }
+              - { label: "E-mailadres", name: "email", widget: "string", i18n: duplicate }
 
           - label: "Adres lunchcafé"
             name: "lunchcafe_address"
             widget: "object"
+            i18n: true
             fields:
-              - { label: "Naam locatie", name: "name", widget: "string" }
-              - { label: "Locatie / landgoed", name: "location", widget: "string" }
-              - { label: "Straat + huisnummer", name: "street", widget: "string" }
-              - { label: "Plaats", name: "city", widget: "string" }
-              - { label: "Openingstijden", name: "hours", widget: "string" }
+              - { label: "Naam locatie", name: "name", widget: "string", i18n: true }
+              - { label: "Locatie / landgoed", name: "location", widget: "string", i18n: duplicate }
+              - { label: "Straat + huisnummer", name: "street", widget: "string", i18n: duplicate }
+              - { label: "Plaats", name: "city", widget: "string", i18n: duplicate }
+              - { label: "Openingstijden", name: "hours", widget: "string", i18n: true }
 
           - label: "Postadres"
             name: "postal_address"
             widget: "object"
+            i18n: true
             fields:
-              - { label: "Straat + huisnummer", name: "street", widget: "string" }
-              - { label: "Postcode", name: "postcode", widget: "string" }
-              - { label: "Plaats", name: "city", widget: "string" }
+              - { label: "Straat + huisnummer", name: "street", widget: "string", i18n: duplicate }
+              - { label: "Postcode", name: "postcode", widget: "string", i18n: duplicate }
+              - { label: "Plaats", name: "city", widget: "string", i18n: duplicate }
 
-          - { label: "KvK-nummer", name: "kvk", widget: "string" }
+          - { label: "KvK-nummer", name: "kvk", widget: "string", i18n: duplicate }
 
           - label: "Social media (optioneel)"
             name: "social"
             widget: "object"
+            i18n: true
             fields:
-              - { label: "Facebook URL", name: "facebook", widget: "string", required: false }
-              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+              - { label: "Facebook URL", name: "facebook", widget: "string", required: false, i18n: duplicate }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false, i18n: duplicate }
 
           - label: "Navigatiemenu"
             name: "nav"
             widget: "list"
-            summary: "{{fields.label}} → {{fields.url}}"
+            i18n: duplicate
+            summary: "{{fields.key}} → {{fields.url}}"
+            hint: "De zichtbare tekst van de menu-items beheer je in de UI-vertalingen (vraag de developer)."
             fields:
-              - { label: "Tekst", name: "label", widget: "string" }
+              - { label: "Sleutel", name: "key", widget: "string", hint: "home, lunchcafe, catering, about, vacancies, contact" }
               - { label: "URL", name: "url", widget: "string", hint: "bv. /lunchcafe/" }
 
   # ----------------------------------------------------------------------
@@ -71,174 +85,180 @@ collections:
     label: "Pagina's"
     format: "frontmatter"
     extension: "njk"
+    i18n: true
     files:
 
       - label: "Home"
         name: "home"
         file: "src/index.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
 
           # --- Hero ---
-          - { label: "Hero — klein label", name: "hero_label", widget: "string" }
-          - { label: "Hero — titel", name: "hero_title", widget: "string" }
-          - { label: "Hero — tekst", name: "hero_text", widget: "text" }
-          - { label: "Hero — hoofdfoto", name: "hero_image_main", widget: "image" }
-          - { label: "Hero — overlap-foto (klein, links-onder)", name: "hero_image_overlap", widget: "image", required: false }
-          - { label: "Hero — hoofdknop tekst", name: "hero_cta_label", widget: "string" }
-          - { label: "Hero — hoofdknop URL", name: "hero_cta_url", widget: "string" }
-          - { label: "Hero — secundaire link tekst", name: "hero_secondary_label", widget: "string", required: false }
-          - { label: "Hero — secundaire link URL", name: "hero_secondary_url", widget: "string", required: false }
+          - { label: "Hero — klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Hero — titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Hero — tekst", name: "hero_text", widget: "text", i18n: true }
+          - { label: "Hero — hoofdfoto", name: "hero_image_main", widget: "image", i18n: duplicate }
+          - { label: "Hero — overlap-foto (klein, links-onder)", name: "hero_image_overlap", widget: "image", required: false, i18n: duplicate }
+          - { label: "Hero — hoofdknop tekst", name: "hero_cta_label", widget: "string", i18n: true }
+          - { label: "Hero — hoofdknop URL", name: "hero_cta_url", widget: "string", i18n: duplicate }
+          - { label: "Hero — secundaire link tekst", name: "hero_secondary_label", widget: "string", required: false, i18n: true }
+          - { label: "Hero — secundaire link URL", name: "hero_secondary_url", widget: "string", required: false, i18n: duplicate }
 
-          # --- Lunchcafé-blok ---
-          - { label: "Lunchcafé — klein label", name: "lunchcafe_label", widget: "string" }
-          - { label: "Lunchcafé — titel", name: "lunchcafe_title", widget: "string" }
-          - { label: "Lunchcafé — tekst", name: "lunchcafe_text", widget: "text" }
-          - { label: "Lunchcafé — chip / badge tekst", name: "lunchcafe_chip", widget: "string" }
+          # --- Lunchcafé ---
+          - { label: "Lunchcafé — klein label", name: "lunchcafe_label", widget: "string", i18n: true }
+          - { label: "Lunchcafé — titel", name: "lunchcafe_title", widget: "string", i18n: true }
+          - { label: "Lunchcafé — tekst", name: "lunchcafe_text", widget: "text", i18n: true }
+          - { label: "Lunchcafé — chip / badge tekst", name: "lunchcafe_chip", widget: "string", i18n: true }
           - label: "Lunchcafé — polaroid-rij (3 foto's)"
             name: "lunchcafe_polaroids"
             widget: "list"
-            hint: "Voeg 3 foto's toe — ze worden naast elkaar getoond"
+            i18n: duplicate
             field: { label: "Foto", name: "image", widget: "image" }
-          - { label: "Lunchcafé — knop tekst", name: "lunchcafe_cta_label", widget: "string" }
-          - { label: "Lunchcafé — knop URL", name: "lunchcafe_cta_url", widget: "string" }
+          - { label: "Lunchcafé — knop tekst", name: "lunchcafe_cta_label", widget: "string", i18n: true }
+          - { label: "Lunchcafé — knop URL", name: "lunchcafe_cta_url", widget: "string", i18n: duplicate }
 
-          # --- Catering-blok ---
-          - { label: "Catering — klein label", name: "catering_label", widget: "string" }
-          - { label: "Catering — titel", name: "catering_title", widget: "string" }
-          - { label: "Catering — tekst", name: "catering_text", widget: "text" }
-          - { label: "Catering — foto", name: "catering_image", widget: "image" }
-          - { label: "Catering — knop tekst", name: "catering_cta_label", widget: "string" }
-          - { label: "Catering — knop URL", name: "catering_cta_url", widget: "string" }
+          # --- Catering ---
+          - { label: "Catering — klein label", name: "catering_label", widget: "string", i18n: true }
+          - { label: "Catering — titel", name: "catering_title", widget: "string", i18n: true }
+          - { label: "Catering — tekst", name: "catering_text", widget: "text", i18n: true }
+          - { label: "Catering — foto", name: "catering_image", widget: "image", i18n: duplicate }
+          - { label: "Catering — knop tekst", name: "catering_cta_label", widget: "string", i18n: true }
+          - { label: "Catering — knop URL", name: "catering_cta_url", widget: "string", i18n: duplicate }
 
-          # --- Afsluitende uitnodiging ---
-          - { label: "Afsluiting — klein label", name: "closing_label", widget: "string" }
-          - { label: "Afsluiting — titel", name: "closing_title", widget: "string" }
-          - { label: "Afsluiting — tekst", name: "closing_text", widget: "text" }
-          - { label: "Afsluiting — foto", name: "closing_image", widget: "image" }
-          - { label: "Afsluiting — hoofdknop tekst", name: "closing_primary_label", widget: "string" }
-          - { label: "Afsluiting — hoofdknop URL", name: "closing_primary_url", widget: "string" }
-          - { label: "Afsluiting — tweede knop tekst", name: "closing_secondary_label", widget: "string" }
-          - { label: "Afsluiting — tweede knop URL", name: "closing_secondary_url", widget: "string" }
+          # --- Closing CTA ---
+          - { label: "Afsluiting — klein label", name: "closing_label", widget: "string", i18n: true }
+          - { label: "Afsluiting — titel", name: "closing_title", widget: "string", i18n: true }
+          - { label: "Afsluiting — tekst", name: "closing_text", widget: "text", i18n: true }
+          - { label: "Afsluiting — foto", name: "closing_image", widget: "image", i18n: duplicate }
+          - { label: "Afsluiting — hoofdknop tekst", name: "closing_primary_label", widget: "string", i18n: true }
+          - { label: "Afsluiting — hoofdknop URL", name: "closing_primary_url", widget: "string", i18n: duplicate }
+          - { label: "Afsluiting — tweede knop tekst", name: "closing_secondary_label", widget: "string", i18n: true }
+          - { label: "Afsluiting — tweede knop URL", name: "closing_secondary_url", widget: "string", i18n: duplicate }
         editor:
           preview: false
 
       - label: "Lunchcafé"
         name: "lunchcafe"
         file: "src/lunchcafe.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/lunchcafe/" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
-          - { label: "Klein label", name: "hero_label", widget: "string" }
-          - { label: "Titel", name: "hero_title", widget: "string" }
-          - { label: "Hero foto", name: "hero_image", widget: "image" }
-          - { label: "Intro tekst", name: "intro", widget: "markdown" }
-          - { label: "Intro callout (optioneel)", name: "intro_callout", widget: "string", required: false }
-          - { label: "Menu label (bv. tijden)", name: "menu_label", widget: "string" }
-          - { label: "Menu titel", name: "menu_title", widget: "string" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
+          - { label: "Klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Hero foto", name: "hero_image", widget: "image", i18n: duplicate }
+          - { label: "Intro tekst", name: "intro", widget: "markdown", i18n: true }
+          - { label: "Intro callout (optioneel)", name: "intro_callout", widget: "string", required: false, i18n: true }
+          - { label: "Menu label (bv. tijden)", name: "menu_label", widget: "string", i18n: true }
+          - { label: "Menu titel", name: "menu_title", widget: "string", i18n: true }
           - label: "Menu legenda"
             name: "menu_legend"
             widget: "list"
+            i18n: true
             field: { label: "Item", name: "item", widget: "string" }
-          - { label: "Keuken-disclaimer", name: "menu_kitchen_note", widget: "string", required: false, hint: "Bijv. opmerking over kruisbesmetting" }
-          - { label: "Menu voettekst", name: "menu_footer_note", widget: "string", required: false }
-          - { label: "Extra foto (optioneel)", name: "extra_image", widget: "image", required: false }
+          - { label: "Keuken-disclaimer", name: "menu_kitchen_note", widget: "string", required: false, i18n: true }
+          - { label: "Menu voettekst", name: "menu_footer_note", widget: "string", required: false, i18n: true }
+          - { label: "Extra foto (optioneel)", name: "extra_image", widget: "image", required: false, i18n: duplicate }
         editor:
           preview: false
 
       - label: "Catering"
         name: "catering"
         file: "src/catering.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/catering/" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
-          - { label: "Klein label", name: "hero_label", widget: "string" }
-          - { label: "Titel", name: "hero_title", widget: "string" }
-          - { label: "Intro tekst", name: "hero_intro", widget: "markdown" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
+          - { label: "Klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Intro tekst", name: "hero_intro", widget: "markdown", i18n: true }
           - label: "Chips (categorieën)"
             name: "chips"
             widget: "list"
+            i18n: true
             field: { label: "Chip", name: "chip", widget: "string" }
           - label: "Galerij (sfeerimpressies)"
             name: "gallery"
             widget: "list"
+            i18n: duplicate
             field: { label: "Foto", name: "image", widget: "image" }
-          - { label: "Formuliertitel", name: "form_title", widget: "string" }
-          - { label: "Formulier intro", name: "form_intro", widget: "text" }
+          - { label: "Galerij-titel", name: "gallery_title", widget: "string", i18n: true }
+          - { label: "Formuliertitel", name: "form_title", widget: "string", i18n: true }
+          - { label: "Formulier intro", name: "form_intro", widget: "text", i18n: true }
         editor:
           preview: false
 
       - label: "Over Piment"
         name: "over-piment"
         file: "src/over-piment.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/over-piment/" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
-          - { label: "Klein label", name: "hero_label", widget: "string" }
-          - { label: "Titel", name: "hero_title", widget: "string" }
-          - { label: "Intro citaat", name: "intro", widget: "text" }
-          - { label: "Sectie 1 — titel", name: "local_section_title", widget: "string" }
-          - { label: "Sectie 1 — tekst", name: "local_section_body", widget: "markdown" }
-          - { label: "Sectie 1 — foto", name: "local_section_image", widget: "image" }
-          - { label: "Sectie 2 — titel (chef)", name: "chef_section_title", widget: "string" }
-          - { label: "Sectie 2 — tekst (chef)", name: "chef_section_body", widget: "markdown" }
-          - { label: "Sectie 2 — foto (chef)", name: "chef_section_image", widget: "image" }
-          - { label: "Sectie 3 — titel (filosofie)", name: "philosophy_section_title", widget: "string" }
-          - { label: "Sectie 3 — tekst (filosofie)", name: "philosophy_section_body", widget: "markdown" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
+          - { label: "Klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Intro citaat", name: "intro", widget: "text", i18n: true }
+          - { label: "Sectie 1 — titel", name: "local_section_title", widget: "string", i18n: true }
+          - { label: "Sectie 1 — tekst", name: "local_section_body", widget: "markdown", i18n: true }
+          - { label: "Sectie 1 — foto", name: "local_section_image", widget: "image", i18n: duplicate }
+          - { label: "Sectie 2 — titel (chef)", name: "chef_section_title", widget: "string", i18n: true }
+          - { label: "Sectie 2 — tekst (chef)", name: "chef_section_body", widget: "markdown", i18n: true }
+          - { label: "Sectie 2 — foto (chef)", name: "chef_section_image", widget: "image", i18n: duplicate }
+          - { label: "Sectie 3 — titel (filosofie)", name: "philosophy_section_title", widget: "string", i18n: true }
+          - { label: "Sectie 3 — tekst (filosofie)", name: "philosophy_section_body", widget: "markdown", i18n: true }
         editor:
           preview: false
 
       - label: "Vacatures (intro-tekst)"
         name: "vacatures-page"
         file: "src/vacatures.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/vacatures/" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
-          - { label: "Klein label", name: "hero_label", widget: "string" }
-          - { label: "Titel", name: "hero_title", widget: "string" }
-          - { label: "Intro tekst", name: "hero_text", widget: "text" }
-          - { label: "Bericht als er geen vacatures zijn", name: "empty_text", widget: "text" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
+          - { label: "Klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Intro tekst", name: "hero_text", widget: "text", i18n: true }
+          - { label: "Bericht als er geen vacatures zijn", name: "empty_text", widget: "text", i18n: true }
         editor:
           preview: false
 
       - label: "Contact"
         name: "contact"
         file: "src/contact.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/contact/" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
-          - { label: "Klein label", name: "hero_label", widget: "string" }
-          - { label: "Titel", name: "hero_title", widget: "string" }
-          - { label: "Tekst onder titel", name: "hero_text", widget: "text" }
-          - { label: "Formuliertitel", name: "form_title", widget: "string" }
-          - { label: "Bevestigingsbericht", name: "success_message", widget: "string" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
+          - { label: "Klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Tekst onder titel", name: "hero_text", widget: "text", i18n: true }
+          - { label: "Formuliertitel", name: "form_title", widget: "string", i18n: true }
+          - { label: "Bevestigingsbericht", name: "success_message", widget: "string", i18n: true }
         editor:
           preview: false
 
       - label: "Privacyverklaring"
         name: "privacy"
         file: "src/privacyverklaring.njk"
+        i18n: true
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
-          - { label: "Permalink", name: "permalink", widget: "hidden", default: "/privacyverklaring/" }
-          - { label: "Browser-titel", name: "title", widget: "string" }
-          - { label: "Meta description", name: "description", widget: "text" }
-          - { label: "Klein label", name: "hero_label", widget: "string" }
-          - { label: "Titel", name: "hero_title", widget: "string" }
-          - { label: "Laatst bijgewerkt op", name: "last_updated", widget: "string", required: false }
-          - { label: "Inhoud", name: "body", widget: "markdown" }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk", i18n: duplicate }
+          - { label: "Browser-titel", name: "title", widget: "string", i18n: true }
+          - { label: "Meta description", name: "description", widget: "text", i18n: true }
+          - { label: "Klein label", name: "hero_label", widget: "string", i18n: true }
+          - { label: "Titel", name: "hero_title", widget: "string", i18n: true }
+          - { label: "Laatst bijgewerkt op", name: "last_updated", widget: "string", required: false, i18n: true }
+          - { label: "Inhoud", name: "body", widget: "markdown", i18n: true }
         editor:
           preview: false
 
@@ -254,13 +274,14 @@ collections:
     slug: "{{slug}}"
     extension: "json"
     format: "json"
-    summary: "{{title}}"
+    i18n: true
+    summary: "{{title.nl}}"
     fields:
-      - { label: "Functietitel", name: "title", widget: "string" }
-      - { label: "Categorie (chip)", name: "category", widget: "string", required: false, hint: "bv. Keuken, Bediening" }
-      - { label: "Korte samenvatting", name: "summary", widget: "text", required: false }
-      - { label: "Volledige omschrijving", name: "description", widget: "markdown" }
-      - { label: "Sollicitatie-instructie", name: "contact_text", widget: "string", required: false, default: "Stuur ons een mail met een korte motivatie en je cv naar pimentcatering@gmail.com" }
+      - { label: "Functietitel", name: "title", widget: "string", i18n: true }
+      - { label: "Categorie (chip)", name: "category", widget: "string", required: false, i18n: true, hint: "bv. Keuken, Kitchen" }
+      - { label: "Korte samenvatting", name: "summary", widget: "text", required: false, i18n: true }
+      - { label: "Volledige omschrijving", name: "description", widget: "markdown", i18n: true }
+      - { label: "Sollicitatie-instructie", name: "contact_text", widget: "string", required: false, i18n: true }
 
   # ----------------------------------------------------------------------
   # Lunch menu (één bestand per categorie)
@@ -274,34 +295,39 @@ collections:
     slug: "{{slug}}"
     extension: "json"
     format: "json"
-    summary: "{{category}}"
+    i18n: true
+    summary: "{{category.nl}}"
     fields:
-      - { label: "Categorienaam (bv. Soep, Tosti)", name: "category", widget: "string" }
+      - { label: "Categorienaam (bv. Soep, Tosti)", name: "category", widget: "string", i18n: true }
       - label: "Gerechten"
         name: "items"
         widget: "list"
-        summary: "{{fields.name}} – {{fields.price}}"
+        i18n: true
+        summary: "{{fields.name.nl}} – {{fields.price}}"
         fields:
-          - { label: "Naam", name: "name", widget: "string" }
-          - { label: "Omschrijving", name: "description", widget: "text", required: false }
-          - { label: "Prijs", name: "price", widget: "string" }
+          - { label: "Naam", name: "name", widget: "string", i18n: true }
+          - { label: "Omschrijving", name: "description", widget: "text", required: false, i18n: true }
+          - { label: "Prijs", name: "price", widget: "string", i18n: duplicate }
 
   # ----------------------------------------------------------------------
   # Reviews / Testimonials
   # ----------------------------------------------------------------------
   - name: "testimonials"
     label: "Reviews (homepage)"
+    i18n: true
     files:
       - label: "Reviews"
         name: "testimonials"
         file: "src/_data/testimonials.json"
+        i18n: true
         fields:
-          - { label: "Sectietitel", name: "title", widget: "string" }
+          - { label: "Sectietitel", name: "title", widget: "string", i18n: true }
           - label: "Reviews"
             name: "items"
             widget: "list"
-            summary: "{{fields.name}} – {{fields.quote}}"
+            i18n: true
+            summary: "{{fields.name}}"
             fields:
-              - { label: "Naam", name: "name", widget: "string" }
-              - { label: "Aantal sterren (1-5)", name: "rating", widget: "number", min: 1, max: 5, default: 5 }
-              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Naam", name: "name", widget: "string", i18n: duplicate }
+              - { label: "Aantal sterren (1-5)", name: "rating", widget: "number", min: 1, max: 5, default: 5, i18n: duplicate }
+              - { label: "Quote", name: "quote", widget: "text", i18n: true }

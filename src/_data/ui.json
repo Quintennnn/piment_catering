@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home":      { "nl": "Home",            "en": "Home" },
+    "lunchcafe": { "nl": "Lunchcafé",       "en": "Lunch café" },
+    "catering":  { "nl": "Catering",        "en": "Catering" },
+    "about":     { "nl": "Over Piment",     "en": "About Piment" },
+    "vacancies": { "nl": "Vacatures",       "en": "Vacancies" },
+    "contact":   { "nl": "Contact",         "en": "Contact" }
+  },
+  "labels": {
+    "visit_us":          { "nl": "Bezoek ons",          "en": "Visit us" },
+    "contact":           { "nl": "Contact",             "en": "Contact" },
+    "direct_contact":    { "nl": "Direct contact",      "en": "Get in touch" },
+    "postal_address":    { "nl": "Postadres",           "en": "Postal address" },
+    "kvk":               { "nl": "KvK",                 "en": "Chamber of Commerce" },
+    "details":           { "nl": "Gegevens",            "en": "Details" },
+    "name":              { "nl": "Naam",                "en": "Name" },
+    "email":             { "nl": "E-mail",              "en": "Email" },
+    "email_address":     { "nl": "E-mailadres",         "en": "Email address" },
+    "phone":             { "nl": "Telefoonnummer",      "en": "Phone number" },
+    "message":           { "nl": "Bericht",             "en": "Message" },
+    "event_date":        { "nl": "Datum evenement",     "en": "Event date" },
+    "guests":            { "nl": "Aantal personen",     "en": "Number of guests" },
+    "your_wishes":       { "nl": "Jouw wensen / omschrijving", "en": "Your wishes / description" },
+    "language":          { "nl": "Taal",                "en": "Language" },
+    "privacy":           { "nl": "Privacyverklaring",   "en": "Privacy policy" },
+    "all_rights_reserved": { "nl": "Alle rechten voorbehouden.", "en": "All rights reserved." },
+    "open_menu":         { "nl": "Menu openen",         "en": "Open menu" },
+    "current_page":      { "nl": "Huidige pagina",      "en": "Current page" }
+  },
+  "buttons": {
+    "send":              { "nl": "Verstuur",            "en": "Send" },
+    "send_request":      { "nl": "Verstuur aanvraag",   "en": "Send request" },
+    "apply_by_email":    { "nl": "Solliciteer per mail", "en": "Apply by email" }
+  },
+  "form": {
+    "honeypot_label":    { "nl": "Niet invullen",       "en": "Do not fill in" },
+    "success_default":   { "nl": "Bedankt, we nemen zo snel mogelijk contact met je op!", "en": "Thank you — we'll get back to you as soon as possible!" }
+  },
+  "vacancies": {
+    "category_label":    { "nl": "Vacature",            "en": "Vacancy" }
+  }
+}

@@ -1,48 +1,75 @@
 ---
 layout: base.njk
-permalink: /over-piment/
-title: Over Piment — Wereldse smaken, liefde uit de buurt
-description: Het verhaal achter Piment Catering — chef-eigenaar Jimy Silva de Almeida, lokale biologische ingrediënten en samenwerkingen met Bodemvrucht en Zonnestraal.
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/over-piment/{% else %}/over-piment/{% endif %}"
 
-hero_label: Ons verhaal
-hero_title: Over Piment
+title:
+  nl: "Over Piment — Wereldse smaken, liefde uit de buurt"
+  en: "About Piment — World flavors, love from the neighborhood"
+description:
+  nl: "Het verhaal achter Piment Catering — chef-eigenaar Jimy Silva de Almeida, lokale biologische ingrediënten en samenwerkingen met Bodemvrucht en Zonnestraal."
+  en: "The story behind Piment Catering — chef-owner Jimy Silva de Almeida, local organic ingredients and partnerships with Bodemvrucht and Zonnestraal."
 
-intro: |
-  Bij Piment draait het om wereldse smaken met liefde uit de buurt. We koken met biologische, seizoensgebonden ingrediënten van lokale producenten — geïnspireerd door Portugese roots en reizen van ver weg.
+hero_label:
+  nl: "Ons verhaal"
+  en: "Our story"
+hero_title:
+  nl: "Over Piment"
+  en: "About Piment"
 
-local_section_title: Lokale en biologische producten
-local_section_body: |
-  Voor onze gerechten gebruiken we zoveel mogelijk groenten en kruiden uit de biologische zelfoogsttuin van **Bodemvrucht** (voorheen Land in Zicht), die je direct achter ons café vindt. Die korte lijn van tuin naar bord proef je terug in alles wat we serveren.
+intro:
+  nl: "Bij vegetarisch lunchcafé Piment koken we de wereld over. We halen onze inspiratie uit alle windstreken — van het Midden-Oosten tot Azië, van de Mediterrane keuken tot Zuid-Amerika."
+  en: "At vegetarian lunch café Piment we cook our way around the world. We draw inspiration from all corners — from the Middle East to Asia, from Mediterranean cuisine to South America."
 
-  Wij geloven dat bewust eten met duurzame en biologische producten niet alleen goed is voor je eigen gezondheid, maar ook voor de wereld van morgen.
-
+local_section_title:
+  nl: "Lokale en biologische producten"
+  en: "Local and organic ingredients"
+local_section_body:
+  nl: |
+    Voor onze gerechten gebruiken we zoveel mogelijk groenten en kruiden uit de biologische zelfoogsttuin van **Bodemvrucht**. De korte afstand van tuin naar bord bepaalt de kwaliteit van elk gerecht. Wij geloven dat bewust eten — met duurzame en biologische producten — voordelen oplevert voor onze gezondheid én de toekomst.
+  en: |
+    For our dishes we use as many vegetables and herbs as possible from the organic self-harvest garden of **Bodemvrucht**. The short distance from garden to plate determines the quality of every dish. We believe that mindful eating — with sustainable and organic produce — benefits both our health and our future.
 local_section_image: /assets/images/over-piment.jpg
 
-chef_section_title: Jimy Silva de Almeida
-chef_section_body: |
-  Hi! Ik ben Jimy Silva de Almeida, chef-kok en eigenaar van Piment. Met roots in Frankrijk, waar ik ben geboren, en Portugal, waar ik opgroeide, ben ik nu geworteld in Hilversum. Hier woon ik met mijn vrouw Simone, onze dochter Luna en hond Benny. Mijn gezin is een belangrijke inspiratiebron en vormt de basis van de gezelligheid en warmte die ik ook in mijn werk wil brengen.
+chef_section_title:
+  nl: "Over Jimy Silva de Almeida"
+  en: "About Jimy Silva de Almeida"
+chef_section_body:
+  nl: |
+    Chef-eigenaar Jimy heeft Franse en Portugese roots en woont met zijn gezin in Hilversum. Zijn passie voor koken ontstond al jong in de moestuinen van zijn familie.
 
-  Mijn passie voor koken ontstond al in mijn jeugd, toen mijn familie een eigen moestuin had en groenten verbouwde. Later deed ik ervaring op bij onder meer Studio K, De Klub Utrecht en De Veldkeuken in Bunnik — waar we in 2017 de titel *Beste Vegetarische Burger* wonnen.
+    Eerder werkte Jimy onder andere bij Studio K, De Klub Utrecht en De Veldkeuken in Bunnik — waar het team in 2017 de prijs voor de Beste Vegetarische Burger won.
+  en: |
+    Chef-owner Jimy has French and Portuguese roots and lives with his family in Hilversum. His passion for cooking started young, in his family's vegetable gardens.
 
+    Earlier in his career Jimy worked at places including Studio K, De Klub Utrecht and De Veldkeuken in Bunnik — where the team won the award for Best Vegetarian Burger in 2017.
 chef_section_image: /assets/images/chef-jimy.jpg
 
-philosophy_section_title: Wereldse smaken, liefde uit de buurt
-philosophy_section_body: |
-  Bij Piment kook ik met de inspiratie uit mijn Portugese roots en de reizen die ik maakte. We gebruiken uitsluitend biologische, seizoensgebonden ingrediënten van lokale producenten. Met onze vegetarische catering en het lunchcafé op Landgoed de Rading in Hilversum laten we zien dat duurzaamheid, creativiteit en gastvrijheid hand in hand gaan.
+philosophy_section_title:
+  nl: "De Piment-filosofie"
+  en: "The Piment philosophy"
+philosophy_section_body:
+  nl: |
+    *Wereldse smaken, liefde uit de buurt* — een combinatie van Portugese inspiratie, reiservaringen en lokale, biologische, seizoensgebonden ingrediënten.
 
-  Mijn team werkt samen met **CSA Bodemvrucht** en **Zorgtuin Zonnestraal**. Ik geloof in sociale inclusie, onder meer door samen te werken met mensen met een verstandelijke beperking.
+    We werken nauw samen met **CSA Bodemvrucht** en **Zorgtuin Zonnestraal**, inclusief sociale-inclusieprogramma's. Piment is bovendien ambassadeur van het programma *Biodiversiteit op je bord*.
+  en: |
+    *World flavors, love from the neighborhood* — a combination of Portuguese inspiration, travel experiences, and local, organic, seasonal ingredients.
 
-  Naast smaak draait het bij Piment om sfeer, verbinding en duurzaamheid. Of je nu kiest voor catering op maat of een lunch in het café — je proeft altijd eerlijke ingrediënten, verrassende combinaties en een vleugje werelds avontuur.
+    We work closely with **CSA Bodemvrucht** and **Zorgtuin Zonnestraal**, including social inclusion programs. Piment is also an ambassador of the *Biodiversity on your plate* program.
 ---
 
 <section class="section container" style="max-width: 800px; padding-top: var(--spacing-12);">
   <div style="text-align: center; margin-bottom: var(--spacing-16);">
-    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4);">{{ hero_title }}</h1>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4);">{{ hero_title | t(lang) }}</h1>
   </div>
 
   <p class="display" style="font-size: 2rem; color: var(--primary); text-align: center; line-height: 1.3; margin-bottom: var(--spacing-12);">
-    {{ intro }}
+    {{ intro | t(lang) }}
   </p>
 </section>
 
@@ -50,11 +77,11 @@ philosophy_section_body: |
   <div class="container">
     <div class="split-grid">
       <div class="split-text">
-        <h2>{{ local_section_title }}</h2>
-        <div class="prose">{{ local_section_body | markdown | safe }}</div>
+        <h2>{{ local_section_title | t(lang) }}</h2>
+        <div class="prose">{{ local_section_body | mdLocalized(lang) | safe }}</div>
       </div>
       <div class="split-image">
-        <img src="{{ local_section_image }}" alt="{{ local_section_title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
+        <img src="{{ local_section_image }}" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
       </div>
     </div>
   </div>
@@ -63,18 +90,18 @@ philosophy_section_body: |
 <section class="section container">
   <div class="split-grid split-grid-reverse">
     <div class="split-image">
-      <img src="{{ chef_section_image }}" alt="{{ chef_section_title }}" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md) var(--radius-xl) var(--radius-xl) var(--radius-md); box-shadow: var(--ambient-shadow);">
+      <img src="{{ chef_section_image }}" alt="" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md) var(--radius-xl) var(--radius-xl) var(--radius-md); box-shadow: var(--ambient-shadow);">
     </div>
     <div class="split-text">
-      <h2>{{ chef_section_title }}</h2>
-      <div class="prose">{{ chef_section_body | markdown | safe }}</div>
+      <h2>{{ chef_section_title | t(lang) }}</h2>
+      <div class="prose">{{ chef_section_body | mdLocalized(lang) | safe }}</div>
     </div>
   </div>
 </section>
 
 <section class="section-bg-shift">
   <div class="container" style="max-width: 720px; text-align: center;">
-    <h2>{{ philosophy_section_title }}</h2>
-    <div class="prose" style="text-align: left;">{{ philosophy_section_body | markdown | safe }}</div>
+    <h2>{{ philosophy_section_title | t(lang) }}</h2>
+    <div class="prose" style="text-align: left;">{{ philosophy_section_body | mdLocalized(lang) | safe }}</div>
   </div>
 </section>

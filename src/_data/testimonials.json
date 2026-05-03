@@ -1,20 +1,32 @@
 {
-  "title": "Wat zeggen onze gasten?",
+  "title": {
+    "nl": "Wat zeggen onze gasten?",
+    "en": "What our guests say"
+  },
   "items": [
     {
       "name": "Anna",
       "rating": 5,
-      "quote": "Fantastisch dat wij nu in Hilversum heerlijke maaltijden, vers, gezond en vegetarisch thuis kunnen laten bezorgen! Piment kookt met veel groenten, heerlijk en verantwoord, super bedankt!"
+      "quote": {
+        "nl": "Fantastisch dat wij nu in Hilversum heerlijke maaltijden, vers, gezond en vegetarisch thuis kunnen laten bezorgen! Piment kookt met veel groenten, heerlijk en verantwoord, super bedankt!",
+        "en": "Wonderful that we can now have delicious, fresh, healthy vegetarian meals delivered to our home in Hilversum! Piment cooks with lots of vegetables, in a delicious and responsible way — thank you so much!"
+      }
     },
     {
       "name": "Gert",
       "rating": 5,
-      "quote": "Erg lekkere maaltijd, op tijd bezorgd en makkelijk op te warmen. Een gezond alternatief voor een afhaalmaaltijd. Zeker een aanrader!"
+      "quote": {
+        "nl": "Erg lekkere maaltijd, op tijd bezorgd en makkelijk op te warmen. Een gezond alternatief voor een afhaalmaaltijd. Zeker een aanrader!",
+        "en": "Really tasty meal, delivered on time and easy to reheat. A healthy alternative to takeaway — highly recommended!"
+      }
     },
     {
       "name": "Miranda",
       "rating": 5,
-      "quote": "Super lekker gegeten, gaan we absoluut vaker doen. Ideaal als je weet dat je geen tijd hebt om te koken maar wel gezond en vers wil eten."
+      "quote": {
+        "nl": "Super lekker gegeten, gaan we absoluut vaker doen. Ideaal als je weet dat je geen tijd hebt om te koken maar wel gezond en vers wil eten.",
+        "en": "Really delicious — we'll definitely do it more often. Ideal when you know you don't have time to cook but still want to eat fresh and healthy."
+      }
     }
   ]
 }

@@ -1,39 +1,84 @@
 {
-  "category": "Lunchkaart",
+  "category": {
+    "nl": "Lunchkaart",
+    "en": "Lunch menu"
+  },
   "items": [
     {
-      "name": "Soep (V/GV)",
-      "description": "Huisgemaakte wisselende soep — geserveerd met brood en verse chimichurri.",
+      "name": {
+        "nl": "Soep (V/GV)",
+        "en": "Soup (V/GF)"
+      },
+      "description": {
+        "nl": "Huisgemaakte wisselende soep — geserveerd met brood en verse chimichurri.",
+        "en": "Homemade soup of the day — served with bread and fresh chimichurri."
+      },
       "price": "€ 6,50"
     },
     {
-      "name": "Tosti",
-      "description": "Met uiencompote en een wisselende saus — inclusief side salad.",
+      "name": {
+        "nl": "Tosti",
+        "en": "Toasted sandwich"
+      },
+      "description": {
+        "nl": "Met uiencompote en een wisselende saus — inclusief side salad.",
+        "en": "With onion compote and a rotating sauce — includes side salad."
+      },
       "price": "€ 9,50"
     },
     {
-      "name": "Quiche (V*)",
-      "description": "Quiche met seizoensgroenten — inclusief side salad.",
+      "name": {
+        "nl": "Quiche (V*)",
+        "en": "Quiche (V*)"
+      },
+      "description": {
+        "nl": "Quiche met seizoensgroenten — inclusief side salad.",
+        "en": "Quiche with seasonal vegetables — includes side salad."
+      },
       "price": "€ 10,50"
     },
     {
-      "name": "Specials van de week (V*/GV*)",
-      "description": "Zie ons krijtbord bij de bar.",
+      "name": {
+        "nl": "Specials van de week (V*/GV*)",
+        "en": "Weekly special (V*/GF*)"
+      },
+      "description": {
+        "nl": "Zie ons krijtbord bij de bar.",
+        "en": "See our chalkboard at the bar."
+      },
       "price": "€ 12,50"
     },
     {
-      "name": "Uitsmijter",
-      "description": "Met kaas, op brood van onze biologische bakker — inclusief side salad.",
+      "name": {
+        "nl": "Uitsmijter",
+        "en": "Uitsmijter (open-faced fried egg sandwich)"
+      },
+      "description": {
+        "nl": "Met kaas, op brood van onze biologische bakker — inclusief side salad.",
+        "en": "With cheese, on bread from our organic baker — includes side salad."
+      },
       "price": "€ 9,50"
     },
     {
-      "name": "Broodje van de week",
-      "description": "Zie ons krijtbord bij de bar.",
+      "name": {
+        "nl": "Broodje van de week",
+        "en": "Sandwich of the week"
+      },
+      "description": {
+        "nl": "Zie ons krijtbord bij de bar.",
+        "en": "See our chalkboard at the bar."
+      },
       "price": "€ 9,50"
     },
     {
-      "name": "Combinatiegerecht (V*/GV*)",
-      "description": "Combinatie van onze soep, broodje en salade.",
+      "name": {
+        "nl": "Combinatiegerecht (V*/GV*)",
+        "en": "Combo plate (V*/GF*)"
+      },
+      "description": {
+        "nl": "Combinatie van onze soep, broodje en salade.",
+        "en": "A combination of our soup, sandwich and salad."
+      },
       "price": "€ 13,50"
     }
   ]

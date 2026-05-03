@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="{{ lang | default('nl') }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title | default(site.name) }}</title>
-  <meta name="description" content="{{ description | default(site.footer_text) }}">
+  <title>{{ title | t(lang) | default(site.name) }}</title>
+  <meta name="description" content="{{ description | t(lang) | default(site.footer_text | t(lang)) }}">
+
+  {# hreflang alternates for SEO #}
+  {% for loc in locales.list %}
+    <link rel="alternate" hreflang="{{ loc }}" href="{{ page.url | switchLang(loc) }}">
+  {% endfor %}
+  <link rel="alternate" hreflang="x-default" href="{{ page.url | switchLang(locales.default) }}">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,16 +25,54 @@
 
   <header class="header">
     <div class="container nav">
-      <a href="/" class="logo" aria-label="{{ site.name }} - home">
+      <a href="{{ '/' | localizedUrl(lang) }}" class="logo" aria-label="{{ site.name }} - home">
         <img src="/assets/images/logo.avif" alt="{{ site.name }}" class="logo-img">
       </a>
-      <button class="nav-toggle" aria-label="Menu openen" aria-expanded="false" aria-controls="primary-nav">
+      <button class="nav-toggle" aria-label="{{ ui.labels.open_menu | t(lang) }}" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="primary-nav">
         {% for item in site.nav %}
-          <li><a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+          {% set localUrl = item.url | localizedUrl(lang) %}
+          <li>
+            <a href="{{ localUrl }}"{% if page.url == localUrl %} aria-current="page"{% endif %}>
+              {{ ui.nav[item.key] | t(lang) }}
+            </a>
+          </li>
         {% endfor %}
+        <li class="lang-switcher" role="group" aria-label="{{ ui.labels.language | t(lang) }}">
+          {% for loc in locales.list %}
+            {% set isActive = (loc == lang) %}
+            <a href="{{ page.url | switchLang(loc) }}"
+               class="lang-btn {% if isActive %}is-active{% endif %}"
+               {% if isActive %}aria-current="true"{% endif %}
+               hreflang="{{ loc }}"
+               aria-label="{{ locales.labels[loc] }}">
+              {% if loc == 'nl' %}
+                <svg class="flag" viewBox="0 0 24 16" aria-hidden="true">
+                  <rect width="24" height="16" rx="3" ry="3" fill="#FFF"/>
+                  <rect width="24" height="5.33" rx="3" ry="3" fill="#AE1C28"/>
+                  <rect y="10.67" width="24" height="5.33" fill="#21468B"/>
+                  <rect y="10.67" width="24" height="5.33" rx="3" ry="3" fill="#21468B" mask="url(#bottomRound)"/>
+                </svg>
+              {% elif loc == 'en' %}
+                <svg class="flag" viewBox="0 0 24 16" aria-hidden="true">
+                  <defs>
+                    <clipPath id="ukClip"><rect width="24" height="16" rx="3" ry="3"/></clipPath>
+                  </defs>
+                  <g clip-path="url(#ukClip)">
+                    <rect width="24" height="16" fill="#012169"/>
+                    <path d="M0,0 L24,16 M24,0 L0,16" stroke="#FFF" stroke-width="3"/>
+                    <path d="M0,0 L24,16 M24,0 L0,16" stroke="#C8102E" stroke-width="1.6"/>
+                    <path d="M12,0 V16 M0,8 H24" stroke="#FFF" stroke-width="4"/>
+                    <path d="M12,0 V16 M0,8 H24" stroke="#C8102E" stroke-width="2"/>
+                  </g>
+                </svg>
+              {% endif %}
+              <span class="lang-code">{{ locales.shortLabels[loc] }}</span>
+            </a>
+          {% endfor %}
+        </li>
       </ul>
     </div>
   </header>
@@ -41,33 +85,32 @@
     <div class="container footer-grid">
       <div>
         <img src="/assets/images/logo.avif" alt="{{ site.name }}" class="logo-img footer-logo">
-        <p class="body-lg" style="margin-top: var(--spacing-4); max-width: 28ch;">{{ site.footer_text }}</p>
+        <p class="body-lg" style="margin-top: var(--spacing-4); max-width: 28ch;">{{ site.footer_text | t(lang) }}</p>
       </div>
       <div>
-        <span class="label-md" style="color: var(--tertiary);">Bezoek ons</span>
+        <span class="label-md" style="color: var(--tertiary);">{{ ui.labels.visit_us | t(lang) }}</span>
         <p style="margin-top: var(--spacing-2); margin-bottom: 0;">{{ site.lunchcafe_address.location }}</p>
         <p style="margin-bottom: 0;">{{ site.lunchcafe_address.street }}, {{ site.lunchcafe_address.city }}</p>
-        <p style="color: var(--secondary); margin-top: var(--spacing-2);">{{ site.lunchcafe_address.hours }}</p>
+        <p style="color: var(--secondary); margin-top: var(--spacing-2);">{{ site.lunchcafe_address.hours | t(lang) }}</p>
       </div>
       <div>
-        <span class="label-md" style="color: var(--tertiary);">Contact</span>
+        <span class="label-md" style="color: var(--tertiary);">{{ ui.labels.contact | t(lang) }}</span>
         <p style="margin-top: var(--spacing-2); margin-bottom: 0;">
           <a href="mailto:{{ site.contact.email }}">{{ site.contact.email }}</a>
         </p>
         <p style="margin-bottom: 0;">
           <a href="tel:{{ site.contact.phone_link }}">{{ site.contact.phone }}</a>
         </p>
-        <p style="margin-top: var(--spacing-2); margin-bottom: 0;">KvK {{ site.kvk }}</p>
+        <p style="margin-top: var(--spacing-2); margin-bottom: 0;">{{ ui.labels.kvk | t(lang) }} {{ site.kvk }}</p>
       </div>
     </div>
     <div class="container footer-bottom">
-      <p>&copy; 2026 {{ site.name }}. Alle rechten voorbehouden.</p>
-      <p><a href="/privacyverklaring/">Privacyverklaring</a></p>
+      <p>&copy; 2026 {{ site.name }}. {{ ui.labels.all_rights_reserved | t(lang) }}</p>
+      <p><a href="{{ '/privacyverklaring/' | localizedUrl(lang) }}">{{ ui.labels.privacy | t(lang) }}</a></p>
     </div>
   </footer>
 
   <script>
-    // Mobile nav toggle
     (function() {
       var btn = document.querySelector('.nav-toggle');
       var nav = document.getElementById('primary-nav');

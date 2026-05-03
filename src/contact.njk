@@ -1,38 +1,57 @@
 ---
 layout: base.njk
-permalink: /contact/
-title: Contact — Piment Catering
-description: Neem contact op met Piment Catering — vragen, dieetwensen, allergieën of feedback. We horen graag van je.
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/contact/{% else %}/contact/{% endif %}"
 
-hero_label: We horen graag van je
-hero_title: Piment hoort graag van je!
-hero_text: Heb je een vraag, wensen voor je dieet of allergieën, of wil je gewoon iets laten weten? Stuur een berichtje en we nemen zo snel mogelijk contact met je op.
+title:
+  nl: "Contact — Piment Catering"
+  en: "Contact — Piment Catering"
+description:
+  nl: "Neem contact op met Piment Catering — vragen, dieetwensen, allergieën of feedback. We horen graag van je."
+  en: "Get in touch with Piment Catering — questions, dietary requirements, allergies or feedback. We'd love to hear from you."
 
-form_title: Laat je reactie achter
-success_message: Bedankt, we nemen zo snel mogelijk contact met je op!
+hero_label:
+  nl: "We horen graag van je"
+  en: "We'd love to hear from you"
+hero_title:
+  nl: "Piment hoort graag van je!"
+  en: "Piment would love to hear from you!"
+hero_text:
+  nl: "Heb je een vraag, wensen voor je dieet of allergieën, of wil je gewoon iets laten weten? Stuur een berichtje en we nemen zo snel mogelijk contact met je op."
+  en: "Got a question, dietary requirements or allergies, or just something to share? Send a message and we'll get back to you as soon as possible."
+
+form_title:
+  nl: "Laat je reactie achter"
+  en: "Leave a message"
+success_message:
+  nl: "Bedankt, we nemen zo snel mogelijk contact met je op!"
+  en: "Thank you — we'll get back to you as soon as possible!"
 ---
 
 <section class="section container" style="max-width: 1000px; padding-top: var(--spacing-12);">
   <div style="text-align: center; margin-bottom: var(--spacing-16);">
-    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-6);">{{ hero_title }}</h1>
-    <p class="body-lg" style="max-width: 600px; margin: 0 auto;">{{ hero_text }}</p>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-6);">{{ hero_title | t(lang) }}</h1>
+    <p class="body-lg" style="max-width: 600px; margin: 0 auto;">{{ hero_text | t(lang) }}</p>
   </div>
 
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--spacing-16); align-items: start;">
 
     <div>
-      <h3 style="margin-bottom: var(--spacing-8);">Gegevens</h3>
+      <h3 style="margin-bottom: var(--spacing-8);">{{ ui.labels.details | t(lang) }}</h3>
 
       <div style="margin-bottom: var(--spacing-8);">
-        <span class="label-md" style="color: var(--tertiary);">{{ site.lunchcafe_address.name }}</span>
+        <span class="label-md" style="color: var(--tertiary);">{{ site.lunchcafe_address.name | t(lang) }}</span>
         <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">{{ site.lunchcafe_address.location }}</p>
         <p class="body-lg" style="margin-bottom: 0;">{{ site.lunchcafe_address.street }}, {{ site.lunchcafe_address.city }}</p>
-        <p class="body-lg" style="color: var(--secondary); margin-top: var(--spacing-2);">{{ site.lunchcafe_address.hours }}</p>
+        <p class="body-lg" style="color: var(--secondary); margin-top: var(--spacing-2);">{{ site.lunchcafe_address.hours | t(lang) }}</p>
       </div>
 
       <div style="margin-bottom: var(--spacing-8);">
-        <span class="label-md" style="color: var(--tertiary);">Direct contact</span>
+        <span class="label-md" style="color: var(--tertiary);">{{ ui.labels.direct_contact | t(lang) }}</span>
         <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">
           <a href="mailto:{{ site.contact.email }}" style="color: var(--on-surface); text-decoration: underline;">{{ site.contact.email }}</a>
         </p>
@@ -42,42 +61,42 @@ success_message: Bedankt, we nemen zo snel mogelijk contact met je op!
       </div>
 
       <div style="margin-bottom: var(--spacing-8);">
-        <span class="label-md" style="color: var(--tertiary);">Postadres</span>
+        <span class="label-md" style="color: var(--tertiary);">{{ ui.labels.postal_address | t(lang) }}</span>
         <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">{{ site.postal_address.street }}</p>
         <p class="body-lg" style="margin-bottom: 0;">{{ site.postal_address.postcode }} {{ site.postal_address.city }}</p>
       </div>
 
       <div>
-        <span class="label-md" style="color: var(--tertiary);">KvK</span>
+        <span class="label-md" style="color: var(--tertiary);">{{ ui.labels.kvk | t(lang) }}</span>
         <p class="body-lg" style="margin-top: var(--spacing-2); margin-bottom: 0;">{{ site.kvk }}</p>
       </div>
     </div>
 
     <div class="card" style="padding: var(--spacing-12);">
-      <h3 style="margin-bottom: var(--spacing-6);">{{ form_title }}</h3>
-      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/contact/?success=true">
+      <h3 style="margin-bottom: var(--spacing-6);">{{ form_title | t(lang) }}</h3>
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="{{ '/contact/' | localizedUrl(lang) }}?success=true">
         <input type="hidden" name="form-name" value="contact">
-        <p hidden><label>Niet invullen: <input name="bot-field"></label></p>
+        <p hidden><label>{{ ui.form.honeypot_label | t(lang) }}: <input name="bot-field"></label></p>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">Naam</label>
+          <label class="input-label">{{ ui.labels.name | t(lang) }}</label>
           <input type="text" name="name" class="input-field" required>
         </div>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">E-mail</label>
+          <label class="input-label">{{ ui.labels.email | t(lang) }}</label>
           <input type="email" name="email" class="input-field" required>
         </div>
 
         <div style="margin-bottom: var(--spacing-8);">
-          <label class="input-label">Bericht</label>
+          <label class="input-label">{{ ui.labels.message | t(lang) }}</label>
           <textarea name="message" class="input-field" rows="5" required style="resize: vertical;"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">Verstuur</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">{{ ui.buttons.send | t(lang) }}</button>
       </form>
 
-      <p id="success-message" class="label-md" style="display: none; color: var(--secondary); margin-top: var(--spacing-6);">{{ success_message }}</p>
+      <p id="success-message" class="label-md" style="display: none; color: var(--secondary); margin-top: var(--spacing-6);">{{ success_message | t(lang) }}</p>
     </div>
 
   </div>

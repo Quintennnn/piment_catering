@@ -1,0 +1,12 @@
+{
+  "list": ["nl", "en"],
+  "default": "nl",
+  "labels": {
+    "nl": "Nederlands",
+    "en": "English"
+  },
+  "shortLabels": {
+    "nl": "NL",
+    "en": "EN"
+  }
+}

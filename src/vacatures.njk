@@ -1,45 +1,62 @@
 ---
 layout: base.njk
-permalink: /vacatures/
-title: Vacatures — Werken bij Piment
-description: Werken bij Piment? Bekijk onze openstaande vacatures voor het lunchcafé en de catering.
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/vacatures/{% else %}/vacatures/{% endif %}"
 
-hero_label: Kom bij ons werken
-hero_title: Werken bij Piment
-hero_text: Ben jij gepassioneerd over vegetarisch eten, duurzaamheid en gastvrijheid? Bekijk hieronder onze openstaande vacatures en kom ons team versterken.
-empty_text: Op dit moment hebben we geen openstaande vacatures. Toch enthousiast? Stuur een open sollicitatie naar pimentcatering@gmail.com — we lezen ze allemaal.
+title:
+  nl: "Vacatures — Werken bij Piment"
+  en: "Vacancies — Work at Piment"
+description:
+  nl: "Werken bij Piment? Bekijk onze openstaande vacatures voor het lunchcafé en de catering."
+  en: "Want to work at Piment? Check out our open vacancies for the lunch café and catering."
+
+hero_label:
+  nl: "Kom bij ons werken"
+  en: "Come join us"
+hero_title:
+  nl: "Werken bij Piment"
+  en: "Work at Piment"
+hero_text:
+  nl: "Ben jij gepassioneerd over vegetarisch eten, duurzaamheid en gastvrijheid? Bekijk hieronder onze openstaande vacatures en kom ons team versterken."
+  en: "Are you passionate about vegetarian food, sustainability and hospitality? Check out our open vacancies below and come strengthen our team."
+empty_text:
+  nl: "Op dit moment hebben we geen openstaande vacatures. Toch enthousiast? Stuur een open sollicitatie naar pimentcatering@gmail.com — we lezen ze allemaal."
+  en: "We currently have no open vacancies. Still keen? Send an open application to pimentcatering@gmail.com — we read every one."
 ---
 
 <section class="section container" style="max-width: 900px; padding-top: var(--spacing-12);">
   <div style="text-align: center; margin-bottom: var(--spacing-16);">
-    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
-    <p class="body-lg" style="max-width: 600px; margin: 0 auto;">{{ hero_text }}</p>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title | t(lang) }}</h1>
+    <p class="body-lg" style="max-width: 600px; margin: 0 auto;">{{ hero_text | t(lang) }}</p>
   </div>
 
   <div style="display: flex; flex-direction: column; gap: var(--spacing-12);">
     {% for key, job in vacatures %}
       <div class="card" style="padding: var(--spacing-12);">
         <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--spacing-4); flex-wrap: wrap; margin-bottom: var(--spacing-6);">
-          <h3 style="color: var(--primary); margin-bottom: 0;">{{ job.title }}</h3>
-          {% if job.category %}<span class="chip">{{ job.category }}</span>{% endif %}
+          <h3 style="color: var(--primary); margin-bottom: 0;">{{ job.title | t(lang) }}</h3>
+          {% if job.category %}<span class="chip">{{ job.category | t(lang) }}</span>{% endif %}
         </div>
 
         {% if job.summary %}
-          <p class="body-lg" style="margin-bottom: var(--spacing-6); color: var(--secondary);">{{ job.summary }}</p>
+          <p class="body-lg" style="margin-bottom: var(--spacing-6); color: var(--secondary);">{{ job.summary | t(lang) }}</p>
         {% endif %}
 
-        <div class="prose" style="margin-bottom: var(--spacing-8);">{{ job.description | markdown | safe }}</div>
+        <div class="prose" style="margin-bottom: var(--spacing-8);">{{ job.description | mdLocalized(lang) | safe }}</div>
 
         {% if job.contact_text %}
-          <p class="body-lg" style="margin-bottom: var(--spacing-6);"><strong>{{ job.contact_text }}</strong></p>
+          <p class="body-lg" style="margin-bottom: var(--spacing-6);"><strong>{{ job.contact_text | t(lang) }}</strong></p>
         {% endif %}
 
-        <a href="mailto:{{ site.contact.email }}?subject={{ job.title | urlencode }}" class="btn btn-primary" style="align-self: flex-start;">Solliciteer per mail</a>
+        <a href="mailto:{{ site.contact.email }}?subject={{ job.title | t(lang) | urlencode }}" class="btn btn-primary" style="align-self: flex-start;">{{ ui.buttons.apply_by_email | t(lang) }}</a>
       </div>
     {% else %}
       <div class="card" style="padding: var(--spacing-12); text-align: center;">
-        <p class="body-lg" style="margin-bottom: 0;">{{ empty_text }}</p>
+        <p class="body-lg" style="margin-bottom: 0;">{{ empty_text | t(lang) }}</p>
       </div>
     {% endfor %}
   </div>

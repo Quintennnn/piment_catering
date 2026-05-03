@@ -1,24 +1,52 @@
 ---
 layout: base.njk
-permalink: /catering/
-title: Vegetarische catering op maat — Piment Catering
-description: Vegetarische catering voor zakelijke lunches, feesten en evenementen. Wereldse smaken met lokale, biologische ingrediënten.
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/catering/{% else %}/catering/{% endif %}"
 
-hero_label: Voor elke gelegenheid
-hero_title: Jouw event slaagt met Piment
-hero_intro: |
-  Bij Piment stellen we ieder vegetarisch menu volledig samen in overleg met jou als opdrachtgever. Hieronder vind je enkele sfeerimpressies van wat er mogelijk is.
+title:
+  nl: "Vegetarische catering op maat — Piment Catering"
+  en: "Tailored vegetarian catering — Piment Catering"
+description:
+  nl: "Vegetarische catering voor zakelijke lunches, feesten en evenementen. Wereldse smaken met lokale, biologische ingrediënten."
+  en: "Vegetarian catering for business lunches, parties and events. World flavors with local, organic ingredients."
 
-  Ook voor de catering van feesten en events ben je bij Piment Catering aan het juiste adres. Wij werken met duurzame, biologische en lokaal geproduceerde ingrediënten, bereid met kwaliteit, wereldse smaken en liefde uit de buurt.
+hero_label:
+  nl: "Voor elke gelegenheid"
+  en: "For every occasion"
+hero_title:
+  nl: "Jouw event slaagt met Piment"
+  en: "Your event shines with Piment"
 
-  We bespreken samen jouw wensen en de menukeuze. We komen graag koken in jouw (eigen) keuken. Het is ook mogelijk om de gerechten bij ons op te halen. Dieetwensen en allergieën zijn geen enkel probleem.
+hero_intro:
+  nl: |
+    Bij Piment stellen we ieder vegetarisch menu volledig samen in overleg met jou als opdrachtgever. Hieronder vind je enkele sfeerimpressies van wat er mogelijk is.
+
+    Ook voor de catering van feesten en events ben je bij Piment Catering aan het juiste adres. Wij werken met duurzame, biologische en lokaal geproduceerde ingrediënten, bereid met kwaliteit, wereldse smaken en liefde uit de buurt.
+
+    We bespreken samen jouw wensen en de menukeuze. We komen graag koken in jouw (eigen) keuken. Het is ook mogelijk om de gerechten bij ons op te halen. Dieetwensen en allergieën zijn geen enkel probleem.
+  en: |
+    At Piment we put together every vegetarian menu in close consultation with you as the host. Below you'll find a few impressions of what's possible.
+
+    For catering parties and events you've come to the right place at Piment Catering. We work with sustainable, organic and locally produced ingredients, prepared with quality, world flavors and love from the neighborhood.
+
+    We'll discuss your wishes and the menu together. We're happy to come and cook in your (own) kitchen, or you can pick up the dishes from us. Dietary requirements and allergies are no problem at all.
 
 chips:
-  - Zakelijke lunches
-  - Buffetten voor groepen
-  - Luxe hapjes en amuses
-  - Walking dinners
-  - Feesten en evenementen
+  nl:
+    - "Zakelijke lunches"
+    - "Buffetten voor groepen"
+    - "Luxe hapjes en amuses"
+    - "Walking dinners"
+    - "Feesten en evenementen"
+  en:
+    - "Business lunches"
+    - "Buffets for groups"
+    - "Canapés and amuses"
+    - "Walking dinners"
+    - "Parties and events"
 
 gallery:
   - /assets/images/catering-1.jpg
@@ -27,19 +55,28 @@ gallery:
   - /assets/images/catering-4.jpg
   - /assets/images/catering-5.jpg
 
-form_title: Vraag een offerte aan
-form_intro: Vertel ons over je event en we nemen zo snel mogelijk contact met je op.
+gallery_title:
+  nl: "Sfeerimpressies"
+  en: "Gallery"
+
+form_title:
+  nl: "Vraag een offerte aan"
+  en: "Request a quote"
+form_intro:
+  nl: "Vertel ons over je event en we nemen zo snel mogelijk contact met je op."
+  en: "Tell us about your event and we'll get back to you as soon as possible."
 ---
 
 <section class="section container" style="padding-top: var(--spacing-12);">
   <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
-    <div class="prose" style="text-align: left;">{{ hero_intro | markdown | safe }}</div>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title | t(lang) }}</h1>
+    <div class="prose" style="text-align: left;">{{ hero_intro | mdLocalized(lang) | safe }}</div>
 
-    {% if chips and chips.length %}
+    {% set chipList = chips | t(lang) %}
+    {% if chipList and chipList.length %}
       <div style="margin-top: var(--spacing-8); display: flex; flex-wrap: wrap; gap: var(--spacing-4); justify-content: center;">
-        {% for chip in chips %}
+        {% for chip in chipList %}
           <span class="chip">{{ chip }}</span>
         {% endfor %}
       </div>
@@ -50,10 +87,10 @@ form_intro: Vertel ons over je event en we nemen zo snel mogelijk contact met je
 {% if gallery and gallery.length %}
   <section class="section-bg-shift">
     <div class="container">
-      <h2 style="text-align: center; margin-bottom: var(--spacing-12);">Sfeerimpressies</h2>
+      <h2 style="text-align: center; margin-bottom: var(--spacing-12);">{{ gallery_title | t(lang) }}</h2>
       <div class="catering-gallery">
         {% for img in gallery %}
-          <img src="{{ img }}" alt="Sfeerimpressie catering {{ loop.index }}" loading="lazy">
+          <img src="{{ img }}" alt="" loading="lazy">
         {% endfor %}
       </div>
     </div>
@@ -63,42 +100,43 @@ form_intro: Vertel ons over je event en we nemen zo snel mogelijk contact met je
 <section class="section container">
   <div style="max-width: 720px; margin: 0 auto;">
     <div class="card" style="padding: var(--spacing-12);">
-      <h2 style="margin-bottom: var(--spacing-4);">{{ form_title }}</h2>
-      <p class="body-lg" style="margin-bottom: var(--spacing-8);">{{ form_intro }}</p>
-      <form name="catering-aanvraag" method="POST" data-netlify="true" action="/contact/?success=true">
+      <h2 style="margin-bottom: var(--spacing-4);">{{ form_title | t(lang) }}</h2>
+      <p class="body-lg" style="margin-bottom: var(--spacing-8);">{{ form_intro | t(lang) }}</p>
+      <form name="catering-aanvraag" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="{{ '/contact/' | localizedUrl(lang) }}?success=true">
         <input type="hidden" name="form-name" value="catering-aanvraag">
+        <p hidden><label>{{ ui.form.honeypot_label | t(lang) }}: <input name="bot-field"></label></p>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">Naam</label>
+          <label class="input-label">{{ ui.labels.name | t(lang) }}</label>
           <input type="text" name="name" class="input-field" required>
         </div>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">E-mailadres</label>
+          <label class="input-label">{{ ui.labels.email_address | t(lang) }}</label>
           <input type="email" name="email" class="input-field" required>
         </div>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">Telefoonnummer</label>
+          <label class="input-label">{{ ui.labels.phone | t(lang) }}</label>
           <input type="tel" name="phone" class="input-field">
         </div>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">Datum evenement</label>
+          <label class="input-label">{{ ui.labels.event_date | t(lang) }}</label>
           <input type="date" name="date" class="input-field">
         </div>
 
         <div style="margin-bottom: var(--spacing-6);">
-          <label class="input-label">Aantal personen</label>
+          <label class="input-label">{{ ui.labels.guests | t(lang) }}</label>
           <input type="number" name="guests" class="input-field" min="1">
         </div>
 
         <div style="margin-bottom: var(--spacing-8);">
-          <label class="input-label">Jouw wensen / omschrijving</label>
+          <label class="input-label">{{ ui.labels.your_wishes | t(lang) }}</label>
           <textarea name="message" class="input-field" rows="5" required style="resize: vertical;"></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">Verstuur aanvraag</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">{{ ui.buttons.send_request | t(lang) }}</button>
       </form>
     </div>
   </div>

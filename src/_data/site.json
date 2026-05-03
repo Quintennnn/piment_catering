@@ -1,18 +1,30 @@
 {
   "name": "Piment Catering",
-  "tagline": "Wereldse smaken, liefde uit de buurt",
-  "footer_text": "Vegetarisch lunchcafé en catering in Hilversum. Wereldse smaken, liefde uit de buurt.",
+  "tagline": {
+    "nl": "Wereldse smaken, liefde uit de buurt",
+    "en": "World flavors, love from the neighborhood"
+  },
+  "footer_text": {
+    "nl": "Vegetarisch lunchcafé en catering in Hilversum. Wereldse smaken, liefde uit de buurt.",
+    "en": "Vegetarian lunch café and catering in Hilversum. World flavors, love from the neighborhood."
+  },
   "contact": {
     "phone": "06 1852 0544",
     "phone_link": "0618520544",
     "email": "pimentcatering@gmail.com"
   },
   "lunchcafe_address": {
-    "name": "Lunchcafé Piment",
+    "name": {
+      "nl": "Lunchcafé Piment",
+      "en": "Lunch café Piment"
+    },
     "location": "Landgoed de Rading",
     "street": "Rading 1b",
     "city": "Hilversum",
-    "hours": "Maandag t/m zaterdag 10:00 - 17:00 uur"
+    "hours": {
+      "nl": "Maandag t/m zaterdag 10:00 - 17:00 uur",
+      "en": "Monday – Saturday, 10:00 – 17:00"
+    }
   },
   "postal_address": {
     "street": "Ampèrestraat 66",
@@ -25,11 +37,11 @@
     "instagram": ""
   },
   "nav": [
-    { "label": "Home", "url": "/" },
-    { "label": "Lunchcafé", "url": "/lunchcafe/" },
-    { "label": "Catering", "url": "/catering/" },
-    { "label": "Over Piment", "url": "/over-piment/" },
-    { "label": "Vacatures", "url": "/vacatures/" },
-    { "label": "Contact", "url": "/contact/" }
+    { "key": "home",      "url": "/" },
+    { "key": "lunchcafe", "url": "/lunchcafe/" },
+    { "key": "catering",  "url": "/catering/" },
+    { "key": "about",     "url": "/over-piment/" },
+    { "key": "vacancies", "url": "/vacatures/" },
+    { "key": "contact",   "url": "/contact/" }
   ]
 }

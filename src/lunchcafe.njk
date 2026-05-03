@@ -1,46 +1,82 @@
 ---
 layout: base.njk
-permalink: /lunchcafe/
-title: Lunchcafé en menu — Piment Catering
-description: Lekker vegetarisch eten in het groen op Landgoed de Rading. Open van maandag tot zaterdag.
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/lunchcafe/{% else %}/lunchcafe/{% endif %}"
 
-hero_label: Het lunchcafé
-hero_title: Lekker vegetarisch eten in het groen
+title:
+  nl: "Lunchcafé en menu — Piment Catering"
+  en: "Lunch café and menu — Piment Catering"
+description:
+  nl: "Lekker vegetarisch eten in het groen op Landgoed de Rading. Open van maandag tot zaterdag."
+  en: "Delicious vegetarian food in nature at Landgoed de Rading. Open Monday to Saturday."
+
+hero_label:
+  nl: "Het lunchcafé"
+  en: "The lunch café"
+hero_title:
+  nl: "Lekker vegetarisch eten in het groen"
+  en: "Delicious vegetarian food in nature"
 hero_image: /assets/images/lunchcafe-1.jpg
 
-intro: |
-  Ons lunchcafé ligt midden in het groen op Landgoed de Rading, met een heerlijke tuin waar je bij mooi weer fijne plekjes vindt om rustig te zitten. Ook op minder zonnige dagen is het in de serre en het café gezellig en warm.
+intro:
+  nl: |
+    Ons lunchcafé ligt midden in het groen op Landgoed de Rading, met een heerlijke tuin waar je bij mooi weer fijne plekjes vindt om rustig te zitten. Ook op minder zonnige dagen is het in de serre en het café gezellig en warm.
 
-  Bij lunchcafé Piment gebruiken we zoveel mogelijk groenten en kruiden direct uit de biologische zelfoogsttuin Bodemvrucht. We bieden vegetarische en veganistische opties — voor in het café of om mee te nemen (soep, taart, cake en quiche).
+    Bij lunchcafé Piment gebruiken we zoveel mogelijk groenten en kruiden direct uit de biologische zelfoogsttuin Bodemvrucht. We bieden vegetarische en veganistische opties — voor in het café of om mee te nemen (soep, taart, cake en quiche).
+  en: |
+    Our lunch café sits in the middle of nature at Landgoed de Rading, with a beautiful garden where you'll find quiet spots to sit on a sunny day. On less sunny days the conservatory and café are warm and welcoming.
 
-intro_callout: We kijken ernaar uit je te ontvangen op onze bijzondere locatie!
+    At lunch café Piment we use as many vegetables and herbs as possible directly from the organic self-harvest garden Bodemvrucht. We offer vegetarian and vegan options — to eat in or take away (soup, pies, cakes and quiche).
 
-menu_label: Lunch van 11:00 tot 16:00
-menu_title: Ons menu
+intro_callout:
+  nl: "We kijken ernaar uit je te ontvangen op onze bijzondere locatie!"
+  en: "We look forward to welcoming you at our special location!"
+
+menu_label:
+  nl: "Lunch van 11:00 tot 16:00"
+  en: "Lunch served 11:00 to 16:00"
+menu_title:
+  nl: "Ons menu"
+  en: "Our menu"
+
 menu_legend:
-  - V — Vegan
-  - V* — Vegan mogelijk
-  - GV — Glutenvrij
-  - GV* — Glutenvrij mogelijk
-menu_kitchen_note: Wegens onze kleine keuken kunnen wij kruisbesmetting niet uitsluiten.
-menu_footer_note: Allergie of speciaal dieet? Laat het ons weten — wij helpen je graag verder.
+  nl:
+    - "V — Vegan"
+    - "V* — Vegan mogelijk"
+    - "GV — Glutenvrij"
+    - "GV* — Glutenvrij mogelijk"
+  en:
+    - "V — Vegan"
+    - "V* — Vegan possible"
+    - "GF — Gluten-free"
+    - "GF* — Gluten-free possible"
+
+menu_kitchen_note:
+  nl: "Wegens onze kleine keuken kunnen wij kruisbesmetting niet uitsluiten."
+  en: "Because of our small kitchen we cannot rule out cross-contamination."
+menu_footer_note:
+  nl: "Allergie of speciaal dieet? Laat het ons weten — wij helpen je graag verder."
+  en: "Allergy or special diet? Let us know — we're happy to help."
 
 extra_image: /assets/images/lunchcafe-2.jpg
 ---
 
 <section class="section container" style="padding-top: var(--spacing-12);">
   <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-    <span class="label-md" style="color: var(--secondary);">{{ hero_label }}</span>
-    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title }}</h1>
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title | t(lang) }}</h1>
 
     <div style="position: relative; margin: var(--spacing-12) 0;">
-      <img src="{{ hero_image }}" alt="{{ hero_title }}" style="width: 100%; height: 60vh; object-fit: cover; border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
+      <img src="{{ hero_image }}" alt="{{ hero_title | t(lang) }}" style="width: 100%; height: 60vh; object-fit: cover; border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl); box-shadow: var(--ambient-shadow);">
     </div>
 
-    <div class="prose">{{ intro | markdown | safe }}</div>
+    <div class="prose">{{ intro | mdLocalized(lang) | safe }}</div>
 
     {% if intro_callout %}
-      <p class="label-md" style="color: var(--primary); margin-top: var(--spacing-8);">{{ intro_callout }}</p>
+      <p class="label-md" style="color: var(--primary); margin-top: var(--spacing-8);">{{ intro_callout | t(lang) }}</p>
     {% endif %}
   </div>
 </section>
@@ -48,29 +84,29 @@ extra_image: /assets/images/lunchcafe-2.jpg
 <section class="section-bg-shift">
   <div class="container" style="max-width: 900px; margin: 0 auto;">
     <div style="text-align: center; margin-bottom: var(--spacing-16);">
-      <h2 class="display-lg">{{ menu_title }}</h2>
-      <span class="label-md" style="color: var(--tertiary);">{{ menu_label }}</span>
+      <h2 class="display-lg">{{ menu_title | t(lang) }}</h2>
+      <span class="label-md" style="color: var(--tertiary);">{{ menu_label | t(lang) }}</span>
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-20);">
       {% for key, menuData in menu %}
         <div>
           <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: var(--spacing-8); text-align: center;">
-            {{ menuData.category }}
+            {{ menuData.category | t(lang) }}
           </h3>
 
           <ul style="list-style: none;">
             {% for item in menuData.items %}
               <li style="margin-bottom: var(--spacing-8);">
                 <div style="display: flex; justify-content: space-between; align-items: baseline;">
-                  <strong class="display" style="font-size: 1.5rem; color: var(--on-surface); margin-bottom: 0;">{{ item.name }}</strong>
+                  <strong class="display" style="font-size: 1.5rem; color: var(--on-surface); margin-bottom: 0;">{{ item.name | t(lang) }}</strong>
                   <div style="font-family: var(--font-display); font-size: 1.5rem; color: var(--tertiary); margin-left: var(--spacing-4);">
                     {{ item.price }}
                   </div>
                 </div>
                 {% if item.description %}
                   <p class="body-lg" style="color: var(--on-surface); opacity: 0.8; margin-top: var(--spacing-2); margin-bottom: 0; max-width: 80%;">
-                    {{ item.description }}
+                    {{ item.description | t(lang) }}
                   </p>
                 {% endif %}
               </li>
@@ -81,14 +117,14 @@ extra_image: /assets/images/lunchcafe-2.jpg
     </div>
 
     <div style="text-align: center; margin-top: var(--spacing-20);">
-      {% for legend_item in menu_legend %}
+      {% for legend_item in (menu_legend | t(lang)) %}
         <span class="chip" style="margin-bottom: var(--spacing-2);">{{ legend_item }}</span>
       {% endfor %}
       {% if menu_kitchen_note %}
-        <p class="body-lg" style="color: var(--on-surface); opacity: 0.7; font-size: 0.9rem; margin-top: var(--spacing-6); margin-bottom: 0;">{{ menu_kitchen_note }}</p>
+        <p class="body-lg" style="color: var(--on-surface); opacity: 0.7; font-size: 0.9rem; margin-top: var(--spacing-6); margin-bottom: 0;">{{ menu_kitchen_note | t(lang) }}</p>
       {% endif %}
       {% if menu_footer_note %}
-        <p class="label-md" style="color: var(--tertiary); margin-top: var(--spacing-4);">{{ menu_footer_note }}</p>
+        <p class="label-md" style="color: var(--tertiary); margin-top: var(--spacing-4);">{{ menu_footer_note | t(lang) }}</p>
       {% endif %}
     </div>
   </div>
