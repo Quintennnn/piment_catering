@@ -1,0 +1,70 @@
+/* Huisstijl voor het Sveltia CMS preview-paneel.
+   Geregistreerd in admin/index.html via CMS.registerPreviewStyle().
+   Kleuren en fonts komen overeen met src/css/index.css. */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+body {
+  background-color: #FFF8F3; /* surface — Warm Cream */
+  color: #221A0F;            /* on-surface — Earth Dark */
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 2rem;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'DM Serif Display', ui-serif, Georgia, serif;
+  font-weight: 400;
+  color: #221A0F;
+  line-height: 1.2;
+  margin: 1.5rem 0 0.75rem;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; color: #9E3D21; } /* primary — terracotta */
+
+p {
+  margin: 0.5rem 0 1rem;
+  max-width: 65ch;
+}
+
+a {
+  color: #9E3D21;
+  text-decoration: underline;
+}
+
+strong { color: #221A0F; }
+
+em { color: #4E653B; } /* secondary — garden green */
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1.5rem 0.75rem 1rem 1.5rem; /* organic corners zoals op de site */
+  box-shadow: 0 24px 40px rgba(34, 26, 15, 0.05);
+  margin: 0.75rem 0;
+}
+
+blockquote {
+  font-family: 'DM Serif Display', ui-serif, Georgia, serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: #9E3D21;
+  border-left: none;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+ul, ol {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0 1rem;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(121, 86, 5, 0.15); /* ghost border */
+  margin: 2rem 0;
+}

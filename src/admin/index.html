@@ -9,5 +9,9 @@
   <body>
     <!-- Sveltia CMS: drop-in vervanger van Decap met modernere UI, gebruikt dezelfde config.yml -->
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js" type="module"></script>
+    <script type="module">
+      // Geef het preview-paneel de huisstijl van de site
+      CMS.registerPreviewStyle('/admin/preview.css');
+    </script>
   </body>
 </html>
