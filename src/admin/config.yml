@@ -553,6 +553,20 @@ collections:
 
           - { label: "Sectie 2 — foto (chef)", name: "chef_section_image", widget: "image" }
 
+          - label: "Citaat van Jimy (waarom Piment)"
+            name: "why_quote"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - label: "Citaat — naam eronder"
+            name: "why_attribution"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
           - label: "Sectie 3 — titel (filosofie)"
             name: "philosophy_section_title"
             widget: "object"

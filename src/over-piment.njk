@@ -48,6 +48,13 @@ chef_section_body:
     Earlier in his career Jimy worked at places including Studio K, De Klub Utrecht and De Veldkeuken in Bunnik — where the team won the award for Best Vegetarian Burger in 2017.
 chef_section_image: /assets/images/chef-jimy.jpg
 
+why_quote:
+  nl: "Ik wil mensen inspireren om vaker vegetarisch te eten, zonder iemand te pushen. Piment is een sociale plek geworden, een veilige haven. We willen inspireren met schoonheid en smaak."
+  en: "I want to inspire people to eat vegetarian more often, without pushing anyone. Piment has become a social place, a safe haven. We want to inspire with beauty and taste."
+why_attribution:
+  nl: "Jimy Silva de Almeida, chef-eigenaar"
+  en: "Jimy Silva de Almeida, chef-owner"
+
 philosophy_section_title:
   nl: "De Piment-filosofie"
   en: "The Piment philosophy"
@@ -56,10 +63,14 @@ philosophy_section_body:
     *Wereldse smaken, liefde uit de buurt* — een combinatie van Portugese inspiratie, reiservaringen en lokale, biologische, seizoensgebonden ingrediënten.
 
     We werken nauw samen met **CSA Bodemvrucht** en **Zorgtuin Zonnestraal**, inclusief sociale-inclusieprogramma's. Piment is bovendien ambassadeur van het programma *Biodiversiteit op je bord*.
+
+    Eerlijk eten voor een eerlijke prijs, op een plek die voor iedereen toegankelijk is.
   en: |
     *World flavors, love from the neighborhood* — a combination of Portuguese inspiration, travel experiences, and local, organic, seasonal ingredients.
 
     We work closely with **CSA Bodemvrucht** and **Zorgtuin Zonnestraal**, including social inclusion programs. Piment is also an ambassador of the *Biodiversity on your plate* program.
+
+    Honest food for a fair price, in a place that feels open to everyone.
 ---
 
 <section class="section container" style="max-width: 800px; padding-top: var(--spacing-12);">
@@ -98,6 +109,15 @@ philosophy_section_body:
     </div>
   </div>
 </section>
+
+{% if why_quote %}
+<section class="section container" style="max-width: 900px;">
+  <figure class="pullquote">
+    <blockquote>"{{ why_quote | t(lang) }}"</blockquote>
+    <figcaption>— {{ why_attribution | t(lang) }}</figcaption>
+  </figure>
+</section>
+{% endif %}
 
 <section class="section-bg-shift">
   <div class="container" style="max-width: 720px; text-align: center;">
