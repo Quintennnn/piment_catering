@@ -22,6 +22,8 @@ collections:
         fields:
           - { label: "Sitenaam", name: "name", widget: "string" }
 
+          - { label: "Logo (header, footer en favicon)", name: "logo", widget: "image" }
+
           - label: "Tagline (kort)"
             name: "tagline"
             widget: "object"

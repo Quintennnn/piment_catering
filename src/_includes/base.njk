@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/css/index.css">
-  <link rel="icon" type="image/avif" href="/assets/images/logo.avif">
+  <link rel="icon" href="{{ site.logo }}">
 
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
@@ -26,7 +26,7 @@
   <header class="header">
     <div class="container nav">
       <a href="{{ '/' | localizedUrl(lang) }}" class="logo" aria-label="{{ site.name }} - home">
-        <img src="/assets/images/logo.avif" alt="{{ site.name }}" class="logo-img">
+        <img src="{{ site.logo }}" alt="{{ site.name }}" class="logo-img">
       </a>
       <button class="nav-toggle" aria-label="{{ ui.labels.open_menu | t(lang) }}" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span>
@@ -84,7 +84,7 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <img src="/assets/images/logo.avif" alt="{{ site.name }}" class="logo-img footer-logo">
+        <img src="{{ site.logo }}" alt="{{ site.name }}" class="logo-img footer-logo">
         <p class="body-lg" style="margin-top: var(--spacing-4); max-width: 28ch;">{{ site.footer_text | t(lang) }}</p>
       </div>
       <div>
