@@ -9,6 +9,7 @@
   },
   "labels": {
     "visit_us":          { "nl": "Bezoek ons",          "en": "Visit us" },
+    "follow_us":         { "nl": "Volg ons",            "en": "Follow us" },
     "contact":           { "nl": "Contact",             "en": "Contact" },
     "direct_contact":    { "nl": "Direct contact",      "en": "Get in touch" },
     "postal_address":    { "nl": "Postadres",           "en": "Postal address" },

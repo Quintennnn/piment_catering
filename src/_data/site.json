@@ -34,8 +34,8 @@
   },
   "kvk": "98437844",
   "social": {
-    "facebook": "",
-    "instagram": ""
+    "facebook": "https://www.facebook.com/Pimentcatering",
+    "instagram": "https://www.instagram.com/piment.food/"
   },
   "nav": [
     { "key": "home",      "url": "/" },

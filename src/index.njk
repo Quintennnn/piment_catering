@@ -72,6 +72,11 @@ catering_cta_label:
   en: "Tell us what you need"
 catering_cta_url: /catering/
 
+# Instagram teaser
+instagram_text:
+  nl: "Neem een kijkje op onze Instagram"
+  en: "Take a look at our Instagram"
+
 # Closing CTA
 closing_label:
   nl: "Welkom in onze tuin"
@@ -184,6 +189,15 @@ closing_secondary_url: /catering/
           {% endif %}
         {% endfor %}
       </div>
+    {% endif %}
+
+    {% if site.social.instagram and instagram_text %}
+      <p style="text-align: center; margin-top: var(--spacing-12); margin-bottom: 0;">
+        <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" class="link-arrow" style="display: inline-flex; align-items: center; gap: var(--spacing-2);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width: 18px; height: 18px;"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="0.5" fill="currentColor" stroke="none"/></svg>
+          {{ instagram_text | t(lang) }} →
+        </a>
+      </p>
     {% endif %}
   </div>
 </section>
