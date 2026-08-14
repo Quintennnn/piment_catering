@@ -299,8 +299,6 @@ collections:
               - { label: "English", name: "en", widget: "string" }
 
           - { label: "Afsluiting — tweede knop URL", name: "closing_secondary_url", widget: "string" }
-        editor:
-          preview: false
 
       - label: "Lunchcafé"
         name: "lunchcafe"
@@ -400,8 +398,6 @@ collections:
               - { label: "English", name: "en", widget: "string", required: false }
 
           - { label: "Extra foto (optioneel)", name: "extra_image", widget: "image", required: false }
-        editor:
-          preview: false
 
       - label: "Catering"
         name: "catering"
@@ -486,8 +482,6 @@ collections:
             fields:
               - { label: "Nederlands", name: "nl", widget: "text" }
               - { label: "English", name: "en", widget: "text" }
-        editor:
-          preview: false
 
       - label: "Over Piment"
         name: "over-piment"
@@ -594,8 +588,6 @@ collections:
             fields:
               - { label: "Nederlands", name: "nl", widget: "markdown" }
               - { label: "English", name: "en", widget: "markdown" }
-        editor:
-          preview: false
 
       - label: "Vacatures (intro-tekst)"
         name: "vacatures-page"
@@ -647,8 +639,6 @@ collections:
             fields:
               - { label: "Nederlands", name: "nl", widget: "text" }
               - { label: "English", name: "en", widget: "text" }
-        editor:
-          preview: false
 
       - label: "Contact"
         name: "contact"
@@ -706,8 +696,6 @@ collections:
             fields:
               - { label: "Nederlands", name: "nl", widget: "string" }
               - { label: "English", name: "en", widget: "string" }
-        editor:
-          preview: false
 
       - label: "Privacyverklaring"
         name: "privacy"
@@ -759,8 +747,6 @@ collections:
             fields:
               - { label: "Nederlands", name: "nl", widget: "markdown" }
               - { label: "English", name: "en", widget: "markdown" }
-        editor:
-          preview: false
 
   # ----------------------------------------------------------------------
   # Vacatures (één bestand per vacature)
