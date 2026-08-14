@@ -1,6 +1,9 @@
+# Login via GitHub (OAuth loopt via Netlify, zie CMS-HANDLEIDING.md in de projectroot)
 backend:
-  name: git-gateway
+  name: github
+  repo: Quintennnn/piment_catering
   branch: main
+  base_url: https://api.netlify.com
 
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
@@ -245,6 +248,14 @@ collections:
               - { label: "English", name: "en", widget: "string" }
 
           - { label: "Catering — knop URL", name: "catering_cta_url", widget: "string" }
+
+          # --- Instagram teaser ---
+          - label: "Instagram — tekst (onder de reviews)"
+            name: "instagram_text"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
 
           # --- Closing CTA ---
           - label: "Afsluiting — klein label"
