@@ -36,7 +36,7 @@
   },
   "form": {
     "honeypot_label":    { "nl": "Niet invullen",       "en": "Do not fill in" },
-    "success_default":   { "nl": "Bedankt, we nemen zo snel mogelijk contact met je op!", "en": "Thank you — we'll get back to you as soon as possible!" }
+    "success_default":   { "nl": "Bedankt, we nemen zo snel mogelijk contact met je op!", "en": "Thank you, we'll get back to you as soon as possible!" }
   },
   "vacancies": {
     "category_label":    { "nl": "Vacature",            "en": "Vacancy" }
