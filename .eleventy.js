@@ -36,6 +36,12 @@ module.exports = function(eleventyConfig) {
   // Pick a localized value for the given language.
   eleventyConfig.addFilter("t", (value, lang) => localize(value, lang || DEFAULT_LOCALE));
 
+  // Values of a data-directory object (e.g. menu/*.json), so they can be sorted.
+  eleventyConfig.addFilter("objectValues", (value) => {
+    if (!value || typeof value !== "object") return [];
+    return Object.values(value);
+  });
+
   // Render arbitrary markdown.
   eleventyConfig.addFilter("markdown", (value) => {
     if (!value) return "";

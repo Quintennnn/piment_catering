@@ -46,8 +46,10 @@ collections:
             name: "contact"
             widget: "object"
             fields:
-              - { label: "Telefoonnummer (zichtbaar)", name: "phone", widget: "string", hint: "bv. 06 1852 0544" }
-              - { label: "Telefoonnummer (zonder spaties)", name: "phone_link", widget: "string", hint: "bv. 0618520544" }
+              - { label: "Algemeen telefoonnummer (zichtbaar)", name: "phone", widget: "string", hint: "bv. 06 2734 1234 — staat in de footer en op de contactpagina" }
+              - { label: "Algemeen telefoonnummer (zonder spaties)", name: "phone_link", widget: "string", hint: "bv. 0627341234" }
+              - { label: "Telefoon catering / Jimy (zichtbaar)", name: "catering_phone", widget: "string", required: false, hint: "Staat alleen op de cateringpagina" }
+              - { label: "Telefoon catering / Jimy (zonder spaties)", name: "catering_phone_link", widget: "string", required: false }
               - { label: "E-mailadres", name: "email", widget: "string" }
 
           - label: "Adres lunchcafé"
@@ -483,6 +485,13 @@ collections:
               - { label: "Nederlands", name: "nl", widget: "text" }
               - { label: "English", name: "en", widget: "text" }
 
+          - label: "Tekst vóór telefoonnummer (Jimy)"
+            name: "phone_text"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
       - label: "Over Piment"
         name: "over-piment"
         file: "src/over-piment.njk"
@@ -804,10 +813,10 @@ collections:
           - { label: "English", name: "en", widget: "string", required: false }
 
   # ----------------------------------------------------------------------
-  # Lunch menu (één bestand per categorie)
+  # Menukaart (één bestand per categorie)
   # ----------------------------------------------------------------------
   - name: "menu"
-    label: "Lunchmenu"
+    label: "Menukaart"
     label_singular: "Menucategorie"
     folder: "src/_data/menu"
     create: true
@@ -817,7 +826,9 @@ collections:
     format: "json"
     summary: "{{category.nl}}"
     fields:
-      - label: "Categorienaam (bv. Soep, Tosti)"
+      - { label: "Volgorde op de pagina", name: "order", widget: "number", value_type: "int", default: 1, hint: "1 = bovenaan. Lunchkaart = 1, Warme dranken = 2, Koude frisdrank en sap = 3" }
+
+      - label: "Categorienaam (bv. Lunchkaart, Warme dranken)"
         name: "category"
         widget: "object"
         fields:

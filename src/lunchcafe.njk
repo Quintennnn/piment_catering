@@ -10,8 +10,8 @@ title:
   nl: "Lunchcafé en menu — Piment Catering"
   en: "Lunch café and menu — Piment Catering"
 description:
-  nl: "Lekker vegetarisch eten in het groen op Landgoed de Rading. Open van maandag tot zaterdag."
-  en: "Delicious vegetarian food in nature at Landgoed de Rading. Open Monday to Saturday."
+  nl: "Lekker vegetarisch eten in het groen aan de Rading 1b in Hilversum, aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal. Open van maandag tot zaterdag."
+  en: "Delicious vegetarian food in nature at Rading 1b in Hilversum, on the edge of the Hoorneboegse heath and the Zonnestraal estate. Open Monday to Saturday."
 
 hero_label:
   nl: "Het lunchcafé"
@@ -19,17 +19,17 @@ hero_label:
 hero_title:
   nl: "Lekker vegetarisch eten in het groen"
   en: "Delicious vegetarian food in nature"
-hero_image: /assets/images/lunchcafe-1.jpg
+hero_image: /assets/images/piment-serre.jpg
 
 intro:
   nl: |
-    Ons lunchcafé ligt midden in het groen op Landgoed de Rading, met een heerlijke tuin waar je bij mooi weer fijne plekjes vindt om rustig te zitten. Ook op minder zonnige dagen is het in de serre en het café gezellig en warm, als een huiskamer op het landgoed.
+    Ons lunchcafé ligt midden in het groen aan de Rading 1b, aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal, met een heerlijke tuin waar je bij mooi weer fijne plekjes vindt om rustig te zitten. Ook op minder zonnige dagen is het in de serre en het café gezellig en warm, als een huiskamer in het groen.
 
-    Bij lunchcafé Piment gebruiken we zoveel mogelijk groenten en kruiden direct uit de biologische zelfoogsttuin Bodemvrucht. We bieden vegetarische en veganistische opties — voor in het café of om mee te nemen (soep, taart, cake en quiche).
+    Bij lunchcafé Piment werken we waar mogelijk met groenten en kruiden direct uit de biologische zelfoogsttuin van CSA Bodemvrucht. We bieden vegetarische en veganistische opties — voor in het café of om mee te nemen (soep, taart, cake en quiche).
   en: |
-    Our lunch café sits in the middle of nature at Landgoed de Rading, with a beautiful garden where you'll find quiet spots to sit on a sunny day. On less sunny days the conservatory and café are warm and welcoming, like a living room on the estate.
+    Our lunch café sits in the middle of nature at Rading 1b, on the edge of the Hoorneboegse heath and the Zonnestraal estate, with a beautiful garden where you'll find quiet spots to sit on a sunny day. On less sunny days the conservatory and café are warm and welcoming, like a living room in the green.
 
-    At lunch café Piment we use as many vegetables and herbs as possible directly from the organic self-harvest garden Bodemvrucht. We offer vegetarian and vegan options — to eat in or take away (soup, pies, cakes and quiche).
+    At lunch café Piment we work wherever possible with vegetables and herbs directly from the organic self-harvest garden of CSA Bodemvrucht. We offer vegetarian and vegan options — to eat in or take away (soup, pies, cakes and quiche).
 
 intro_callout:
   nl: "We kijken ernaar uit je te ontvangen op onze bijzondere locatie!"
@@ -61,7 +61,7 @@ menu_footer_note:
   nl: "Allergie of speciaal dieet? Laat het ons weten — wij helpen je graag verder."
   en: "Allergy or special diet? Let us know — we're happy to help."
 
-extra_image: /assets/images/lunchcafe-2.jpg
+extra_image: /assets/images/broodje-van-de-week.jpg
 ---
 
 <section class="section container" style="padding-top: var(--spacing-12);">
@@ -78,6 +78,12 @@ extra_image: /assets/images/lunchcafe-2.jpg
     {% if intro_callout %}
       <p class="label-md" style="color: var(--primary); margin-top: var(--spacing-8);">{{ intro_callout | t(lang) }}</p>
     {% endif %}
+
+    {% if extra_image %}
+      <div style="margin-top: var(--spacing-12);">
+        <img src="{{ extra_image }}" alt="" loading="lazy" style="width: 100%; max-height: 480px; object-fit: cover; border-radius: var(--radius-md) var(--radius-xl) var(--radius-xl) var(--radius-md); box-shadow: var(--ambient-shadow);">
+      </div>
+    {% endif %}
   </div>
 </section>
 
@@ -89,7 +95,7 @@ extra_image: /assets/images/lunchcafe-2.jpg
     </div>
 
     <div style="display: grid; grid-template-columns: 1fr; gap: var(--spacing-20);">
-      {% for key, menuData in menu %}
+      {% for menuData in menu | objectValues | sort(attribute='order') %}
         <div>
           <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: var(--spacing-8); text-align: center;">
             {{ menuData.category | t(lang) }}

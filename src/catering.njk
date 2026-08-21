@@ -10,8 +10,8 @@ title:
   nl: "Vegetarische catering op maat — Piment Catering"
   en: "Tailored vegetarian catering — Piment Catering"
 description:
-  nl: "Vegetarische catering voor zakelijke lunches, feesten en evenementen. Wereldse smaken met lokale, biologische ingrediënten."
-  en: "Vegetarian catering for business lunches, parties and events. World flavors with local, organic ingredients."
+  nl: "Vegetarische catering voor zakelijke lunches, feesten en evenementen. Met zorg bereid, met lokale en seizoensgebonden ingrediënten."
+  en: "Vegetarian catering for business lunches, parties and events. Prepared with care, with local and seasonal ingredients."
 
 hero_label:
   nl: "Voor elke gelegenheid"
@@ -24,13 +24,13 @@ hero_intro:
   nl: |
     Bij Piment stellen we ieder vegetarisch menu volledig samen in overleg met jou als opdrachtgever. Hieronder vind je enkele sfeerimpressies van wat er mogelijk is.
 
-    Ook voor de catering van feesten en events ben je bij Piment Catering aan het juiste adres. Wij werken met duurzame, biologische en lokaal geproduceerde ingrediënten, met zorg bereid: wereldse smaken, liefde uit de buurt en eerlijk eten voor een eerlijke prijs.
+    Ook voor de catering van feesten en events ben je bij Piment Catering aan het juiste adres. Wij werken met duurzame en lokaal geproduceerde ingrediënten, met zorg bereid: liefde uit de buurt en eerlijk eten voor een eerlijke prijs.
 
     We bespreken samen jouw wensen en de menukeuze. We komen graag koken in jouw (eigen) keuken. Het is ook mogelijk om de gerechten bij ons op te halen. Dieetwensen en allergieën zijn geen enkel probleem.
   en: |
     At Piment we put together every vegetarian menu in close consultation with you as the host. Below you'll find a few impressions of what's possible.
 
-    For catering parties and events you've come to the right place at Piment Catering. We work with sustainable, organic and locally produced ingredients, prepared with care: world flavors, love from the neighborhood and honest food for a fair price.
+    For catering parties and events you've come to the right place at Piment Catering. We work with sustainable and locally produced ingredients, prepared with care: love from the neighborhood and honest food for a fair price.
 
     We'll discuss your wishes and the menu together. We're happy to come and cook in your (own) kitchen, or you can pick up the dishes from us. Dietary requirements and allergies are no problem at all.
 
@@ -65,6 +65,9 @@ form_title:
 form_intro:
   nl: "Vertel ons over je event en we nemen zo snel mogelijk contact met je op."
   en: "Tell us about your event and we'll get back to you as soon as possible."
+phone_text:
+  nl: "Liever direct contact? Bel Jimy:"
+  en: "Prefer to talk directly? Call Jimy:"
 ---
 
 <section class="section container" style="padding-top: var(--spacing-12);">
@@ -101,7 +104,13 @@ form_intro:
   <div style="max-width: 720px; margin: 0 auto;">
     <div class="card" style="padding: var(--spacing-12);">
       <h2 style="margin-bottom: var(--spacing-4);">{{ form_title | t(lang) }}</h2>
-      <p class="body-lg" style="margin-bottom: var(--spacing-8);">{{ form_intro | t(lang) }}</p>
+      <p class="body-lg" style="margin-bottom: var(--spacing-4);">{{ form_intro | t(lang) }}</p>
+      {% if site.contact.catering_phone %}
+        <p class="body-lg" style="margin-bottom: var(--spacing-8);">
+          {{ phone_text | t(lang) }}
+          <a href="tel:{{ site.contact.catering_phone_link }}" style="color: var(--primary); font-weight: 600;">{{ site.contact.catering_phone }}</a>
+        </p>
+      {% endif %}
       <form name="catering-aanvraag" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="{{ '/contact/' | localizedUrl(lang) }}?success=true">
         <input type="hidden" name="form-name" value="catering-aanvraag">
         <p hidden><label>{{ ui.form.honeypot_label | t(lang) }}: <input name="bot-field"></label></p>

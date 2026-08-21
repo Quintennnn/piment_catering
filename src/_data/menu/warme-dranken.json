@@ -1,0 +1,90 @@
+{
+  "order": 2,
+  "category": {
+    "nl": "Warme dranken",
+    "en": "Hot drinks"
+  },
+  "items": [
+    {
+      "name": {
+        "nl": "Koffie",
+        "en": "Coffee"
+      },
+      "description": {
+        "nl": "We gebruiken standaard Oatly havermelk bij onze koffie.",
+        "en": "We use Oatly oat milk as standard in our coffees."
+      },
+      "price": "€ 3,00"
+    },
+    {
+      "name": {
+        "nl": "Koffie verkeerd",
+        "en": "Koffie verkeerd (milky coffee)"
+      },
+      "price": "€ 3,65"
+    },
+    {
+      "name": {
+        "nl": "Cappuccino",
+        "en": "Cappuccino"
+      },
+      "price": "€ 3,65"
+    },
+    {
+      "name": {
+        "nl": "Flat white",
+        "en": "Flat white"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Espresso",
+        "en": "Espresso"
+      },
+      "price": "€ 3,00"
+    },
+    {
+      "name": {
+        "nl": "Dubbele espresso",
+        "en": "Double espresso"
+      },
+      "price": "€ 4,25"
+    },
+    {
+      "name": {
+        "nl": "Latte macchiato",
+        "en": "Latte macchiato"
+      },
+      "price": "€ 4,75"
+    },
+    {
+      "name": {
+        "nl": "Kopje thee",
+        "en": "Cup of tea"
+      },
+      "price": "€ 3,00"
+    },
+    {
+      "name": {
+        "nl": "Potje thee",
+        "en": "Pot of tea"
+      },
+      "price": "€ 6,50"
+    },
+    {
+      "name": {
+        "nl": "Warme chocolademelk",
+        "en": "Hot chocolate"
+      },
+      "price": "€ 4,50"
+    },
+    {
+      "name": {
+        "nl": "Slagroom",
+        "en": "Whipped cream"
+      },
+      "price": "€ 0,50"
+    }
+  ]
+}

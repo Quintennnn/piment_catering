@@ -71,6 +71,20 @@
             </a>
           {% endfor %}
         </li>
+        {% if site.social.instagram or site.social.facebook %}
+          <li class="social-links header-social" aria-label="{{ ui.labels.follow_us | t(lang) }}">
+            {% if site.social.instagram %}
+              <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.4" cy="6.6" r="0.5" fill="currentColor" stroke="none"/></svg>
+              </a>
+            {% endif %}
+            {% if site.social.facebook %}
+              <a href="{{ site.social.facebook }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            {% endif %}
+          </li>
+        {% endif %}
       </ul>
     </div>
   </header>

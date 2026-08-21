@@ -1,0 +1,107 @@
+{
+  "order": 3,
+  "category": {
+    "nl": "Koude frisdrank en sap",
+    "en": "Cold drinks and juices"
+  },
+  "items": [
+    {
+      "name": {
+        "nl": "Kombucha",
+        "en": "Kombucha"
+      },
+      "price": "€ 4,50"
+    },
+    {
+      "name": {
+        "nl": "0.0% bier",
+        "en": "0.0% beer"
+      },
+      "price": "€ 4,50"
+    },
+    {
+      "name": {
+        "nl": "Bitter lemon",
+        "en": "Bitter lemon"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Ginger ale",
+        "en": "Ginger ale"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Indian tonic",
+        "en": "Indian tonic"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Vlierbloesem",
+        "en": "Elderflower"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Framboos",
+        "en": "Raspberry"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Cola",
+        "en": "Cola"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Mineraalwater plat",
+        "en": "Still mineral water"
+      },
+      "price": "€ 3,50"
+    },
+    {
+      "name": {
+        "nl": "Mineraalwater bruisend",
+        "en": "Sparkling mineral water"
+      },
+      "price": "€ 3,50"
+    },
+    {
+      "name": {
+        "nl": "Appelsap",
+        "en": "Apple juice"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Appel-mangosap",
+        "en": "Apple-mango juice"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Perensap",
+        "en": "Pear juice"
+      },
+      "price": "€ 3,75"
+    },
+    {
+      "name": {
+        "nl": "Sinaasappelsap",
+        "en": "Orange juice"
+      },
+      "price": "€ 3,75"
+    }
+  ]
+}

@@ -386,6 +386,18 @@ a:hover { color: var(--primary-container); }
   height: 22px;
 }
 
+/* Social icons in the header nav */
+.header-social {
+  margin-top: 0;
+  margin-left: var(--spacing-2);
+  gap: var(--spacing-2);
+}
+
+.header-social svg {
+  width: 20px;
+  height: 20px;
+}
+
 .nav-links {
   display: flex;
   gap: var(--spacing-8);
@@ -528,6 +540,17 @@ a:hover { color: var(--primary-container); }
   .lang-switcher a {
     padding: 4px 10px 4px 4px;
     font-size: 0.78rem;
+  }
+
+  .header-social {
+    margin-left: 0;
+    margin-top: var(--spacing-2);
+    gap: var(--spacing-4);
+  }
+
+  .header-social a {
+    display: inline-flex;
+    padding: 0;
   }
 }
 
