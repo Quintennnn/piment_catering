@@ -8,6 +8,10 @@ backend:
 media_folder: "src/assets/images"
 public_folder: "/assets/images"
 
+# Geen preview-paneel in de editor; de velden zelf zijn duidelijk genoeg.
+editor:
+  preview: false
+
 # Vertaalbare velden gebruiken het object-widget met NL/EN sub-velden.
 # Lange velden (text/markdown) zijn standaard ingeklapt om de editor overzichtelijk te houden.
 
