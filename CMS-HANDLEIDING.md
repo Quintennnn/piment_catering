@@ -11,7 +11,7 @@ De site heeft een beheeromgeving (CMS) waarmee je zelf teksten, foto's, het menu
 ## Iets aanpassen
 
 1. Kies links een onderdeel:
-   - **Pagina's** — de teksten van Home, Lunchcafé, Catering, Over Piment, Contact
+   - **Pagina's** — de teksten van Home, Lunchcafé, Catering, Evenementen, Over Piment, Contact
    - **Site-instellingen** — logo, adres, openingstijden, telefoonnummer
    - **Menu** en **Vacatures**
 2. Klik op de pagina die je wilt bewerken en pas de velden aan.

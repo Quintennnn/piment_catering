@@ -99,7 +99,7 @@ collections:
             summary: "{{fields.key}} → {{fields.url}}"
             hint: "De zichtbare tekst van de menu-items beheer je in de UI-vertalingen (vraag de developer)."
             fields:
-              - { label: "Sleutel", name: "key", widget: "string", hint: "home, lunchcafe, catering, about, vacancies, contact" }
+              - { label: "Sleutel", name: "key", widget: "string", hint: "home, lunchcafe, catering, events, about, vacancies, contact" }
               - { label: "URL", name: "url", widget: "string", hint: "bv. /lunchcafe/" }
 
   # ----------------------------------------------------------------------
@@ -255,6 +255,40 @@ collections:
 
           - { label: "Catering — knop URL", name: "catering_cta_url", widget: "string" }
 
+          # --- Evenementen teaser ---
+          - label: "Evenementen — klein label"
+            name: "events_label"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Evenementen — titel"
+            name: "events_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Evenementen — tekst"
+            name: "events_text"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - { label: "Evenementen — foto (breed)", name: "events_image", widget: "image" }
+
+          - label: "Evenementen — knop tekst"
+            name: "events_cta_label"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - { label: "Evenementen — knop URL", name: "events_cta_url", widget: "string" }
+
           # --- Instagram teaser ---
           - label: "Instagram — tekst (onder de reviews)"
             name: "instagram_text"
@@ -305,6 +339,16 @@ collections:
               - { label: "English", name: "en", widget: "string" }
 
           - { label: "Afsluiting — tweede knop URL", name: "closing_secondary_url", widget: "string" }
+
+          - label: "Afsluiting — evenementen-link tekst (optioneel)"
+            name: "closing_events_label"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string", required: false }
+              - { label: "English", name: "en", widget: "string", required: false }
+
+          - { label: "Afsluiting — evenementen-link URL", name: "closing_events_url", widget: "string", required: false }
 
       - label: "Lunchcafé"
         name: "lunchcafe"
@@ -495,6 +539,128 @@ collections:
             fields:
               - { label: "Nederlands", name: "nl", widget: "string" }
               - { label: "English", name: "en", widget: "string" }
+
+      - label: "Evenementen"
+        name: "evenementen"
+        file: "src/evenementen.njk"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
+
+          - label: "Browser-titel"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Meta description"
+            name: "description"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - label: "Klein label"
+            name: "hero_label"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Titel"
+            name: "hero_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Intro tekst"
+            name: "hero_intro"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - { label: "Grote foto onder de intro", name: "hero_image", widget: "image" }
+
+          - label: "Blok 1 (bruiloften/feesten) — klein label"
+            name: "weddings_label"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Blok 1 — titel"
+            name: "weddings_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Blok 1 — tekst"
+            name: "weddings_text"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "markdown" }
+              - { label: "English", name: "en", widget: "markdown" }
+
+          - { label: "Blok 1 — foto (staand uitgesneden)", name: "weddings_image", widget: "image" }
+
+          - label: "Blok 2 (zakelijk) — klein label"
+            name: "business_label"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Blok 2 — titel"
+            name: "business_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Blok 2 — tekst"
+            name: "business_text"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "markdown" }
+              - { label: "English", name: "en", widget: "markdown" }
+
+          - { label: "Blok 2 — foto (liggend)", name: "business_image", widget: "image" }
+
+          - label: "Formuliertitel"
+            name: "form_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Formulier intro"
+            name: "form_intro"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - label: "Soorten evenement (keuzelijst in het formulier)"
+            name: "event_types"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Nederlands"
+                name: "nl"
+                widget: "list"
+                field: { label: "Soort", name: "type", widget: "string" }
+              - label: "English"
+                name: "en"
+                widget: "list"
+                field: { label: "Type", name: "type", widget: "string" }
 
       - label: "Over Piment"
         name: "over-piment"

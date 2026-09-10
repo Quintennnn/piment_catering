@@ -161,6 +161,16 @@ a:hover { color: var(--primary-container); }
   align-items: center;
 }
 .split-grid .split-image img { aspect-ratio: 4 / 5; }
+.split-grid .split-image.is-landscape img { aspect-ratio: 4 / 3; }
+
+.split-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  box-shadow: var(--ambient-shadow);
+}
+.split-img-a { border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl); }
+.split-img-b { border-radius: var(--radius-md) var(--radius-xl) var(--radius-xl) var(--radius-md); }
 
 @media (min-width: 768px) {
   .split-grid {
@@ -317,6 +327,19 @@ a:hover { color: var(--primary-container); }
   border: var(--ghost-border);
 }
 
+select.input-field {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23795605' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  cursor: pointer;
+}
+
+select.input-field:invalid { color: rgba(34, 26, 15, 0.55); }
+select.input-field option { color: var(--on-surface); }
+
 .input-label {
   display: block;
   font-family: var(--font-body);
@@ -337,7 +360,7 @@ a:hover { color: var(--primary-container); }
   background-color: rgba(255, 248, 243, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  padding: var(--spacing-4) 0;
+  padding: 0.75rem 0;
 }
 
 .nav {
@@ -353,16 +376,22 @@ a:hover { color: var(--primary-container); }
   line-height: 1;
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .logo-img {
-  height: 64px;
+  height: 96px;
   width: auto;
   display: block;
 }
 
 .footer-logo {
-  height: 72px;
+  height: 96px;
+}
+
+@media (max-width: 1100px) {
+  .logo-img { height: 72px; }
+  .footer-logo { height: 80px; }
 }
 
 .social-links {
@@ -400,7 +429,7 @@ a:hover { color: var(--primary-container); }
 
 .nav-links {
   display: flex;
-  gap: var(--spacing-8);
+  gap: var(--spacing-6);
   list-style: none;
   align-items: center;
 }
@@ -410,6 +439,7 @@ a:hover { color: var(--primary-container); }
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 1rem;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -497,7 +527,7 @@ a:hover { color: var(--primary-container); }
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-@media (max-width: 880px) {
+@media (max-width: 1100px) {
   .nav-toggle { display: inline-flex; }
 
   .nav-links {
@@ -850,5 +880,78 @@ a:hover { color: var(--primary-container); }
 
   .closing-cta-text {
     padding: var(--spacing-8) var(--spacing-12) var(--spacing-8) 0;
+  }
+}
+
+/* ==========================================================================
+   Evenementen — hero media
+   ========================================================================== */
+
+.events-hero-media {
+  margin-top: var(--spacing-12);
+}
+
+.events-hero-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-lg) var(--radius-xl);
+  box-shadow: var(--ambient-shadow);
+}
+
+@media (min-width: 768px) {
+  .events-hero-media img {
+    aspect-ratio: 21 / 10;
+    max-height: 70vh;
+  }
+}
+
+/* ==========================================================================
+   Homepage — Evenementen teaser (photo with overlapping card)
+   ========================================================================== */
+
+.events-teaser {
+  padding: var(--spacing-20) 0 var(--spacing-8);
+}
+
+.events-teaser-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-xl) var(--radius-md) var(--radius-xl) var(--radius-md);
+  box-shadow: var(--ambient-shadow);
+}
+
+.events-teaser-card {
+  margin: calc(-1 * var(--spacing-8)) var(--spacing-4) 0;
+  position: relative;
+  z-index: 2;
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg) var(--radius-xl) var(--radius-lg) var(--radius-lg);
+}
+
+.events-teaser-card .label-md {
+  display: block;
+  color: var(--secondary);
+}
+
+.events-teaser-card h2 {
+  margin-top: var(--spacing-4);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.events-teaser-card p {
+  margin-bottom: var(--spacing-8);
+}
+
+@media (min-width: 900px) {
+  .events-teaser-media img {
+    aspect-ratio: 21 / 9;
+  }
+
+  .events-teaser-card {
+    max-width: 560px;
+    margin: calc(-1 * var(--spacing-24)) 0 0 var(--spacing-12);
+    padding: var(--spacing-12);
   }
 }

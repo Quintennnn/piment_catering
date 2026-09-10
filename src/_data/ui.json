@@ -3,6 +3,7 @@
     "home":      { "nl": "Home",            "en": "Home" },
     "lunchcafe": { "nl": "Lunchcafé",       "en": "Lunch café" },
     "catering":  { "nl": "Catering",        "en": "Catering" },
+    "events":    { "nl": "Evenementen",     "en": "Events" },
     "about":     { "nl": "Over Piment",     "en": "About Piment" },
     "vacancies": { "nl": "Vacatures",       "en": "Vacancies" },
     "contact":   { "nl": "Contact",         "en": "Contact" }
@@ -21,6 +22,8 @@
     "phone":             { "nl": "Telefoonnummer",      "en": "Phone number" },
     "message":           { "nl": "Bericht",             "en": "Message" },
     "event_date":        { "nl": "Datum evenement",     "en": "Event date" },
+    "event_type":        { "nl": "Soort evenement",     "en": "Type of event" },
+    "choose_option":     { "nl": "Maak een keuze",      "en": "Choose an option" },
     "guests":            { "nl": "Aantal personen",     "en": "Number of guests" },
     "your_wishes":       { "nl": "Jouw wensen / omschrijving", "en": "Your wishes / description" },
     "language":          { "nl": "Taal",                "en": "Language" },

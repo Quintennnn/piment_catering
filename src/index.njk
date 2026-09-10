@@ -21,8 +21,8 @@ hero_title:
   nl: "Lekker vegetarisch eten in het groen"
   en: "Delicious vegetarian food in nature"
 hero_text:
-  nl: "Vegetarisch lunchcafé Piment ligt midden in het groen aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal, een plek waar binnenlopen voelt als thuiskomen. We werken waar mogelijk met de biologische producten van zelfoogsttuin CSA Bodemvrucht: vers uit de tuin, met liefde uit de buurt."
-  en: "Vegetarian lunch café Piment sits in the middle of nature on the edge of the Hoorneboegse heath and the Zonnestraal estate, a place where walking in feels like coming home. Wherever possible we work with organic produce from self-harvest garden CSA Bodemvrucht: fresh from the garden, with love from the neighborhood."
+  nl: "Vegetarisch lunchcafé Piment ligt midden in het groen aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal, een plek waar binnenlopen voelt als thuiskomen. We werken zoveel mogelijk met de biologische producten van zelfoogsttuin CSA Bodemvrucht: vers uit de tuin, met liefde uit de buurt."
+  en: "Vegetarian lunch café Piment sits in the middle of nature on the edge of the Hoorneboegse heath and the Zonnestraal estate, a place where walking in feels like coming home. As much as possible we work with organic produce from self-harvest garden CSA Bodemvrucht: fresh from the garden, with love from the neighborhood."
 hero_cta_label:
   nl: "Bekijk het lunchcafé"
   en: "Explore the lunch café"
@@ -72,6 +72,22 @@ catering_cta_label:
   en: "Tell us what you need"
 catering_cta_url: /catering/
 
+# Evenementen teaser
+events_label:
+  nl: "Onze locatie huren"
+  en: "Hire our venue"
+events_title:
+  nl: "Vier het in het groen"
+  en: "Celebrate in the green"
+events_text:
+  nl: "Onze locatie is ook te huur voor bruiloften, feesten en partijen of een zakelijke lunch. In het café, de serre en de tuin maken we er samen iets moois van, met het eten van Piment erbij."
+  en: "Our venue is also available to hire for weddings, parties or a business lunch. In the café, the conservatory and the garden we create something beautiful together, with Piment's food to match."
+events_image: /assets/images/evenementen-hero.jpg
+events_cta_label:
+  nl: "Bekijk de mogelijkheden"
+  en: "See the possibilities"
+events_cta_url: /evenementen/
+
 # Instagram teaser
 instagram_text:
   nl: "Neem een kijkje op onze Instagram"
@@ -96,6 +112,10 @@ closing_secondary_label:
   nl: "Vraag catering aan"
   en: "Request catering"
 closing_secondary_url: /catering/
+closing_events_label:
+  nl: "Of huur onze locatie voor een evenement"
+  en: "Or hire our venue for an event"
+closing_events_url: /evenementen/
 ---
 
 <!-- ===================== HERO ===================== -->
@@ -162,6 +182,21 @@ closing_secondary_url: /catering/
   </div>
 </section>
 
+<!-- ===================== EVENEMENTEN ===================== -->
+{% if events_title %}
+<section class="events-teaser container">
+  <div class="events-teaser-media">
+    <img src="{{ events_image }}" alt="" loading="lazy">
+  </div>
+  <div class="card events-teaser-card">
+    <span class="label-md">{{ events_label | t(lang) }}</span>
+    <h2>{{ events_title | t(lang) }}</h2>
+    <p class="body-lg">{{ events_text | t(lang) }}</p>
+    <a href="{{ events_cta_url | localizedUrl(lang) }}" class="btn btn-secondary">{{ events_cta_label | t(lang) }}</a>
+  </div>
+</section>
+{% endif %}
+
 <!-- ===================== PULL-QUOTE TESTIMONIAL ===================== -->
 <section class="section-bg-shift">
   <div class="container" style="max-width: 900px;">
@@ -217,6 +252,11 @@ closing_secondary_url: /catering/
           <a href="{{ closing_primary_url | localizedUrl(lang) }}" class="btn btn-primary">{{ closing_primary_label | t(lang) }}</a>
           <a href="{{ closing_secondary_url | localizedUrl(lang) }}" class="btn btn-secondary">{{ closing_secondary_label | t(lang) }}</a>
         </div>
+        {% if closing_events_label %}
+          <p style="margin-top: var(--spacing-6); margin-bottom: 0;">
+            <a href="{{ closing_events_url | localizedUrl(lang) }}" class="link-arrow">{{ closing_events_label | t(lang) }} →</a>
+          </p>
+        {% endif %}
       </div>
     </div>
   </div>

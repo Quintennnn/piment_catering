@@ -1,0 +1,168 @@
+---
+layout: base.njk
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/evenementen/{% else %}/evenementen/{% endif %}"
+
+title:
+  nl: "Evenementen en locatie huren - Piment Catering"
+  en: "Events and venue hire - Piment Catering"
+description:
+  nl: "Huur de locatie van Piment in Hilversum voor bruiloften, feesten en partijen of zakelijke lunches en diners. In het groen, met vegetarische catering van Piment."
+  en: "Hire Piment's venue in Hilversum for weddings, parties or business lunches and dinners. Surrounded by nature, with vegetarian catering by Piment."
+
+hero_label:
+  nl: "Onze locatie huren"
+  en: "Hire our venue"
+hero_title:
+  nl: "Vier het in het groen"
+  en: "Celebrate in the green"
+hero_intro:
+  nl: "Onze bijzondere locatie aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal is ook te huur voor jouw evenement. Van bruiloften en feesten tot zakelijke lunches en diners: in het café, de serre en de tuin maken we er samen iets moois van. Het eten verzorgen wij natuurlijk zelf: vegetarisch, vers uit de tuin, met liefde uit de buurt."
+  en: "Our special venue on the edge of the Hoorneboegse heath and the Zonnestraal estate is also available to hire for your event. From weddings and parties to business lunches and dinners: in the café, the conservatory and the garden we create something beautiful together. The food is naturally ours: vegetarian, fresh from the garden, with love from the neighborhood."
+hero_image: /assets/images/evenementen-hero.jpg
+
+weddings_label:
+  nl: "Bruiloften, feesten en partijen"
+  en: "Weddings, parties and celebrations"
+weddings_title:
+  nl: "Een feest op een plek die voelt als thuis"
+  en: "A celebration in a place that feels like home"
+weddings_text:
+  nl: |
+    Trouwen of een feest geven op een plek die voelt als thuis? Afgelopen winter vierden we hier een bruiloft, met de ceremonie in de serre en lange gedekte tafels in het café. We denken graag mee over het menu, de aankleding en het verloop van de dag.
+  en: |
+    Getting married or throwing a party in a place that feels like home? Last winter we hosted a wedding here, with the ceremony in the conservatory and long dressed tables in the café. We're happy to think along about the menu, the styling and the flow of the day.
+weddings_image: /assets/images/evenementen-ceremonie.jpg
+
+business_label:
+  nl: "Zakelijk"
+  en: "Business"
+business_title:
+  nl: "Vergaderen, lunchen of borrelen in het groen"
+  en: "Meet, lunch or celebrate in the green"
+business_text:
+  nl: |
+    Ook voor een zakelijke lunch, teamdag, vergadering of borrel ben je welkom. Een rustige plek in het groen, vlak bij Hilversum, met een lunch die net even anders is.
+  en: |
+    You're also welcome for a business lunch, team day, meeting or drinks. A quiet spot surrounded by nature, close to Hilversum, with a lunch that's just a little different.
+business_image: /assets/images/evenementen-tafel.jpg
+
+form_title:
+  nl: "Vraag de mogelijkheden aan"
+  en: "Ask about the possibilities"
+form_intro:
+  nl: "Vertel ons over je evenement en we nemen zo snel mogelijk contact met je op."
+  en: "Tell us about your event and we'll get back to you as soon as possible."
+event_types:
+  nl:
+    - "Bruiloft"
+    - "Feest of partij"
+    - "Zakelijke lunch of diner"
+    - "Anders"
+  en:
+    - "Wedding"
+    - "Party or celebration"
+    - "Business lunch or dinner"
+    - "Other"
+---
+
+<section class="section container" style="padding-top: var(--spacing-12);">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title | t(lang) }}</h1>
+    <p class="body-lg" style="margin-bottom: 0;">{{ hero_intro | t(lang) }}</p>
+  </div>
+
+  <div class="events-hero-media">
+    <img src="{{ hero_image }}" alt="{{ hero_title | t(lang) }}">
+  </div>
+</section>
+
+<section class="section-bg-shift">
+  <div class="container">
+    <div class="split-grid">
+      <div class="split-text">
+        <span class="label-md" style="color: var(--secondary);">{{ weddings_label | t(lang) }}</span>
+        <h2 style="margin-top: var(--spacing-4);">{{ weddings_title | t(lang) }}</h2>
+        <div class="prose">{{ weddings_text | mdLocalized(lang) | safe }}</div>
+      </div>
+      <div class="split-image">
+        <img src="{{ weddings_image }}" alt="" loading="lazy" class="split-img split-img-a">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section container">
+  <div class="split-grid split-grid-reverse">
+    <div class="split-image is-landscape">
+      <img src="{{ business_image }}" alt="" loading="lazy" class="split-img split-img-b">
+    </div>
+    <div class="split-text">
+      <span class="label-md" style="color: var(--secondary);">{{ business_label | t(lang) }}</span>
+      <h2 style="margin-top: var(--spacing-4);">{{ business_title | t(lang) }}</h2>
+      <div class="prose">{{ business_text | mdLocalized(lang) | safe }}</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-bg-shift">
+  <div class="container" style="max-width: 720px;">
+    <div class="card" style="padding: var(--spacing-12);">
+      <h2 style="margin-bottom: var(--spacing-4);">{{ form_title | t(lang) }}</h2>
+      <p class="body-lg" style="margin-bottom: var(--spacing-8);">{{ form_intro | t(lang) }}</p>
+      <form name="evenement-aanvraag" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="{{ '/contact/' | localizedUrl(lang) }}?success=true">
+        <input type="hidden" name="form-name" value="evenement-aanvraag">
+        <p hidden><label>{{ ui.form.honeypot_label | t(lang) }}: <input name="bot-field"></label></p>
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label" for="ev-name">{{ ui.labels.name | t(lang) }}</label>
+          <input id="ev-name" type="text" name="name" class="input-field" required>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label" for="ev-email">{{ ui.labels.email_address | t(lang) }}</label>
+          <input id="ev-email" type="email" name="email" class="input-field" required>
+        </div>
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label" for="ev-phone">{{ ui.labels.phone | t(lang) }}</label>
+          <input id="ev-phone" type="tel" name="phone" class="input-field">
+        </div>
+
+        {% set typeList = event_types | t(lang) %}
+        {% if typeList and typeList.length %}
+          <div style="margin-bottom: var(--spacing-6);">
+            <label class="input-label" for="ev-type">{{ ui.labels.event_type | t(lang) }}</label>
+            <select id="ev-type" name="event_type" class="input-field" required>
+              <option value="" disabled selected>{{ ui.labels.choose_option | t(lang) }}</option>
+              {% for type in typeList %}
+                <option value="{{ type }}">{{ type }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label" for="ev-date">{{ ui.labels.event_date | t(lang) }}</label>
+          <input id="ev-date" type="date" name="date" class="input-field">
+        </div>
+
+        <div style="margin-bottom: var(--spacing-6);">
+          <label class="input-label" for="ev-guests">{{ ui.labels.guests | t(lang) }}</label>
+          <input id="ev-guests" type="number" name="guests" class="input-field" min="1">
+        </div>
+
+        <div style="margin-bottom: var(--spacing-8);">
+          <label class="input-label" for="ev-message">{{ ui.labels.your_wishes | t(lang) }}</label>
+          <textarea id="ev-message" name="message" class="input-field" rows="5" required style="resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding-top: 1rem; padding-bottom: 1rem;">{{ ui.buttons.send_request | t(lang) }}</button>
+      </form>
+    </div>
+  </div>
+</section>
