@@ -1,6 +1,7 @@
 {
   "name": "Piment Catering",
   "logo": "/assets/images/logo.avif",
+  "emblem": "/assets/images/hoed.png",
   "tagline": {
     "nl": "Vers uit de tuin, liefde uit de buurt",
     "en": "Fresh from the garden, love from the neighborhood"

@@ -80,14 +80,15 @@ h1, h2, h3, h4, .display {
   line-height: 1.1;
   color: var(--on-surface);
   margin-bottom: var(--spacing-6);
+  text-wrap: balance;
 }
 
 h1, .display-lg {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: clamp(2.125rem, 4vw, 3rem);
   letter-spacing: -0.02em;
 }
 
-h2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+h2 { font-size: clamp(1.75rem, 3.2vw, 2.5rem); }
 h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
 
 p, .body-lg {
@@ -427,11 +428,44 @@ select.input-field option { color: var(--on-surface); }
   height: 20px;
 }
 
+/* Hat emblem, sits right of the social icons and links to Over Piment */
+.header-hat-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: var(--spacing-2);
+  padding: 2px;
+  border-radius: var(--radius-md);
+  transition: transform 0.25s ease;
+}
+
+.header-hat-link:hover,
+.header-hat-link:focus-visible {
+  transform: translateY(-2px) rotate(-5deg);
+}
+
+.header-hat-link:focus-visible {
+  outline: 2px solid var(--tertiary);
+  outline-offset: 2px;
+}
+
+.header-hat {
+  height: 48px;
+  width: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-hat-link { transition: none; }
+  .header-hat-link:hover,
+  .header-hat-link:focus-visible { transform: none; }
+}
+
 .nav-links {
   display: flex;
   gap: var(--spacing-6);
   list-style: none;
   align-items: center;
+  margin-left: auto;
 }
 
 .nav-links a {
@@ -535,6 +569,7 @@ select.input-field option { color: var(--on-surface); }
     top: 100%;
     left: 0;
     right: 0;
+    margin-left: 0;
     flex-direction: column;
     background-color: rgba(255, 248, 243, 0.97);
     backdrop-filter: blur(16px);
@@ -582,6 +617,18 @@ select.input-field option { color: var(--on-surface); }
     display: inline-flex;
     padding: 0;
   }
+
+  /* Hat stays in the top bar on mobile, left of the menu button */
+  .header-hat-link {
+    order: 1;
+    margin-left: auto;
+  }
+
+  .header-hat {
+    height: 40px;
+  }
+
+  .nav-toggle { order: 2; }
 }
 
 /* ==========================================================================
@@ -641,6 +688,12 @@ select.input-field option { color: var(--on-surface); }
 
 .hero-text h1 {
   margin-bottom: var(--spacing-6);
+}
+
+/* Accent words in the hero title (written as *woorden* in the CMS) */
+.hero-text h1 em {
+  font-style: italic;
+  color: var(--secondary);
 }
 
 .hero-text p {

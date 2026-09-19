@@ -86,6 +86,11 @@
           </li>
         {% endif %}
       </ul>
+      {% if site.emblem %}
+        <a href="{{ '/over-piment/' | localizedUrl(lang) }}" class="header-hat-link" aria-label="{{ ui.nav.about | t(lang) }}">
+          <img src="{{ site.emblem }}" alt="" class="header-hat" width="400" height="262" decoding="async">
+        </a>
+      {% endif %}
     </div>
   </header>
 

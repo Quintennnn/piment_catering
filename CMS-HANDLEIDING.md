@@ -16,6 +16,7 @@ De site heeft een beheeromgeving (CMS) waarmee je zelf teksten, foto's, het menu
    - **Menu** en **Vacatures**
 2. Klik op de pagina die je wilt bewerken en pas de velden aan.
    - De meeste velden hebben een **Nederlands** en een **English** vakje: vul allebei in.
+   - In de **Hero — titel** van de homepage kun je een paar woorden tussen sterretjes zetten, bijvoorbeeld `*in het groen*`. Die woorden komen dan schuin en in het groen op de site.
 3. Klik rechtsboven op **Save** en daarna op **Publish**.
 
 Na het publiceren bouwt de site zichzelf opnieuw. **Na 1 à 2 minuten** staat je wijziging live. Even je browser verversen (Cmd+R / F5) als je het nog niet ziet.

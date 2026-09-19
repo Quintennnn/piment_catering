@@ -31,6 +31,8 @@ collections:
 
           - { label: "Logo (header, footer en favicon)", name: "logo", widget: "image" }
 
+          - { label: "Hoedje (embleem rechtsboven in de header)", name: "emblem", widget: "image", required: false }
+
           - label: "Tagline (kort)"
             name: "tagline"
             widget: "object"

@@ -18,8 +18,8 @@ hero_label:
   nl: "Vers uit de tuin, liefde uit de buurt"
   en: "Fresh from the garden, love from the neighborhood"
 hero_title:
-  nl: "Lekker vegetarisch eten in het groen"
-  en: "Delicious vegetarian food in nature"
+  nl: "Lekker vegetarisch eten *in het groen*"
+  en: "Delicious vegetarian food *in nature*"
 hero_text:
   nl: "Vegetarisch lunchcafé Piment ligt midden in het groen aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal, een plek waar binnenlopen voelt als thuiskomen. We werken zoveel mogelijk met de biologische producten van zelfoogsttuin CSA Bodemvrucht: vers uit de tuin, met liefde uit de buurt."
   en: "Vegetarian lunch café Piment sits in the middle of nature on the edge of the Hoorneboegse heath and the Zonnestraal estate, a place where walking in feels like coming home. As much as possible we work with organic produce from self-harvest garden CSA Bodemvrucht: fresh from the garden, with love from the neighborhood."
@@ -39,8 +39,8 @@ lunchcafe_label:
   nl: "Het lunchcafé"
   en: "The lunch café"
 lunchcafe_title:
-  nl: "Genieten in het groen"
-  en: "Enjoy yourself in nature"
+  nl: "Lunchen aan de rand van de heide"
+  en: "Lunch on the edge of the heath"
 lunchcafe_text:
   nl: "Piment is een huiskamer in het groen. Schuif aan voor een lunch, een goede koffie of thee met huisgemaakte taart, of haal iets lekkers af voor onderweg. Van maandag tot en met zaterdag ben je welkom, en even op adem komen mag hier gewoon."
   en: "Piment is a living room in the middle of nature. Join us for lunch, a good coffee or tea with homemade cake, or pick up something tasty to take away. You're welcome Monday to Saturday, and simply catching your breath is always allowed."
@@ -123,7 +123,7 @@ closing_events_url: /evenementen/
   <div class="container hero-grid">
     <div class="hero-text">
       <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
-      <h1 class="display-lg">{{ hero_title | t(lang) }}</h1>
+      <h1 class="display-lg">{{ hero_title | t(lang) | markdownInline | safe }}</h1>
       <p class="body-lg" style="max-width: 50ch;">{{ hero_text | t(lang) }}</p>
       <div class="hero-actions">
         <a href="{{ hero_cta_url | localizedUrl(lang) }}" class="btn btn-primary">{{ hero_cta_label | t(lang) }}</a>
