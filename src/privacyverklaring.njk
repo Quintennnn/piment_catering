@@ -23,7 +23,7 @@ last_updated:
   nl: "27 november 2025"
   en: "27 November 2025"
 
-body:
+text:
   nl: |
     Deze privacyverklaring hoort bij Piment Catering ([https://www.pimentcatering.nl](https://www.pimentcatering.nl)). Wij kunnen je persoonsgegevens verwerken doordat je gebruikmaakt van de diensten van Piment Catering en/of omdat je deze zelf aan ons verstrekt via een contact- of bestelformulier op onze website.
 
@@ -142,5 +142,5 @@ body:
     {% endif %}
   </div>
 
-  <div class="prose">{{ body | mdLocalized(lang) | safe }}</div>
+  <div class="prose">{{ text | mdLocalized(lang) | safe }}</div>
 </section>

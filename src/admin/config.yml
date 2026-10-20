@@ -922,7 +922,7 @@ collections:
               - { label: "English", name: "en", widget: "string", required: false }
 
           - label: "Inhoud"
-            name: "body"
+            name: "text"
             widget: "object"
             collapsed: true
             fields:
