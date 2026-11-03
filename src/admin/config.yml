@@ -587,6 +587,30 @@ collections:
 
           - { label: "Grote foto onder de intro", name: "hero_image", widget: "image" }
 
+          - label: "Agenda — klein label"
+            name: "agenda_label"
+            widget: "object"
+            hint: "De evenementen zelf voeg je toe onder 'Agenda' in het menu links. Zonder komende evenementen verdwijnt dit blok vanzelf."
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Agenda — titel"
+            name: "agenda_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Agenda — intro tekst (optioneel)"
+            name: "agenda_intro"
+            widget: "object"
+            required: false
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text", required: false }
+              - { label: "English", name: "en", widget: "text", required: false }
+
           - label: "Blok 1 (bruiloften/feesten) — klein label"
             name: "weddings_label"
             widget: "object"
@@ -983,6 +1007,74 @@ collections:
         fields:
           - { label: "Nederlands", name: "nl", widget: "string", required: false }
           - { label: "English", name: "en", widget: "string", required: false }
+
+  # ----------------------------------------------------------------------
+  # Agenda (één bestand per evenement, getoond op de evenementenpagina)
+  # ----------------------------------------------------------------------
+  - name: "agenda"
+    label: "Agenda"
+    label_singular: "Evenement"
+    description: "Komende evenementen, zoals workshops. Ze staan op de evenementenpagina en verdwijnen vanzelf als de datum voorbij is."
+    folder: "src/_data/agenda"
+    create: true
+    delete: true
+    slug: "{{fields.date}}-{{title.nl}}"
+    extension: "json"
+    format: "json"
+    summary: "{{date}} · {{title.nl}}"
+    sortable_fields:
+      - { field: "date", label: "Datum", default_sort: asc }
+      - title.nl
+    fields:
+      - { label: "Datum", name: "date", widget: "datetime", type: "date" }
+
+      - { label: "Tijd (optioneel)", name: "time", widget: "string", required: false, hint: "bv. 18.30 - 20.30" }
+
+      - label: "Prijs (optioneel)"
+        name: "price"
+        widget: "object"
+        required: false
+        hint: "Staat naast de datum en tijd, bv. €25,- p.p."
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string", required: false }
+          - { label: "English", name: "en", widget: "string", required: false }
+
+      - label: "Titel"
+        name: "title"
+        widget: "object"
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string" }
+          - { label: "English", name: "en", widget: "string" }
+
+      - label: "Soort (chip, optioneel)"
+        name: "category"
+        widget: "object"
+        required: false
+        hint: "bv. Workshop"
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string", required: false }
+          - { label: "English", name: "en", widget: "string", required: false }
+
+      - label: "Korte regel onder de titel (optioneel)"
+        name: "summary"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string", required: false }
+          - { label: "English", name: "en", widget: "string", required: false }
+
+      - { label: "Foto (optioneel)", name: "image", widget: "image", required: false }
+
+      - label: "Volledige omschrijving"
+        name: "description"
+        widget: "object"
+        collapsed: true
+        hint: "De eerste alinea staat altijd in beeld. De rest verschijnt als bezoekers op 'Lees meer' klikken."
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "markdown" }
+          - { label: "English", name: "en", widget: "markdown" }
+
+      - { label: "Knop 'Aanmelden per mail' tonen", name: "signup_button", widget: "boolean", default: true, required: false }
 
   # ----------------------------------------------------------------------
   # Menukaart (één bestand per categorie)

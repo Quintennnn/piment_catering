@@ -35,7 +35,12 @@
   "buttons": {
     "send":              { "nl": "Verstuur",            "en": "Send" },
     "send_request":      { "nl": "Verstuur aanvraag",   "en": "Send request" },
-    "apply_by_email":    { "nl": "Solliciteer per mail", "en": "Apply by email" }
+    "apply_by_email":    { "nl": "Solliciteer per mail", "en": "Apply by email" },
+    "signup_by_email":   { "nl": "Aanmelden per mail",  "en": "Sign up by email" },
+    "read_more":         { "nl": "Lees meer",           "en": "Read more" },
+    "read_less":         { "nl": "Minder tonen",        "en": "Show less" },
+    "view_and_signup":   { "nl": "Bekijk en meld je aan", "en": "View and sign up" },
+    "view_in_agenda":    { "nl": "Bekijk in de agenda", "en": "View in the agenda" }
   },
   "form": {
     "honeypot_label":    { "nl": "Niet invullen",       "en": "Do not fill in" },
@@ -43,5 +48,9 @@
   },
   "vacancies": {
     "category_label":    { "nl": "Vacature",            "en": "Vacancy" }
+  },
+  "agenda": {
+    "signup_subject":    { "nl": "Aanmelding",          "en": "Sign-up" },
+    "coming_up":         { "nl": "Binnenkort bij Piment", "en": "Coming up at Piment" }
   }
 }

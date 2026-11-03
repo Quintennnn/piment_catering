@@ -24,6 +24,16 @@ hero_intro:
   en: "Our special venue on the edge of the Hoorneboegse heath and the Zonnestraal estate is also available to hire for your event. From weddings and parties to business lunches and dinners: in the café, the conservatory and the garden we create something beautiful together. The food is naturally ours: vegetarian, fresh from the garden, with love from the neighborhood."
 hero_image: /assets/images/evenementen-hero.jpg
 
+agenda_label:
+  nl: "Agenda"
+  en: "Agenda"
+agenda_title:
+  nl: "Binnenkort bij Piment"
+  en: "Coming up at Piment"
+agenda_intro:
+  nl: "Naast het verhuren van onze locatie organiseren we ook zelf evenementen, zoals workshops. Dit staat er binnenkort op de agenda."
+  en: "Besides hiring out our venue, we also host our own events, such as workshops. Here's what's coming up."
+
 weddings_label:
   nl: "Bruiloften, feesten en partijen"
   en: "Weddings, parties and celebrations"
@@ -80,6 +90,92 @@ event_types:
     <img src="{{ hero_image }}" alt="{{ hero_title | t(lang) }}">
   </div>
 </section>
+
+{% set upcoming = agenda | upcomingEvents %}
+{% if upcoming.length %}
+<section id="agenda" class="section container" style="padding-top: 0;" data-agenda>
+  <div style="max-width: 720px; margin: 0 auto var(--spacing-12); text-align: center;">
+    <span class="label-md" style="color: var(--secondary);">{{ agenda_label | t(lang) }}</span>
+    <h2 style="margin-top: var(--spacing-4);">{{ agenda_title | t(lang) }}</h2>
+    {% set agendaIntro = agenda_intro | t(lang) %}
+    {% if agendaIntro %}<p class="body-lg" style="margin-top: var(--spacing-6);">{{ agendaIntro }}</p>{% endif %}
+  </div>
+
+  <div class="event-list">
+    {% for event in upcoming %}
+      {% set eventTitle = event.title | t(lang) %}
+      {% set eventCategory = event.category | t(lang) %}
+      {% set eventSummary = event.summary | t(lang) %}
+      {% set eventWhen = event.date | eventDate(lang, "long") %}
+      {% set eventPrice = event.price | t(lang) %}
+      {% set eventText = event.description | mdLeadAndRest(lang) %}
+      {% set moreId = "event-more-" + loop.index %}
+      <article class="card event-card{% if event.image %} has-image{% endif %}" data-event-date="{{ event.date }}">
+        {% if event.image %}
+          <div class="event-card-media">
+            <img src="{{ event.image }}" alt="{{ eventTitle }}" loading="lazy">
+          </div>
+        {% endif %}
+
+        <div class="event-card-body">
+          <div class="event-when">
+            <time class="event-date-badge" datetime="{{ event.date }}">
+              <span class="event-date-day">{{ event.date | eventDate(lang, "day") }}</span>
+              <span class="event-date-month">{{ event.date | eventDate(lang, "month") }}</span>
+            </time>
+            <div>
+              {% if eventCategory %}<span class="chip" style="margin: 0 0 var(--spacing-2);">{{ eventCategory }}</span>{% endif %}
+              <p class="event-when-text"><span>{{ eventWhen }}</span>{% if event.time %} · <span>{{ event.time }}</span>{% endif %}{% if eventPrice %} · <span>{{ eventPrice }}</span>{% endif %}</p>
+            </div>
+          </div>
+
+          <h3 style="color: var(--primary); margin-bottom: var(--spacing-2);">{{ eventTitle }}</h3>
+          {% if eventSummary %}
+            <p class="body-lg" style="margin-bottom: var(--spacing-6); color: var(--secondary);">{{ eventSummary }}</p>
+          {% endif %}
+
+          <div class="prose">{{ eventText[0] | safe }}</div>
+
+          <div class="event-actions">
+            {% if event.signup_button != false %}
+              {% set signupSubject = (ui.agenda.signup_subject | t(lang)) + ': ' + eventTitle + ' (' + eventWhen + ')' %}
+              <a href="mailto:{{ site.contact.email }}?subject={{ signupSubject | urlencode }}" class="btn btn-primary">{{ ui.buttons.signup_by_email | t(lang) }}</a>
+            {% endif %}
+            {% if eventText[1] %}
+              <button type="button" class="btn btn-secondary event-more-toggle" aria-expanded="true" aria-controls="{{ moreId }}" hidden>
+                <span class="event-more-closed">{{ ui.buttons.read_more | t(lang) }}</span>
+                <span class="event-more-open">{{ ui.buttons.read_less | t(lang) }}</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            {% endif %}
+          </div>
+        </div>
+
+        {% if eventText[1] %}
+          <div class="prose event-card-more" id="{{ moreId }}">{{ eventText[1] | safe }}</div>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+</section>
+<script>
+  // Collapse the rest of each description behind "Lees meer" (stays fully visible without JS).
+  (function() {
+    document.querySelectorAll('#agenda .event-more-toggle').forEach(function(btn) {
+      var more = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!more) return;
+      more.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.hidden = false;
+      btn.addEventListener('click', function() {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        more.hidden = !open;
+      });
+    });
+  })();
+</script>
+{% endif %}
 
 <section class="section-bg-shift">
   <div class="container">

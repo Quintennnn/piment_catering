@@ -132,6 +132,38 @@ permalink: "{% if lang == 'en' %}/en/{% else %}/{% endif %}"
   </div>
 </section>
 
+<!-- ===================== EERSTVOLGENDE EVENEMENT (uit de agenda) ===================== -->
+{% set upcoming = agenda | upcomingEvents %}
+{% if upcoming.length %}
+<section class="home-event container" data-agenda>
+  {% for event in upcoming.slice(0, 3) %}
+    {% set eventWhen = event.date | eventDate(lang, "long") %}
+    {% set eventPrice = event.price | t(lang) %}
+    {% set eventText = event.description | mdLeadAndRest(lang) %}
+    <article class="card home-event-card{% if event.image %} has-image{% endif %}" data-event-date="{{ event.date }}">
+      {% if event.image %}
+        <div class="home-event-media">
+          <img src="{{ event.image }}" alt="" loading="lazy">
+          <time class="event-date-badge" datetime="{{ event.date }}">
+            <span class="event-date-day">{{ event.date | eventDate(lang, "day") }}</span>
+            <span class="event-date-month">{{ event.date | eventDate(lang, "month") }}</span>
+          </time>
+        </div>
+      {% endif %}
+      <div class="home-event-body">
+        <span class="home-event-label"><span class="event-pulse-dot"></span>{{ ui.agenda.coming_up | t(lang) }}</span>
+        <h2 class="home-event-title">{{ event.title | t(lang) }}</h2>
+        <p class="event-when-text"><span>{{ eventWhen }}</span>{% if event.time %} · <span>{{ event.time }}</span>{% endif %}{% if eventPrice %} · <span>{{ eventPrice }}</span>{% endif %}</p>
+        <div class="home-event-text">{{ eventText[0] | safe }}</div>
+        <a href="{{ '/evenementen/' | localizedUrl(lang) }}#agenda" class="btn btn-primary home-event-link">
+          {% if event.signup_button != false %}{{ ui.buttons.view_and_signup | t(lang) }}{% else %}{{ ui.buttons.view_in_agenda | t(lang) }}{% endif %} →
+        </a>
+      </div>
+    </article>
+  {% endfor %}
+</section>
+{% endif %}
+
 <!-- ===================== LUNCHCAFÉ ===================== -->
 <section class="section-bg-shift">
   <div class="container">

@@ -960,6 +960,254 @@ select.input-field option { color: var(--on-surface); }
 }
 
 /* ==========================================================================
+   Evenementen — agenda
+   ========================================================================== */
+
+#agenda { scroll-margin-top: 9rem; }
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-12);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.event-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--spacing-8);
+}
+
+.event-card-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius-lg) var(--radius-xl) var(--radius-md) var(--radius-lg);
+  box-shadow: var(--ambient-shadow);
+}
+
+.event-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.event-card-body .prose { align-self: stretch; }
+
+.event-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-top: var(--spacing-8);
+}
+
+.event-more-toggle { gap: var(--spacing-2); }
+.event-more-toggle[hidden] { display: none; }
+.event-more-toggle svg { transition: transform 0.3s ease; }
+.event-more-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+.event-more-toggle[aria-expanded="true"] .event-more-closed,
+.event-more-toggle[aria-expanded="false"] .event-more-open { display: none; }
+
+.event-card-more {
+  border-top: var(--ghost-border);
+  padding-top: var(--spacing-8);
+}
+
+.event-when {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-6);
+}
+
+.event-date-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 4.25rem;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-container);
+  color: var(--primary);
+  line-height: 1;
+}
+
+.event-date-day {
+  font-family: var(--font-display);
+  font-size: 2rem;
+}
+
+.event-date-month {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.event-when-text { font-weight: 500; }
+.event-when-text span { white-space: nowrap; }
+.event-when-text::first-letter { text-transform: uppercase; }
+
+@media (min-width: 768px) {
+  .event-card {
+    padding: var(--spacing-12);
+  }
+
+  .event-card.has-image {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    column-gap: var(--spacing-12);
+  }
+
+  /* Photo fills the height of the header next to it, without stretching the card */
+  .event-card-media {
+    position: relative;
+    min-height: 18rem;
+  }
+
+  .event-card-media img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  /* "Lees meer" text spans the whole card, in two columns */
+  .event-card-more {
+    grid-column: 1 / -1;
+    columns: 2;
+    column-gap: var(--spacing-12);
+  }
+
+  .event-card-more p { break-inside: avoid; }
+}
+
+/* ==========================================================================
+   Homepage — next event from the agenda (between hero and lunchcafé).
+   Only the soonest one shows; the whole card links to the agenda.
+   ========================================================================== */
+
+.home-event { padding-bottom: var(--spacing-20); }
+.home-event-card + .home-event-card { display: none; }
+
+.home-event-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--spacing-6);
+  max-width: 960px;
+  margin: 0 auto;
+  border-radius: var(--radius-xl) var(--radius-lg) var(--radius-xl) var(--radius-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 24px 40px rgba(34, 26, 15, 0.1);
+}
+
+.home-event-media { position: relative; }
+
+.home-event-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: center 40%;
+  border-radius: var(--radius-lg) var(--radius-xl) var(--radius-md) var(--radius-lg);
+}
+
+.home-event-media .event-date-badge {
+  position: absolute;
+  top: var(--spacing-4);
+  left: var(--spacing-4);
+  background-color: var(--surface-container-lowest);
+  box-shadow: var(--ambient-shadow);
+}
+
+.home-event-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.home-event-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: var(--spacing-4);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--primary);
+}
+
+.event-pulse-dot {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  background-color: var(--primary);
+  animation: event-pulse 2s ease-out infinite;
+}
+
+@keyframes event-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(158, 61, 33, 0.45); }
+  70%, 100% { box-shadow: 0 0 0 8px rgba(158, 61, 33, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-pulse-dot { animation: none; }
+}
+
+.home-event-title {
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  margin-bottom: var(--spacing-2);
+}
+
+.home-event-body .event-when-text {
+  margin-bottom: var(--spacing-4);
+  color: var(--secondary);
+}
+
+/* First paragraph of the event text, cut off after three lines */
+.home-event-text p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: var(--spacing-6);
+}
+
+.home-event-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+@media (min-width: 768px) {
+  .home-event-card.has-image {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: var(--spacing-12);
+  }
+
+  /* Photo fills the height of the text next to it, without stretching the card */
+  .home-event-media { min-height: 16rem; }
+
+  .home-event-media img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+}
+
+/* ==========================================================================
    Homepage — Evenementen teaser (photo with overlapping card)
    ========================================================================== */
 

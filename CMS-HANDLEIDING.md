@@ -13,13 +13,23 @@ De site heeft een beheeromgeving (CMS) waarmee je zelf teksten, foto's, het menu
 1. Kies links een onderdeel:
    - **Pagina's** — de teksten van Home, Lunchcafé, Catering, Evenementen, Over Piment, Contact
    - **Site-instellingen** — logo, adres, openingstijden, telefoonnummer
-   - **Menu** en **Vacatures**
+   - **Menu**, **Vacatures** en **Agenda**
 2. Klik op de pagina die je wilt bewerken en pas de velden aan.
    - De meeste velden hebben een **Nederlands** en een **English** vakje: vul allebei in.
    - In de **Hero — titel** van de homepage kun je een paar woorden tussen sterretjes zetten, bijvoorbeeld `*in het groen*`. Die woorden komen dan schuin en in het groen op de site.
 3. Klik rechtsboven op **Save** en daarna op **Publish**.
 
 Na het publiceren bouwt de site zichzelf opnieuw. **Na 1 à 2 minuten** staat je wijziging live. Even je browser verversen (Cmd+R / F5) als je het nog niet ziet.
+
+## Evenementen in de agenda zetten
+
+Een workshop of ander evenement dat eraan komt, zet je op de evenementenpagina via **Agenda** in het menu links.
+
+1. Klik op **Agenda** en dan op **Nieuw** (of **New**).
+2. Vul de **datum** in, eventueel de **tijd**, de **titel** en de **omschrijving**. Een foto is optioneel.
+3. Klik op **Save** en **Publish**.
+
+Het evenement verschijnt in het blok **Binnenkort bij Piment** op de evenementenpagina, met de eerstvolgende datum bovenaan. Het eerstvolgende evenement staat ook als opvallende melding bovenaan de homepage, met een link naar de agenda. Is de datum voorbij, dan verdwijnt het vanzelf van de site. Je kunt het daarna in de Agenda verwijderen, maar dat hoeft niet. Staan er geen komende evenementen in de agenda, dan is het hele blok weg.
 
 ## Foto's
 

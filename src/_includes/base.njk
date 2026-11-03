@@ -151,6 +151,19 @@
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     })();
+
+    // Agenda items are filtered at build time, but the site is only rebuilt on edits:
+    // also drop events that have passed since, and any agenda block left empty.
+    (function() {
+      var now = new Date();
+      var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+      document.querySelectorAll('[data-event-date]').forEach(function(item) {
+        if (item.getAttribute('data-event-date') < today) item.remove();
+      });
+      document.querySelectorAll('[data-agenda]').forEach(function(block) {
+        if (!block.querySelector('[data-event-date]')) block.remove();
+      });
+    })();
   </script>
 </body>
 </html>

@@ -42,6 +42,29 @@ module.exports = function(eleventyConfig) {
     return Object.values(value);
   });
 
+  // Agenda items (agenda/*.json) from today onward, soonest first. Dates are "YYYY-MM-DD".
+  eleventyConfig.addFilter("upcomingEvents", (value) => {
+    if (!value || typeof value !== "object") return [];
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam" }).format(new Date());
+    return Object.values(value)
+      .filter((event) => event && event.date && String(event.date).slice(0, 10) >= today)
+      .sort((a, b) => String(a.date).localeCompare(String(b.date)) || String(a.time || "").localeCompare(String(b.time || "")));
+  });
+
+  // Format an agenda date: "day" (3), "month" (dec) or "long" (donderdag 3 december).
+  eleventyConfig.addFilter("eventDate", (value, lang, style) => {
+    const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return value;
+    const date = new Date(Date.UTC(+match[1], +match[2] - 1, +match[3]));
+    const locale = (lang || DEFAULT_LOCALE) === "en" ? "en-GB" : "nl-NL";
+    const options = {
+      day: { day: "numeric" },
+      month: { month: "short" },
+      long: { weekday: "long", day: "numeric", month: "long" }
+    }[style || "long"];
+    return new Intl.DateTimeFormat(locale, { timeZone: "UTC", ...options }).format(date).replace(/\.$/, "");
+  });
+
   // Render arbitrary markdown.
   eleventyConfig.addFilter("markdown", (value) => {
     if (!value) return "";
@@ -58,6 +81,14 @@ module.exports = function(eleventyConfig) {
     const str = localize(value, lang || DEFAULT_LOCALE);
     if (!str) return "";
     return md.render(String(str));
+  });
+
+  // Split a localized markdown field after its first paragraph: [lead, rest], both rendered.
+  eleventyConfig.addFilter("mdLeadAndRest", (value, lang) => {
+    const str = String(localize(value, lang || DEFAULT_LOCALE) || "").trim();
+    if (!str) return ["", ""];
+    const [lead, ...rest] = str.split(/\n\s*\n/);
+    return [md.render(lead), rest.length ? md.render(rest.join("\n\n")) : ""];
   });
 
   // Prepend /en/ etc. to a static URL when the target lang is non-default.
