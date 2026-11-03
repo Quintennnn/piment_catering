@@ -667,7 +667,13 @@ select.input-field option { color: var(--on-surface); }
    Homepage — Hero (asymmetric, magazine-style)
    ========================================================================== */
 
+/* At least a full screen below the header (6rem = smallest header height),
+   so whatever follows only shows up once you scroll. */
 .hero-section {
+  display: flex;
+  align-items: center;
+  min-height: calc(100vh - 6rem);
+  min-height: calc(100svh - 6rem);
   padding-top: var(--spacing-12);
   padding-bottom: var(--spacing-20);
   overflow-x: clip;
@@ -1097,8 +1103,6 @@ select.input-field option { color: var(--on-surface); }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-6);
-  max-width: 960px;
-  margin: 0 auto;
   border-radius: var(--radius-xl) var(--radius-lg) var(--radius-xl) var(--radius-lg);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
