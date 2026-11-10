@@ -1,0 +1,22 @@
+---
+permalink: /eten/
+eleventyExcludeFromCollections: true
+---
+{#- Short link for other websites and flyers: pimentcatering.nl/eten forwards to the dinner
+    sign-up of the next agenda item with a meal, or to the agenda when there is none. -#}
+{%- set mealEvent = agenda | upcomingEvents | selectattr("meal_time") | selectattr("dinner_signup") | first -%}
+{%- set target = ("/agenda/#" + mealEvent.anchor + "-eten") if mealEvent else "/agenda/" -%}
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex">
+  <meta http-equiv="refresh" content="0; url={{ target }}">
+  <link rel="canonical" href="{{ target }}">
+  <title>Aanmelden eten - {{ site.name }}</title>
+  <script>location.replace({{ target | dump | safe }});</script>
+</head>
+<body>
+  <p><a href="{{ target }}">Aanmelden voor het eten bij Piment</a></p>
+</body>
+</html>

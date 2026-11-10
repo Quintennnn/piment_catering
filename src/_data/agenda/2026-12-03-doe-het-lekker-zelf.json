@@ -1,0 +1,163 @@
+{
+  "date": "2026-12-03",
+  "time": "17.30 - 21.30",
+  "title": {
+    "nl": "Doe het lekker zelf",
+    "en": "Doe het lekker zelf"
+  },
+  "category": {
+    "nl": "Workshopavond",
+    "en": "Workshop evening"
+  },
+  "summary": {
+    "nl": "Zes makers, twee rondes workshops en eten bij Piment",
+    "en": "Six makers, two rounds of workshops and dinner at Piment"
+  },
+  "image": "/assets/images/piment-serre.jpg",
+  "description": {
+    "nl": "Op donderdag 3 december is het workshopavond op De Rading. Zes makers geven workshops in twee rondes, van oorbellen van berkhout en kerstballen tot vogelhuisjes, kaarsen en keramiek. Vooraf, om 17.30, kun je mee-eten bij Piment.",
+    "en": "On Thursday 3 December it's workshop night at De Rading. Six makers host workshops in two rounds, from birch-wood earrings and Christmas baubles to birdhouses, candles and ceramics. Beforehand, at 17.30, you can join us for dinner at Piment."
+  },
+  "signup_button": false,
+  "dinner_signup": true,
+  "meal_time": "17.30",
+  "meal_price": {
+    "nl": "€17,50 p.p.",
+    "en": "€17.50 p.p."
+  },
+  "meal_text": {
+    "nl": "Voor alle deelnemers van de avond, bij welke workshop je ook bent.",
+    "en": "For everyone joining the evening, whichever workshop you're doing."
+  },
+  "programme": {
+    "rounds": [
+      "18.30 - 19.30",
+      "20.00 - 21.00"
+    ],
+    "makers": [
+      {
+        "name": "Odess",
+        "workshops": [
+          {
+            "title": {
+              "nl": "Oorbellen/hanger van berkhout maken",
+              "en": "Make earrings or a pendant from birch wood"
+            },
+            "round": "1",
+            "link": "https://odess.nl/events/event/de-rading-workshopavond-doe-het-lekker-zelf/"
+          },
+          {
+            "title": {
+              "nl": "Zelf knopen maken van appel- of klimophout",
+              "en": "Make your own buttons from apple or ivy wood"
+            },
+            "round": "2",
+            "link": "https://odess.nl/events/event/de-rading-workshopavond-doe-het-lekker-zelf/"
+          }
+        ]
+      },
+      {
+        "name": "Toma Bloemen",
+        "workshops": [
+          {
+            "title": {
+              "nl": "Kerstballen maken",
+              "en": "Make Christmas baubles"
+            },
+            "round": "1",
+            "link": "https://tomabloemenservice.nl/product/workshop-kerstballen/"
+          },
+          {
+            "title": {
+              "nl": "Droogbloemen slinger maken",
+              "en": "Make a dried flower garland"
+            },
+            "round": "2",
+            "link": "https://tomabloemenservice.nl/product/workshop-droogbloemenslinger/"
+          }
+        ]
+      },
+      {
+        "name": "Zorgtuin Zonnestraal",
+        "workshops": [
+          {
+            "title": {
+              "nl": "Vogelhuisje bouwen",
+              "en": "Build a birdhouse"
+            },
+            "round": "1",
+            "link": "https://zorgtuinzonnestraal.nl/doe-het-lekker-zelf/"
+          },
+          {
+            "title": {
+              "nl": "Vogelhuisje schilderen",
+              "en": "Paint a birdhouse"
+            },
+            "round": "2",
+            "link": "https://zorgtuinzonnestraal.nl/doe-het-lekker-zelf/"
+          }
+        ]
+      },
+      {
+        "name": "Piment",
+        "workshops": [
+          {
+            "title": {
+              "nl": "Kimchi maken",
+              "en": "Make kimchi"
+            },
+            "round": "all",
+            "time": "18.30 - 20.30",
+            "link": "/agenda/#workshop-vegetarische-kimchi"
+          }
+        ]
+      },
+      {
+        "name": "Brandtweertjes",
+        "workshops": [
+          {
+            "title": {
+              "nl": "Kaarsen maken van oud kaarsvet",
+              "en": "Make candles from leftover candle wax"
+            },
+            "round": "1",
+            "link": "https://brandtweertjes.com/blogs/nieuws/workshops"
+          },
+          {
+            "title": {
+              "nl": "Kaarsen maken van bijenwas",
+              "en": "Make beeswax candles"
+            },
+            "round": "2",
+            "link": "https://brandtweertjes.com/blogs/nieuws/workshops"
+          }
+        ]
+      },
+      {
+        "name": "Atelier Achterom",
+        "workshops": [
+          {
+            "title": {
+              "nl": "Keramiek hangers maken",
+              "en": "Make ceramic hanging ornaments"
+            },
+            "round": "1",
+            "link": "https://atelierachterom.jouwweb.nl/"
+          },
+          {
+            "title": {
+              "nl": "Keramiek kandelaar maken",
+              "en": "Make a ceramic candle holder"
+            },
+            "round": "2",
+            "link": "https://atelierachterom.jouwweb.nl/"
+          }
+        ]
+      }
+    ],
+    "note": {
+      "nl": "Voor de workshops van de andere makers meld je je aan via hun eigen website.",
+      "en": "For the other makers' workshops, sign up through their own websites."
+    }
+  }
+}

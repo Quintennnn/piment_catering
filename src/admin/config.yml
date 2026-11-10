@@ -101,7 +101,7 @@ collections:
             summary: "{{fields.key}} → {{fields.url}}"
             hint: "De zichtbare tekst van de menu-items beheer je in de UI-vertalingen (vraag de developer)."
             fields:
-              - { label: "Sleutel", name: "key", widget: "string", hint: "home, lunchcafe, catering, events, about, vacancies, contact" }
+              - { label: "Sleutel", name: "key", widget: "string", hint: "home, lunchcafe, catering, events, agenda, about, vacancies, contact" }
               - { label: "URL", name: "url", widget: "string", hint: "bv. /lunchcafe/" }
 
   # ----------------------------------------------------------------------
@@ -587,30 +587,6 @@ collections:
 
           - { label: "Grote foto onder de intro", name: "hero_image", widget: "image" }
 
-          - label: "Agenda — klein label"
-            name: "agenda_label"
-            widget: "object"
-            hint: "De evenementen zelf voeg je toe onder 'Agenda' in het menu links. Zonder komende evenementen verdwijnt dit blok vanzelf."
-            fields:
-              - { label: "Nederlands", name: "nl", widget: "string" }
-              - { label: "English", name: "en", widget: "string" }
-
-          - label: "Agenda — titel"
-            name: "agenda_title"
-            widget: "object"
-            fields:
-              - { label: "Nederlands", name: "nl", widget: "string" }
-              - { label: "English", name: "en", widget: "string" }
-
-          - label: "Agenda — intro tekst (optioneel)"
-            name: "agenda_intro"
-            widget: "object"
-            required: false
-            collapsed: true
-            fields:
-              - { label: "Nederlands", name: "nl", widget: "text", required: false }
-              - { label: "English", name: "en", widget: "text", required: false }
-
           - label: "Blok 1 (bruiloften/feesten) — klein label"
             name: "weddings_label"
             widget: "object"
@@ -659,6 +635,21 @@ collections:
 
           - { label: "Blok 2 — foto (liggend)", name: "business_image", widget: "image" }
 
+          - label: "Afgelopen evenementen — klein label"
+            name: "past_label"
+            widget: "object"
+            hint: "Dit blok toont vanzelf de evenementen uit de Agenda waarvan de datum voorbij is (de laatste zes). Zolang er geen zijn, staat het er niet."
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Afgelopen evenementen — titel"
+            name: "past_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
           - label: "Formuliertitel"
             name: "form_title"
             widget: "object"
@@ -687,6 +678,58 @@ collections:
                 name: "en"
                 widget: "list"
                 field: { label: "Type", name: "type", widget: "string" }
+
+      - label: "Agenda"
+        name: "agenda-page"
+        file: "src/agenda.njk"
+        fields:
+          - { label: "Layout", name: "layout", widget: "hidden", default: "base.njk" }
+
+          - label: "Browser-titel"
+            name: "title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Meta description"
+            name: "description"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - label: "Klein label"
+            name: "hero_label"
+            widget: "object"
+            hint: "De evenementen zelf voeg je toe onder 'Agenda' in het menu links."
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Titel"
+            name: "hero_title"
+            widget: "object"
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string" }
+              - { label: "English", name: "en", widget: "string" }
+
+          - label: "Intro tekst"
+            name: "hero_intro"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
+
+          - label: "Bericht als er niets op de agenda staat"
+            name: "empty_text"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "text" }
+              - { label: "English", name: "en", widget: "text" }
 
       - label: "Over Piment"
         name: "over-piment"
@@ -1014,7 +1057,7 @@ collections:
   - name: "agenda"
     label: "Agenda"
     label_singular: "Evenement"
-    description: "Komende evenementen, zoals workshops. Ze staan op de evenementenpagina en verdwijnen vanzelf als de datum voorbij is."
+    description: "Komende evenementen, zoals workshops. Ze staan op de agendapagina en verdwijnen daar vanzelf als de datum voorbij is; daarna staan ze bij 'Afgelopen evenementen' op de evenementenpagina."
     folder: "src/_data/agenda"
     create: true
     delete: true
@@ -1085,7 +1128,77 @@ collections:
           - { label: "Nederlands", name: "nl", widget: "string", required: false }
           - { label: "English", name: "en", widget: "string", required: false }
 
-      - { label: "Knop 'Aanmelden eten' tonen", name: "dinner_signup", widget: "boolean", default: false, required: false, hint: "Extra knop die een mail stuurt met 'Aanmelden eten' in het onderwerp." }
+      - { label: "Knop 'Aanmelden eten' tonen", name: "dinner_signup", widget: "boolean", default: false, required: false, hint: "Extra knop die een mail stuurt met 'Aanmelden eten' en de datum in het onderwerp." }
+
+      - { label: "Eten — tijd (optioneel)", name: "meal_time", widget: "string", required: false, hint: "Vul je dit in, dan krijgt het evenement een blok 'Eten bij Piment' met de knop 'Aanmelden eten' erin. bv. 17.30" }
+
+      - label: "Eten — prijs (optioneel)"
+        name: "meal_price"
+        widget: "object"
+        required: false
+        hint: "bv. €17,50 p.p."
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string", required: false }
+          - { label: "English", name: "en", widget: "string", required: false }
+
+      - label: "Eten — korte uitleg (optioneel)"
+        name: "meal_text"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string", required: false }
+          - { label: "English", name: "en", widget: "string", required: false }
+
+      - label: "Programma (optioneel, voor een avond met workshops van meerdere makers)"
+        name: "programme"
+        widget: "object"
+        required: false
+        collapsed: true
+        fields:
+          - label: "Rondes"
+            name: "rounds"
+            widget: "list"
+            required: false
+            hint: "De tijden van de rondes, op volgorde. bv. 18.30 - 19.30"
+            field: { label: "Tijd", name: "time", widget: "string" }
+
+          - label: "Makers"
+            name: "makers"
+            widget: "list"
+            required: false
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "Naam", name: "name", widget: "string" }
+              - label: "Workshops"
+                name: "workshops"
+                widget: "list"
+                summary: "{{fields.title.nl}}"
+                fields:
+                  - label: "Naam workshop"
+                    name: "title"
+                    widget: "object"
+                    fields:
+                      - { label: "Nederlands", name: "nl", widget: "string" }
+                      - { label: "English", name: "en", widget: "string", required: false }
+                  - label: "Ronde"
+                    name: "round"
+                    widget: "select"
+                    default: "1"
+                    options:
+                      - { label: "Ronde 1", value: "1" }
+                      - { label: "Ronde 2", value: "2" }
+                      - { label: "Ronde 3", value: "3" }
+                      - { label: "Hele avond / alle rondes", value: "all" }
+                  - { label: "Eigen tijd (optioneel)", name: "time", widget: "string", required: false, hint: "Alleen nodig bij 'Hele avond', bv. 18.30 - 20.30" }
+                  - { label: "Link (optioneel)", name: "link", widget: "string", required: false, hint: "Website van de maker. Voor een eigen workshop: de link naar dat evenement, bv. /agenda/#workshop-vegetarische-kimchi" }
+
+          - label: "Tekst onder het programma (optioneel)"
+            name: "note"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Nederlands", name: "nl", widget: "string", required: false }
+              - { label: "English", name: "en", widget: "string", required: false }
 
   # ----------------------------------------------------------------------
   # Menukaart (één bestand per categorie)

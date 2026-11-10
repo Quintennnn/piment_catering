@@ -45,6 +45,7 @@
     { "key": "lunchcafe", "url": "/lunchcafe/" },
     { "key": "catering",  "url": "/catering/" },
     { "key": "events",    "url": "/evenementen/" },
+    { "key": "agenda",    "url": "/agenda/" },
     { "key": "about",     "url": "/over-piment/" },
     { "key": "vacancies", "url": "/vacatures/" },
     { "key": "contact",   "url": "/contact/" }

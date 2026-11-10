@@ -482,6 +482,15 @@ select.input-field option { color: var(--on-surface); }
   color: var(--primary);
 }
 
+/* Just above the hamburger breakpoint the menu is tight: a little less room between items */
+@media (min-width: 1280px) and (max-width: 1499px) {
+  .nav-links { gap: var(--spacing-4); }
+}
+
+@media (min-width: 1280px) and (max-width: 1359px) {
+  .nav-links { gap: 0.75rem; }
+}
+
 /* ==========================================================================
    Language switcher (flag toggle)
    ========================================================================== */
@@ -561,7 +570,7 @@ select.input-field option { color: var(--on-surface); }
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1279px) {
   .nav-toggle { display: inline-flex; }
 
   .nav-links {
@@ -1066,6 +1075,219 @@ select.input-field option { color: var(--on-surface); }
 .event-card-more {
   border-top: var(--ghost-border);
   padding-top: var(--spacing-8);
+}
+
+.event-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  color: var(--primary);
+  margin-bottom: var(--spacing-2);
+}
+
+/* Agenda page when nothing is planned */
+.agenda-empty {
+  align-items: center;
+  gap: var(--spacing-6);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--spacing-12);
+  text-align: center;
+}
+
+.agenda-empty[hidden] { display: none; }
+
+/* Events page: agenda items whose date has passed */
+.past-events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 22rem));
+  justify-content: center;
+  gap: var(--spacing-8);
+}
+
+.past-event img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: var(--spacing-4);
+  border-radius: var(--radius-lg) var(--radius-xl) var(--radius-md) var(--radius-lg);
+  box-shadow: var(--ambient-shadow);
+}
+
+.past-event-date {
+  margin-bottom: var(--spacing-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+.past-event-title {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-2);
+}
+
+.event-part-of {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-bottom: var(--spacing-2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+.event-part-of:hover { color: var(--primary); }
+
+/* Meal of an evening (e.g. 17.30 · Eten bij Piment), with its own sign-up button.
+   Target of /evenementen/#<event>-eten. */
+.event-meal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-4) var(--spacing-6);
+  align-self: stretch;
+  margin-top: var(--spacing-6);
+  padding: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-md);
+  background-color: var(--surface-container-low);
+  scroll-margin-top: 9rem;
+}
+
+.event-meal-icon { flex-shrink: 0; color: var(--primary); }
+
+.event-meal-text { flex: 1 1 14rem; }
+.event-meal-text strong { font-weight: 600; }
+
+.event-meal-text strong,
+.event-meal-price,
+.event-meal-note { display: block; }
+
+.event-meal-price { font-weight: 500; }
+
+.event-meal-note {
+  font-size: 0.9375rem;
+  color: var(--secondary);
+}
+
+.event-meal:target .event-signup-dinner { animation: event-highlight 1.2s ease-out 3; }
+
+@media (prefers-reduced-motion: reduce) {
+  .event-meal:target .event-signup-dinner {
+    animation: none;
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+/* Programme of a workshop evening: a row per maker. On wide screens one column per round;
+   on a phone each workshop shows its start time in front. */
+.programme {
+  grid-column: 1 / -1;
+  border-top: var(--ghost-border);
+  padding-top: var(--spacing-8);
+}
+
+.programme-title {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-4);
+}
+
+.programme-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--spacing-2);
+  padding: var(--spacing-4) 0;
+  border-top: var(--ghost-border);
+}
+
+.programme-head { display: none; }
+
+.programme-maker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary);
+}
+
+.programme-row:has(.is-own) .programme-maker { color: var(--primary); }
+
+.programme-ws {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-4);
+  color: var(--on-surface);
+  text-decoration: none;
+}
+
+.programme-ws[href]:hover .programme-ws-title { color: var(--primary); }
+
+.programme-ws-end { white-space: nowrap; }
+
+.programme-ws-title svg {
+  vertical-align: -0.1em;
+  color: var(--tertiary);
+}
+
+.programme-time {
+  flex-shrink: 0;
+  min-width: 3rem;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--secondary);
+}
+
+.programme-ws.is-own {
+  flex-direction: column;
+  gap: 0.125rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  background-color: var(--surface-container);
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.programme-ws.is-own .programme-time,
+.programme-ws.is-own svg { color: var(--primary); }
+
+.programme-note {
+  margin-top: var(--spacing-4);
+  font-size: 0.875rem;
+  color: var(--secondary);
+}
+
+@media (min-width: 768px) {
+  .programme-row {
+    grid-template-columns: 11rem repeat(var(--rounds), minmax(0, 1fr));
+    column-gap: var(--spacing-6);
+    align-items: center;
+  }
+
+  .programme-head {
+    display: grid;
+    padding-top: 0;
+    border-top: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--secondary);
+  }
+
+  .programme-ws { grid-column: var(--col, auto); }
+
+  .programme-ws.is-all {
+    grid-column: 2 / -1;
+    flex-direction: row;
+    gap: var(--spacing-4);
+  }
+
+  /* The column heading shows the round time; keep it for screen readers only */
+  .programme-ws:not(.is-all) .programme-time {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 }
 
 .event-when {

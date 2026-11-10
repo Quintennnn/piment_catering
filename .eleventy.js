@@ -49,7 +49,7 @@ module.exports = function(eleventyConfig) {
     if (!value || typeof value !== "object") return [];
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam" }).format(new Date());
     const used = new Set();
-    return Object.entries(value)
+    const events = Object.entries(value)
       .filter(([, event]) => event && event.date && String(event.date).slice(0, 10) >= today)
       .sort(([, a], [, b]) => String(a.date).localeCompare(String(b.date)) || String(a.time || "").localeCompare(String(b.time || "")))
       .map(([file, event]) => {
@@ -58,9 +58,33 @@ module.exports = function(eleventyConfig) {
         used.add(anchor);
         return { ...event, anchor };
       });
+
+    // An event linked from another event's programme (the kimchi workshop on a workshop
+    // evening) gets `partOf`, so its card can point back to that evening.
+    const byAnchor = new Map(events.map((event) => [event.anchor, event]));
+    events.forEach((parent) => {
+      ((parent.programme && parent.programme.makers) || []).forEach((maker) => {
+        (maker.workshops || []).forEach((workshop) => {
+          const match = String(workshop.link || "").match(/#([\w-]+)$/);
+          const child = match && byAnchor.get(match[1]);
+          if (child && child !== parent) child.partOf = { anchor: parent.anchor, title: parent.title };
+        });
+      });
+    });
+    return events;
   });
 
-  // Format an agenda date: "day" (3), "month" (dec) or "long" (donderdag 3 december).
+  // Agenda items whose date has passed, most recent first, at most `limit`.
+  eleventyConfig.addFilter("pastEvents", (value, limit) => {
+    if (!value || typeof value !== "object") return [];
+    const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam" }).format(new Date());
+    return Object.values(value)
+      .filter((event) => event && event.date && String(event.date).slice(0, 10) < today)
+      .sort((a, b) => String(b.date).localeCompare(String(a.date)))
+      .slice(0, limit || undefined);
+  });
+
+  // Format an agenda date: "day" (3), "month" (dec), "long" (donderdag 3 december) or "dmy" (3 december 2026).
   eleventyConfig.addFilter("eventDate", (value, lang, style) => {
     const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})/);
     if (!match) return value;
@@ -69,7 +93,8 @@ module.exports = function(eleventyConfig) {
     const options = {
       day: { day: "numeric" },
       month: { month: "short" },
-      long: { weekday: "long", day: "numeric", month: "long" }
+      long: { weekday: "long", day: "numeric", month: "long" },
+      dmy: { day: "numeric", month: "long", year: "numeric" }
     }[style || "long"];
     return new Intl.DateTimeFormat(locale, { timeZone: "UTC", ...options }).format(date).replace(/\.$/, "");
   });

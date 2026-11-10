@@ -11,7 +11,7 @@ De site heeft een beheeromgeving (CMS) waarmee je zelf teksten, foto's, het menu
 ## Iets aanpassen
 
 1. Kies links een onderdeel:
-   - **Pagina's** — de teksten van Home, Lunchcafé, Catering, Evenementen, Over Piment, Contact
+   - **Pagina's** — de teksten van Home, Lunchcafé, Catering, Evenementen, Agenda, Over Piment, Contact
    - **Site-instellingen** — logo, adres, openingstijden, telefoonnummer
    - **Menu**, **Vacatures** en **Agenda**
 2. Klik op de pagina die je wilt bewerken en pas de velden aan.
@@ -23,24 +23,41 @@ Na het publiceren bouwt de site zichzelf opnieuw. **Na 1 à 2 minuten** staat je
 
 ## Evenementen in de agenda zetten
 
-Een workshop of ander evenement dat eraan komt, zet je op de evenementenpagina via **Agenda** in het menu links.
+De site heeft twee pagina's voor evenementen:
+
+- **Agenda** (`/agenda/`): wat er binnenkort bij Piment te doen is, zoals workshops.
+- **Evenementen** (`/evenementen/`): informatie over het huren van de locatie voor je eigen feest of zakelijke bijeenkomst, met onderaan de afgelopen evenementen.
+
+Een nieuw evenement zet je erop via **Agenda** in het menu links van het CMS:
 
 1. Klik op **Agenda** en dan op **Nieuw** (of **New**).
 2. Vul de **datum** in, eventueel de **tijd**, de **titel** en de **omschrijving**. Een foto is optioneel.
 3. Klik op **Save** en **Publish**.
 
-Het evenement verschijnt in het blok **Binnenkort bij Piment** op de evenementenpagina, met de eerstvolgende datum bovenaan. Het eerstvolgende evenement staat ook in een blok op de homepage, onder de grote foto, met een link naar de agenda.
+Het evenement verschijnt op de agendapagina, met de eerstvolgende datum bovenaan. Het eerstvolgende evenement staat ook in een blok op de homepage, onder de grote foto. Is de datum voorbij, dan verdwijnt het vanzelf van de agenda en komt het bij **Afgelopen evenementen** op de evenementenpagina (de laatste zes, met foto). Laat het dus gerust in het CMS staan. Staat er niets op de agenda, dan ziet de agendapagina een korte melding; die tekst pas je aan bij **Pagina's → Agenda**.
 
-Is er bij een evenement ook eten, zet dan **Knop 'Aanmelden eten' tonen** aan. Er komt dan een tweede knop die een mail stuurt met "Aanmelden eten" in het onderwerp. Geef de gewone knop dan bijvoorbeeld de tekst "Aanmelden workshop", zodat het verschil duidelijk is.
+Is er bij een evenement ook eten, zet dan **Knop 'Aanmelden eten' tonen** aan. Er komt dan een tweede knop die een mail stuurt met "Aanmelden eten" en de datum in het onderwerp. Geef de gewone knop dan bijvoorbeeld de tekst "Aanmelden workshop", zodat het verschil duidelijk is.
 
-### Link naar een evenement delen
+### Een workshopavond met meerdere makers
 
-Elk evenement heeft een eigen link die je aan anderen kunt geven, bijvoorbeeld om op hun website te zetten. De link is het adres van de evenementenpagina met `#` en de naam van het evenement erachter, met streepjes in plaats van spaties:
+Voor een avond zoals "Doe het lekker zelf" maak je één evenement voor de avond zelf:
 
-- `https://pimentcatering.nl/evenementen/#workshop-vegetarische-kimchi` springt naar het evenement.
-- Met `-eten` erachter (`…#workshop-vegetarische-kimchi-eten`) springt de pagina naar de aanmeldknoppen, en licht de knop voor het eten even op.
+- Vul bij **Eten — tijd** de tijd in (bv. 17.30), met prijs en een korte uitleg, en zet **Knop 'Aanmelden eten' tonen** aan. Het eten krijgt dan een eigen blok met aanmeldknop, voor alle bezoekers van de avond.
+- Vul onder **Programma** de tijden van de **Rondes** in, en per **Maker** de workshops: naam, ronde en de link naar de website van de maker. Een workshop van Piment zelf geef je als link het eigen evenement (bv. `/agenda/#workshop-vegetarische-kimchi`) en als ronde **Hele avond**.
+- Zet **Knop 'Aanmelden per mail' tonen** uit, want voor de workshops meld je je aan bij de makers.
 
-De naam in de link is de titel zoals je die bij het aanmaken invulde. Pas je de titel later aan, dan blijft de link hetzelfde. Is de datum voorbij, dan verdwijnt het vanzelf van de site. Je kunt het daarna in de Agenda verwijderen, maar dat hoeft niet. Staan er geen komende evenementen in de agenda, dan is het hele blok weg.
+Piments eigen workshop zet je er als los evenement onder, zoals de kimchi-workshop. Die kaart krijgt vanzelf een linkje "Onderdeel van …" terug naar de avond.
+
+### Links om te delen
+
+**Aanmelden voor het eten:** `https://pimentcatering.nl/eten` stuurt bezoekers direct naar de aanmeldknop voor het eten van de eerstvolgende avond met eten. Deze korte link is handig voor de websites van de andere makers, in mails en op flyers, en blijft ook bij een volgende avond werken.
+
+**Een bepaald evenement:** elk evenement heeft ook een eigen link: het adres van de agenda met `#` en de naam van het evenement erachter, met streepjes in plaats van spaties.
+
+- `https://pimentcatering.nl/agenda/#doe-het-lekker-zelf` springt naar de workshopavond.
+- Met `-eten` erachter (`…/agenda/#doe-het-lekker-zelf-eten`) springt de pagina naar de knop voor het eten van die avond, die dan even oplicht.
+
+De naam in de link is de titel zoals je die bij het aanmaken invulde. Pas je de titel later aan, dan blijft de link hetzelfde. Oudere links naar `/evenementen/#…` (van voor de agendapagina) sturen vanzelf door naar de agenda.
 
 ## Foto's
 

@@ -1,0 +1,198 @@
+---
+layout: base.njk
+pagination:
+  data: locales.list
+  size: 1
+  alias: lang
+permalink: "{% if lang == 'en' %}/en/agenda/{% else %}/agenda/{% endif %}"
+
+title:
+  nl: "Agenda: workshops en evenementen - Piment"
+  en: "Agenda: workshops and events - Piment"
+description:
+  nl: "Workshops en andere evenementen bij Piment in Hilversum, aan de rand van de Hoorneboegse heide en Landgoed Zonnestraal."
+  en: "Workshops and other events at Piment in Hilversum, on the edge of the Hoorneboegse heath and the Zonnestraal estate."
+
+hero_label:
+  nl: "Agenda"
+  en: "Agenda"
+hero_title:
+  nl: "Binnenkort bij Piment"
+  en: "Coming up at Piment"
+hero_intro:
+  nl: "Naast het verhuren van onze locatie organiseren we ook zelf evenementen, zoals workshops. Dit staat er binnenkort op de agenda."
+  en: "Besides hiring out our venue, we also host our own events, such as workshops. Here's what's coming up."
+empty_text:
+  nl: "Er staan op dit moment geen evenementen op de agenda. Kijk binnenkort nog eens."
+  en: "There are no events on the agenda right now. Check back soon."
+---
+
+{% set upcoming = agenda | upcomingEvents %}
+<section id="agenda" class="section container" style="padding-top: var(--spacing-12);">
+  <div style="max-width: 800px; margin: 0 auto var(--spacing-12); text-align: center;">
+    <span class="label-md" style="color: var(--secondary);">{{ hero_label | t(lang) }}</span>
+    <h1 class="display-lg" style="margin-top: var(--spacing-4); margin-bottom: var(--spacing-8);">{{ hero_title | t(lang) }}</h1>
+    <p class="body-lg" style="margin-bottom: 0;">{{ hero_intro | t(lang) }}</p>
+  </div>
+
+  {% if upcoming.length %}
+  <div class="event-list" data-agenda data-agenda-fallback="agenda-empty">
+    {% for event in upcoming %}
+      {% set eventTitle = event.title | t(lang) %}
+      {% set eventCategory = event.category | t(lang) %}
+      {% set eventSummary = event.summary | t(lang) %}
+      {% set eventWhen = event.date | eventDate(lang, "long") %}
+      {% set eventPrice = event.price | t(lang) %}
+      {% set eventText = event.description | mdLeadAndRest(lang) %}
+      {% set moreId = "event-more-" + loop.index %}
+      <article id="{{ event.anchor }}" class="card event-card{% if event.image %} has-image{% endif %}" data-event-date="{{ event.date }}">
+        {% if event.image %}
+          <div class="event-card-media">
+            <img src="{{ event.image }}" alt="{{ eventTitle }}" loading="lazy">
+          </div>
+        {% endif %}
+
+        {# Meal sign-ups are per evening, so the subject only names the date #}
+        {% set dinnerSubject = (ui.agenda.dinner_subject | t(lang)) + ' (' + eventWhen + ')' %}
+        {% set dinnerLink = 'mailto:' + site.contact.email + '?subject=' + (dinnerSubject | urlencode) %}
+        <div class="event-card-body">
+          {% if event.dinner_signup and not event.meal_time %}
+            {# Link target for #<event>-eten: lands on the text and buttons, highlights the dinner button #}
+            <span id="{{ event.anchor }}-eten" class="event-anchor" aria-hidden="true"></span>
+          {% endif %}
+          <div class="event-when">
+            <time class="event-date-badge" datetime="{{ event.date }}">
+              <span class="event-date-day">{{ event.date | eventDate(lang, "day") }}</span>
+              <span class="event-date-month">{{ event.date | eventDate(lang, "month") }}</span>
+            </time>
+            <div>
+              {% if eventCategory %}<span class="chip" style="margin: 0 0 var(--spacing-2);">{{ eventCategory }}</span>{% endif %}
+              <p class="event-when-text"><span>{{ eventWhen }}</span>{% if event.time %} · <span>{{ event.time }}</span>{% endif %}{% if eventPrice %} · <span>{{ eventPrice }}</span>{% endif %}</p>
+            </div>
+          </div>
+
+          {% if event.partOf %}
+            <a href="#{{ event.partOf.anchor }}" class="event-part-of">{{ ui.agenda.part_of | t(lang) }} {{ event.partOf.title | t(lang) }}
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          {% endif %}
+          <h2 class="event-title">{{ eventTitle }}</h2>
+          {% if eventSummary %}
+            <p class="body-lg" style="margin-bottom: var(--spacing-6); color: var(--secondary);">{{ eventSummary }}</p>
+          {% endif %}
+
+          <div class="prose">{{ eventText[0] | safe }}</div>
+
+          {% if event.meal_time %}
+            {% set mealPrice = event.meal_price | t(lang) %}
+            {% set mealText = event.meal_text | t(lang) %}
+            <div id="{{ event.anchor }}-eten" class="event-meal">
+              <svg class="event-meal-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M7 3v18M4 3v5a3 3 0 0 0 6 0V3M18 21V3c-2.2 0-4 2.7-4 6v4h4" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <p class="event-meal-text">
+                <strong>{{ event.meal_time }} · {{ ui.agenda.meal_title | t(lang) }}</strong>
+                {% if mealPrice %}<span class="event-meal-price">{{ mealPrice }}</span>{% endif %}
+                {% if mealText %}<span class="event-meal-note">{{ mealText }}</span>{% endif %}
+              </p>
+              {% if event.dinner_signup %}
+                <a href="{{ dinnerLink }}" class="btn btn-primary event-signup-dinner">{{ ui.buttons.signup_dinner | t(lang) }}</a>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          {% set showSignup = event.signup_button != false %}
+          {% set showDinnerButton = event.dinner_signup and not event.meal_time %}
+          {% if showSignup or showDinnerButton or eventText[1] %}
+          <div class="event-actions">
+            {% if showSignup %}
+              {% set signupLabel = event.signup_label | t(lang) %}
+              {% set signupSubject = (ui.agenda.signup_subject | t(lang)) + ': ' + eventTitle + ' (' + eventWhen + ')' %}
+              <a href="mailto:{{ site.contact.email }}?subject={{ signupSubject | urlencode }}" class="btn btn-primary">{{ signupLabel or (ui.buttons.signup_by_email | t(lang)) }}</a>
+            {% endif %}
+            {% if showDinnerButton %}
+              <a href="{{ dinnerLink }}" class="btn btn-secondary event-signup-dinner">{{ ui.buttons.signup_dinner | t(lang) }}</a>
+            {% endif %}
+            {% if eventText[1] %}
+              <button type="button" class="event-more-toggle" aria-expanded="true" aria-controls="{{ moreId }}" hidden>
+                <span class="event-more-closed">{{ ui.buttons.read_more | t(lang) }}</span>
+                <span class="event-more-open">{{ ui.buttons.read_less | t(lang) }}</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>
+
+        {% set programme = event.programme %}
+        {% if programme and programme.makers and programme.makers.length %}
+          {% set rounds = programme.rounds or [] %}
+          {% set programmeNote = programme.note | t(lang) %}
+          <div class="programme" style="--rounds: {{ rounds.length or 1 }};">
+            <h3 class="programme-title">{{ ui.agenda.programme | t(lang) }}</h3>
+            {% if rounds.length %}
+              <div class="programme-row programme-head" aria-hidden="true">
+                <span></span>
+                {% for round in rounds %}<span>{{ ui.agenda.round | t(lang) }} {{ loop.index }} · {{ round }}</span>{% endfor %}
+              </div>
+            {% endif %}
+            {% for maker in programme.makers %}
+              <div class="programme-row">
+                <span class="programme-maker">{{ maker.name }}</span>
+                {% for workshop in maker.workshops %}
+                  {% set roundIndex = workshop.round | int %}
+                  {% set isAll = not roundIndex or not rounds[roundIndex - 1] %}
+                  {% set wsTime = workshop.time or ("" if isAll else rounds[roundIndex - 1]) %}
+                  {% set link = workshop.link %}
+                  {% set isOwn = link and (link[0] == "/" or link[0] == "#") %}
+                  {# An own link (a workshop of ours) gets highlighted; other makers open in a new tab #}
+                  <a class="programme-ws{% if isAll %} is-all{% endif %}{% if isOwn %} is-own{% endif %}"{% if not isAll %} style="--col: {{ roundIndex + 1 }};"{% endif %}{% if link %} href="{{ (link | localizedUrl(lang)) if isOwn else link }}"{% endif %}{% if link and not isOwn %} target="_blank" rel="noopener"{% endif %}>
+                    {% if wsTime %}<span class="programme-time">{{ wsTime if isAll else ((wsTime | string).split("-")[0] | trim) }}</span>{% endif %}
+                    {% set wsTitle = workshop.title | t(lang) %}
+                    {% if link %}
+                      {# The last word and the icon share a no-wrap span, so the icon never ends up alone on a line #}
+                      {% set titleWords = (wsTitle | string).split(" ") %}
+                      <span class="programme-ws-title">{{ titleWords.slice(0, -1).join(" ") }} <span class="programme-ws-end">{{ titleWords | last }}&nbsp;
+                        {%- if isOwn %}<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        {%- else %}<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{% endif -%}
+                      </span></span>
+                    {% else %}
+                      <span class="programme-ws-title">{{ wsTitle }}</span>
+                    {% endif %}
+                  </a>
+                {% endfor %}
+              </div>
+            {% endfor %}
+            {% if programmeNote %}<p class="programme-note">{{ programmeNote }}</p>{% endif %}
+          </div>
+        {% endif %}
+
+        {% if eventText[1] %}
+          <div class="prose event-card-more" id="{{ moreId }}">{{ eventText[1] | safe }}</div>
+        {% endif %}
+      </article>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {# Shown when nothing is planned, also when the last event passes between two builds #}
+  <div id="agenda-empty" class="card agenda-empty"{% if upcoming.length %} hidden{% endif %}>
+    <p class="body-lg">{{ empty_text | t(lang) }}</p>
+    <a href="{{ '/evenementen/' | localizedUrl(lang) }}" class="btn btn-secondary">{{ ui.buttons.hire_venue | t(lang) }}</a>
+  </div>
+</section>
+<script>
+  // Collapse the rest of each description behind "Lees meer" (stays fully visible without JS).
+  (function() {
+    document.querySelectorAll('#agenda .event-more-toggle').forEach(function(btn) {
+      var more = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!more) return;
+      more.hidden = true;
+      btn.setAttribute('aria-expanded', 'false');
+      btn.hidden = false;
+      btn.addEventListener('click', function() {
+        var open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        more.hidden = !open;
+      });
+    });
+  })();
+</script>

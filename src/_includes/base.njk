@@ -153,7 +153,8 @@
     })();
 
     // Agenda items are filtered at build time, but the site is only rebuilt on edits:
-    // also drop events that have passed since, and any agenda block left empty.
+    // also drop events that have passed since, and any agenda block left empty
+    // (showing its data-agenda-fallback element instead, if it has one).
     (function() {
       var now = new Date();
       var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
@@ -161,7 +162,10 @@
         if (item.getAttribute('data-event-date') < today) item.remove();
       });
       document.querySelectorAll('[data-agenda]').forEach(function(block) {
-        if (!block.querySelector('[data-event-date]')) block.remove();
+        if (block.querySelector('[data-event-date]')) return;
+        var fallback = document.getElementById(block.getAttribute('data-agenda-fallback'));
+        if (fallback) fallback.hidden = false;
+        block.remove();
       });
     })();
   </script>

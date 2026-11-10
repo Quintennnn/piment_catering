@@ -4,6 +4,7 @@
     "lunchcafe": { "nl": "Lunchcafé",       "en": "Lunch café" },
     "catering":  { "nl": "Catering",        "en": "Catering" },
     "events":    { "nl": "Evenementen",     "en": "Events" },
+    "agenda":    { "nl": "Agenda",          "en": "Agenda" },
     "about":     { "nl": "Over Piment",     "en": "About Piment" },
     "vacancies": { "nl": "Vacatures",       "en": "Vacancies" },
     "contact":   { "nl": "Contact",         "en": "Contact" }
@@ -41,7 +42,9 @@
     "read_more":         { "nl": "Lees meer",           "en": "Read more" },
     "read_less":         { "nl": "Minder tonen",        "en": "Show less" },
     "view_and_signup":   { "nl": "Bekijk en meld je aan", "en": "View and sign up" },
-    "view_in_agenda":    { "nl": "Bekijk in de agenda", "en": "View in the agenda" }
+    "view_in_agenda":    { "nl": "Bekijk in de agenda", "en": "View in the agenda" },
+    "view_programme":    { "nl": "Bekijk het programma", "en": "View the programme" },
+    "hire_venue":        { "nl": "Onze locatie huren",  "en": "Hire our venue" }
   },
   "form": {
     "honeypot_label":    { "nl": "Niet invullen",       "en": "Do not fill in" },
@@ -53,6 +56,10 @@
   "agenda": {
     "signup_subject":    { "nl": "Aanmelding",          "en": "Sign-up" },
     "dinner_subject":    { "nl": "Aanmelden eten",      "en": "Sign-up dinner" },
+    "meal_title":        { "nl": "Eten bij Piment",     "en": "Dinner at Piment" },
+    "programme":         { "nl": "Programma",           "en": "Programme" },
+    "round":             { "nl": "Ronde",               "en": "Round" },
+    "part_of":           { "nl": "Onderdeel van",       "en": "Part of" },
     "coming_up":         { "nl": "Binnenkort bij Piment", "en": "Coming up at Piment" }
   }
 }
