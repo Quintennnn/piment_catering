@@ -155,7 +155,7 @@ permalink: "{% if lang == 'en' %}/en/{% else %}/{% endif %}"
         <h2 class="home-event-title">{{ event.title | t(lang) }}</h2>
         <p class="event-when-text"><span>{{ eventWhen }}</span>{% if event.time %} · <span>{{ event.time }}</span>{% endif %}{% if eventPrice %} · <span>{{ eventPrice }}</span>{% endif %}</p>
         <div class="home-event-text">{{ eventText[0] | safe }}</div>
-        <a href="{{ '/evenementen/' | localizedUrl(lang) }}#agenda" class="btn btn-primary home-event-link">
+        <a href="{{ '/evenementen/' | localizedUrl(lang) }}#{{ event.anchor }}" class="btn btn-primary home-event-link">
           {% if event.signup_button != false %}{{ ui.buttons.view_and_signup | t(lang) }}{% else %}{{ ui.buttons.view_in_agenda | t(lang) }}{% endif %} →
         </a>
       </div>

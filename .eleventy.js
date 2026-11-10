@@ -43,12 +43,21 @@ module.exports = function(eleventyConfig) {
   });
 
   // Agenda items (agenda/*.json) from today onward, soonest first. Dates are "YYYY-MM-DD".
+  // Each gets an `anchor` for links like /evenementen/#workshop-vegetarische-kimchi: the file
+  // name without its date, so a shared link always points at the next event with that name.
   eleventyConfig.addFilter("upcomingEvents", (value) => {
     if (!value || typeof value !== "object") return [];
     const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Amsterdam" }).format(new Date());
-    return Object.values(value)
-      .filter((event) => event && event.date && String(event.date).slice(0, 10) >= today)
-      .sort((a, b) => String(a.date).localeCompare(String(b.date)) || String(a.time || "").localeCompare(String(b.time || "")));
+    const used = new Set();
+    return Object.entries(value)
+      .filter(([, event]) => event && event.date && String(event.date).slice(0, 10) >= today)
+      .sort(([, a], [, b]) => String(a.date).localeCompare(String(b.date)) || String(a.time || "").localeCompare(String(b.time || "")))
+      .map(([file, event]) => {
+        const short = file.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+        const anchor = used.has(short) ? file : short;
+        used.add(anchor);
+        return { ...event, anchor };
+      });
   });
 
   // Format an agenda date: "day" (3), "month" (dec) or "long" (donderdag 3 december).

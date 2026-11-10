@@ -29,7 +29,18 @@ Een workshop of ander evenement dat eraan komt, zet je op de evenementenpagina v
 2. Vul de **datum** in, eventueel de **tijd**, de **titel** en de **omschrijving**. Een foto is optioneel.
 3. Klik op **Save** en **Publish**.
 
-Het evenement verschijnt in het blok **Binnenkort bij Piment** op de evenementenpagina, met de eerstvolgende datum bovenaan. Het eerstvolgende evenement staat ook als opvallende melding bovenaan de homepage, met een link naar de agenda. Is de datum voorbij, dan verdwijnt het vanzelf van de site. Je kunt het daarna in de Agenda verwijderen, maar dat hoeft niet. Staan er geen komende evenementen in de agenda, dan is het hele blok weg.
+Het evenement verschijnt in het blok **Binnenkort bij Piment** op de evenementenpagina, met de eerstvolgende datum bovenaan. Het eerstvolgende evenement staat ook in een blok op de homepage, onder de grote foto, met een link naar de agenda.
+
+Is er bij een evenement ook eten, zet dan **Knop 'Aanmelden eten' tonen** aan. Er komt dan een tweede knop die een mail stuurt met "Aanmelden eten" in het onderwerp. Geef de gewone knop dan bijvoorbeeld de tekst "Aanmelden workshop", zodat het verschil duidelijk is.
+
+### Link naar een evenement delen
+
+Elk evenement heeft een eigen link die je aan anderen kunt geven, bijvoorbeeld om op hun website te zetten. De link is het adres van de evenementenpagina met `#` en de naam van het evenement erachter, met streepjes in plaats van spaties:
+
+- `https://pimentcatering.nl/evenementen/#workshop-vegetarische-kimchi` springt naar het evenement.
+- Met `-eten` erachter (`…#workshop-vegetarische-kimchi-eten`) springt de pagina naar de aanmeldknoppen, en licht de knop voor het eten even op.
+
+De naam in de link is de titel zoals je die bij het aanmaken invulde. Pas je de titel later aan, dan blijft de link hetzelfde. Is de datum voorbij, dan verdwijnt het vanzelf van de site. Je kunt het daarna in de Agenda verwijderen, maar dat hoeft niet. Staan er geen komende evenementen in de agenda, dan is het hele blok weg.
 
 ## Foto's
 

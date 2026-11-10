@@ -37,6 +37,7 @@
     "send_request":      { "nl": "Verstuur aanvraag",   "en": "Send request" },
     "apply_by_email":    { "nl": "Solliciteer per mail", "en": "Apply by email" },
     "signup_by_email":   { "nl": "Aanmelden per mail",  "en": "Sign up by email" },
+    "signup_dinner":     { "nl": "Aanmelden eten",      "en": "Sign up for dinner" },
     "read_more":         { "nl": "Lees meer",           "en": "Read more" },
     "read_less":         { "nl": "Minder tonen",        "en": "Show less" },
     "view_and_signup":   { "nl": "Bekijk en meld je aan", "en": "View and sign up" },
@@ -51,6 +52,7 @@
   },
   "agenda": {
     "signup_subject":    { "nl": "Aanmelding",          "en": "Sign-up" },
+    "dinner_subject":    { "nl": "Aanmelden eten",      "en": "Sign-up dinner" },
     "coming_up":         { "nl": "Binnenkort bij Piment", "en": "Coming up at Piment" }
   }
 }

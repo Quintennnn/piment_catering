@@ -110,7 +110,7 @@ event_types:
       {% set eventPrice = event.price | t(lang) %}
       {% set eventText = event.description | mdLeadAndRest(lang) %}
       {% set moreId = "event-more-" + loop.index %}
-      <article class="card event-card{% if event.image %} has-image{% endif %}" data-event-date="{{ event.date }}">
+      <article id="{{ event.anchor }}" class="card event-card{% if event.image %} has-image{% endif %}" data-event-date="{{ event.date }}">
         {% if event.image %}
           <div class="event-card-media">
             <img src="{{ event.image }}" alt="{{ eventTitle }}" loading="lazy">
@@ -118,6 +118,10 @@ event_types:
         {% endif %}
 
         <div class="event-card-body">
+          {% if event.dinner_signup %}
+            {# Link target for #<event>-eten: lands on the text and buttons, highlights the dinner button #}
+            <span id="{{ event.anchor }}-eten" class="event-anchor" aria-hidden="true"></span>
+          {% endif %}
           <div class="event-when">
             <time class="event-date-badge" datetime="{{ event.date }}">
               <span class="event-date-day">{{ event.date | eventDate(lang, "day") }}</span>
@@ -138,11 +142,16 @@ event_types:
 
           <div class="event-actions">
             {% if event.signup_button != false %}
+              {% set signupLabel = event.signup_label | t(lang) %}
               {% set signupSubject = (ui.agenda.signup_subject | t(lang)) + ': ' + eventTitle + ' (' + eventWhen + ')' %}
-              <a href="mailto:{{ site.contact.email }}?subject={{ signupSubject | urlencode }}" class="btn btn-primary">{{ ui.buttons.signup_by_email | t(lang) }}</a>
+              <a href="mailto:{{ site.contact.email }}?subject={{ signupSubject | urlencode }}" class="btn btn-primary">{{ signupLabel or (ui.buttons.signup_by_email | t(lang)) }}</a>
+            {% endif %}
+            {% if event.dinner_signup %}
+              {% set dinnerSubject = (ui.agenda.dinner_subject | t(lang)) + ': ' + eventTitle + ' (' + eventWhen + ')' %}
+              <a href="mailto:{{ site.contact.email }}?subject={{ dinnerSubject | urlencode }}" class="btn btn-secondary event-signup-dinner">{{ ui.buttons.signup_dinner | t(lang) }}</a>
             {% endif %}
             {% if eventText[1] %}
-              <button type="button" class="btn btn-secondary event-more-toggle" aria-expanded="true" aria-controls="{{ moreId }}" hidden>
+              <button type="button" class="event-more-toggle" aria-expanded="true" aria-controls="{{ moreId }}" hidden>
                 <span class="event-more-closed">{{ ui.buttons.read_more | t(lang) }}</span>
                 <span class="event-more-open">{{ ui.buttons.read_less | t(lang) }}</span>
                 <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>

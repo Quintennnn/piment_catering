@@ -1076,6 +1076,17 @@ collections:
 
       - { label: "Knop 'Aanmelden per mail' tonen", name: "signup_button", widget: "boolean", default: true, required: false }
 
+      - label: "Tekst op de aanmeldknop (optioneel)"
+        name: "signup_label"
+        widget: "object"
+        required: false
+        hint: "Leeg laten voor 'Aanmelden per mail'. Handig als er ook een knop voor het eten is, bv. 'Aanmelden workshop'."
+        fields:
+          - { label: "Nederlands", name: "nl", widget: "string", required: false }
+          - { label: "English", name: "en", widget: "string", required: false }
+
+      - { label: "Knop 'Aanmelden eten' tonen", name: "dinner_signup", widget: "boolean", default: false, required: false, hint: "Extra knop die een mail stuurt met 'Aanmelden eten' in het onderwerp." }
+
   # ----------------------------------------------------------------------
   # Menukaart (één bestand per categorie)
   # ----------------------------------------------------------------------

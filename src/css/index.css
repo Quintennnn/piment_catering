@@ -983,6 +983,7 @@ select.input-field option { color: var(--on-surface); }
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--spacing-8);
+  scroll-margin-top: 9rem;
 }
 
 .event-card-media img {
@@ -993,7 +994,32 @@ select.input-field option { color: var(--on-surface); }
   box-shadow: var(--ambient-shadow);
 }
 
+/* Target of /evenementen/#<event>-eten: starts at the text, so the buttons are in view on a phone too */
+.event-anchor {
+  position: absolute;
+  top: 0;
+  scroll-margin-top: 9rem;
+}
+
+.event-anchor:target ~ .event-actions .event-signup-dinner {
+  animation: event-highlight 1.2s ease-out 3;
+}
+
+@keyframes event-highlight {
+  0% { box-shadow: 0 0 0 0 rgba(158, 61, 33, 0.5); }
+  100% { box-shadow: 0 0 0 14px rgba(158, 61, 33, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .event-anchor:target ~ .event-actions .event-signup-dinner {
+    animation: none;
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
 .event-card-body {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1004,11 +1030,33 @@ select.input-field option { color: var(--on-surface); }
 .event-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-4);
+  align-items: center;
+  gap: var(--spacing-4) var(--spacing-6);
   margin-top: var(--spacing-8);
 }
 
-.event-more-toggle { gap: var(--spacing-2); }
+/* "Lees meer" as a text link, so it doesn't compete with the sign-up buttons */
+.event-more-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: 0 0 2px;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid var(--tertiary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--on-surface);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.event-more-toggle:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
 .event-more-toggle[hidden] { display: none; }
 .event-more-toggle svg { transition: transform 0.3s ease; }
 .event-more-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
